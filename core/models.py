@@ -2,6 +2,24 @@ from django.db import models
 
 # Create your models here.
 
+class Company(models.Model):
+    status_name = models.CharField(max_length=50, blank=True, null=True)
+    class Meta:
+        db_table = 'company'
+        verbose_name_plural = "companies"
+
+
+class Project(models.Model):
+    status_name = models.CharField(max_length=50, blank=True, null=True)
+    class Meta:
+        db_table = 'project'
+
+
+class Position(models.Model):
+    status_name = models.CharField(max_length=50, blank=True, null=True)
+    class Meta: 
+        db_table = 'position'
+
 
 class Assignment(models.Model):
     project_division = models.CharField(max_length=255, blank=True, null=True)
@@ -62,6 +80,7 @@ class CandidateTable(models.Model):
     class Meta:
         managed = False
         db_table = 'candidate_tbl'
+        verbose_name_plural = "candidates"
 
 
 class HelpText(models.Model):
