@@ -147,3 +147,13 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+DEFAULT_FILE_STORAGE = os.getenv('DEFAULT_FILE_STORAGE') 
+AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME') 
+AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY') 
+AZURE_CONTAINER = os.getenv('AZURE_CONTAINER') 
+
+
