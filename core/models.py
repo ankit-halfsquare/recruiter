@@ -1,12 +1,44 @@
 from django.db import models
 
+from django.core.files.base import ContentFile
+
+from azure.storage.fileshare import ShareFileClient
+connection_string = "DefaultEndpointsProtocol=https;AccountName=recruiterstorageacc;AccountKey=TMIx6oaskIB8HdwDPCI4zBaYfxucJcSryzQTgaIpt8PwWs2+JzTXP3TNd9bwJwlz2uHUfZ8jgF5q+AStGCB1vA==;EndpointSuffix=core.windows.net"
+
+
+
 # Create your models here.
 
 class Company(models.Model):
-    status_name = models.CharField(max_length=50, blank=True, null=True)
+    name = models.CharField(max_length=50, blank=True, null=True)
+    file = models.FileField(upload_to ='files/',blank=True, null=True)
     class Meta:
         db_table = 'company'
         verbose_name_plural = "companies"
+
+
+    def __str__(self):
+        return self.name
+
+
+    def save(self,*args, **kwargs):
+        # print("working",self.name)
+        print("args",args)
+        print("kwargs",kwargs)
+        if self.file:
+            # self.information = informationGeneration(self.file.path)
+            # print("self.file",self.file.file.read())
+            print("self.file.file.content_typee",self.file.file.content_type)
+            print("self.file",self.file)
+            # xyz = self.file.file.read()
+            content_file = ContentFile(self.file.file.read())
+            file_client = ShareFileClient.from_connection_string(conn_str=connection_string, share_name="recruiter-file-share",file_path="demo1.pdf")
+
+            file_client.upload_file(content_file)
+            # with open(self.file.file.read(), "rb") as source_file:
+            #     file_client.upload_file(source_file)
+        # super().save(*args, **kwargs)
+        
 
 
 class Project(models.Model):
@@ -81,6 +113,12 @@ class CandidateTable(models.Model):
         managed = False
         db_table = 'candidate_tbl'
         verbose_name_plural = "candidates"
+
+    
+    def save(self, *args, **kwargs):
+        print("working",self.first_name)
+        super().save(*args, **kwargs)
+        pass
 
 
 class HelpText(models.Model):

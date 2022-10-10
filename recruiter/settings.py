@@ -147,3 +147,13 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+DEFAULT_FILE_STORAGE='storages.backends.azure_storage.AzureStorage'
+AZURE_ACCOUNT_NAME='recruiterstorageacc'
+AZURE_ACCOUNT_KEY='TMIx6oaskIB8HdwDPCI4zBaYfxucJcSryzQTgaIpt8PwWs2+JzTXP3TNd9bwJwlz2uHUfZ8jgF5q+AStGCB1vA=='
+AZURE_CONTAINER='demo'
+# AZURE_CONTAINER='recruiter-file-share'
