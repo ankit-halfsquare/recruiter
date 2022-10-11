@@ -92,7 +92,9 @@ if os.getenv('DB_NAME', ''):
             'HOST':  os.getenv('DB_HOST'),   # Or an IP Address that your DB is hosted on
             'PORT': '1433',
             'OPTIONS': {
-                'driver': 'ODBC Driver 17 for SQL Server',
+                'driver': 'ODBC Driver 18 for SQL Server',
+                # 'driver': 'ODBC Driver 17 for SQL Server',
+                
             },
         }
     }

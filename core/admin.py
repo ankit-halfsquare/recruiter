@@ -32,12 +32,13 @@ class SynonymAdmin(admin.ModelAdmin):
 
 admin.site.register(Assignment,AssignmentAdmin)
 admin.site.register(CandidateTable,CandidateTableAdmin)
-admin.site.register(HelpText,HelpTextAdmin)
-admin.site.register(Keyword,KeywordAdmin)
-admin.site.register(Repository,RepositoryAdmin)
-admin.site.register(Status,StatusAdmin)
-admin.site.register(Synonym,SynonymAdmin)
 
 admin.site.register(Company)
 admin.site.register(Project)
 admin.site.register(Position)
+
+# admin.site.register(HelpText,HelpTextAdmin)
+# admin.site.register(Keyword,KeywordAdmin)
+# admin.site.register(Repository,RepositoryAdmin)
+# admin.site.register(Status,StatusAdmin)
+# admin.site.register(Synonym,SynonymAdmin)

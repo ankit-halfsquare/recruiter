@@ -14,6 +14,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+
+
 def get_file_client(file):
     file_client = ShareFileClient.from_connection_string(
                 conn_str=os.getenv('connection_string'), 
@@ -208,68 +210,68 @@ class CandidateTable(models.Model):
         # super().save(*args, **kwargs)
 
 
-class HelpText(models.Model):
-    Help_Text = models.TextField(max_length=255, blank=True, null=True)
-    Help_Text_ID = models.AutoField(primary_key=True)
-    Help_ID_Name = models.CharField(max_length=50, blank=True, null=True)
+# class HelpText(models.Model):
+#     Help_Text = models.TextField(max_length=255, blank=True, null=True)
+#     Help_Text_ID = models.AutoField(primary_key=True)
+#     Help_ID_Name = models.CharField(max_length=50, blank=True, null=True)
 
-    def __str__(self):
-        return self.Help_ID_Name
+#     def __str__(self):
+#         return self.Help_ID_Name
 
-    class Meta:
-        #managed = False
-        db_table = 'help_text'
-
-
-class Keyword(models.Model):
-    keyword_id = models.AutoField(primary_key=True)
-    text = models.CharField(max_length=255, blank=True, null=True)
-
-    def __str__(self):
-        return self.text
-
-    class Meta:
-        #managed = False
-        db_table = 'keyword'
+#     class Meta:
+#         #managed = False
+#         db_table = 'help_text'
 
 
-class Repository(models.Model):
-    key = models.AutoField(primary_key=True)
-    objectType = models.CharField(max_length=40, blank=True, null=True)
-    dateStamp = models.DateTimeField()
-    componentGUID = models.CharField(max_length=40, blank=True, null=True)
-    userId = models.CharField(max_length=40, blank=True, null=True)
-    data = models.TextField()
-    securityGroups = models.TextField()
+# class Keyword(models.Model):
+#     keyword_id = models.AutoField(primary_key=True)
+#     text = models.CharField(max_length=255, blank=True, null=True)
 
-    def __str__(self):
-        return self.objectType
+#     def __str__(self):
+#         return self.text
 
-    class Meta:
-        #managed = False
-        db_table = 'repository'
+#     class Meta:
+#         #managed = False
+#         db_table = 'keyword'
 
 
-class Status(models.Model):
-    status_name = models.CharField(max_length=50, blank=True, null=True)
-    status_description = models.CharField(
-        max_length=255, blank=True, null=True)
+# class Repository(models.Model):
+#     key = models.AutoField(primary_key=True)
+#     objectType = models.CharField(max_length=40, blank=True, null=True)
+#     dateStamp = models.DateTimeField()
+#     componentGUID = models.CharField(max_length=40, blank=True, null=True)
+#     userId = models.CharField(max_length=40, blank=True, null=True)
+#     data = models.TextField()
+#     securityGroups = models.TextField()
 
-    def __str__(self):
-        return self.status_name
+#     def __str__(self):
+#         return self.objectType
 
-    class Meta:
-        #managed = False
-        db_table = 'status'
+#     class Meta:
+#         #managed = False
+#         db_table = 'repository'
 
 
-class Synonym(models.Model):
-    synonym = models.CharField(max_length=128, blank=True, null=True)
-    keywordid = models.IntegerField()
+# class Status(models.Model):
+#     status_name = models.CharField(max_length=50, blank=True, null=True)
+#     status_description = models.CharField(
+#         max_length=255, blank=True, null=True)
 
-    def __str__(self):
-        return self.synonym
+#     def __str__(self):
+#         return self.status_name
 
-    class Meta:
-        #managed = False
-        db_table = 'synonym'
+#     class Meta:
+#         #managed = False
+#         db_table = 'status'
+
+
+# class Synonym(models.Model):
+#     synonym = models.CharField(max_length=128, blank=True, null=True)
+#     keywordid = models.IntegerField()
+
+#     def __str__(self):
+#         return self.synonym
+
+#     class Meta:
+#         #managed = False
+#         db_table = 'synonym'
