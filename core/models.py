@@ -6,7 +6,7 @@ from azure.storage.fileshare import ShareFileClient
 from docx2pdf import convert
 
 from azure.storage.blob import BlobClient
-import pythoncom
+# import pythoncom
 from PyPDF2 import PdfReader
 from django.conf import settings 
 
@@ -138,7 +138,8 @@ class CandidateTable(models.Model):
             with open(f"{filename}", "wb") as download_file:
                 download_file.write(blob.download_blob().readall())
 
-            convert(f"{filename}",pythoncom.CoInitialize())
+            # pythoncom.CoInitialize()
+            convert(f"{filename}")
 
             file, file_extension = os.path.splitext(f"{filename}")
 
