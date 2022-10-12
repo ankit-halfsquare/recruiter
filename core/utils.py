@@ -33,3 +33,32 @@ def get_blob(filename):
                     blob_name=f"{filename}",
                     credential=settings.AZURE_ACCOUNT_KEY)
     return blob
+
+
+
+def dowload_file(filename,blob):
+    with open(f"{filename}", "wb") as download_file:
+                download_file.write(blob.download_blob().readall())
+
+def delete_file(filename):
+    try:
+        os.remove(filename)
+    except :
+        pass
+
+def str_to_list(text):
+    text = text.lower()
+    text = text.replace("\n","")
+    text = text.replace("\t","")
+    text = list(text.split(" "))
+    return text
+
+def read_file(filename):
+    blob = get_blob(filename)
+    dowload_file(filename,blob)
+    text = getText(filename)
+    textlst = str_to_list(text)
+    delete_file(filename)
+
+    return text,textlst
+    pass

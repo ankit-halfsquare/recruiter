@@ -3,6 +3,9 @@ from email.policy import default
 from django.db import models
 from django.core.files.base import ContentFile,File
 
+from datetime import datetime
+from django.utils import timezone 
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -82,28 +85,25 @@ class CandidateTable(models.Model):
     candidate_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=50, blank=True, null=True)
     last_name = models.CharField(max_length=50, blank=True, null=True)
-    state = models.CharField(max_length=50, blank=True, null=True)
     phone = models.CharField(max_length=50, blank=True, null=True)
     email = models.CharField(max_length=50, blank=True, null=True)
     city = models.CharField(max_length=50, blank=True, null=True)
+    state = models.CharField(max_length=50, blank=True, null=True)
+    country = models.CharField(max_length=50, blank=True, null=True)
     history = models.CharField(max_length=500, blank=True, null=True)
-    active = models.IntegerField(blank=True, null=True)
+    active = models.BooleanField(default=True)
     active_assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     adder = models.IntegerField(blank=True, null=True)
-    date_added = models.DateTimeField(blank=True, null=True)
-    fk_ra_company = models.ForeignKey(
-        Company, on_delete=models.CASCADE, blank=True, null=True)
-    fk_ra_project = models.ForeignKey(
-        Project, on_delete=models.CASCADE, blank=True, null=True)
-    fk_ra_position = models.ForeignKey(
-        Position, on_delete=models.CASCADE, blank=True, null=True)
+    date_added = models.DateField(auto_now_add=True, blank=True, null=True)
+    fk_ra_company = models.ForeignKey(Company, on_delete=models.CASCADE, blank=True, null=True)
+    fk_ra_project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
+    fk_ra_position = models.ForeignKey(Position, on_delete=models.CASCADE, blank=True, null=True)
     skill_keywords = models.TextField(blank=True, null=True)
-    country = models.CharField(max_length=255, blank=True, null=True)
     candidateFileName = models.CharField(max_length=255, blank=True, null=True)
     candidateFileContents = models.TextField(blank=True, null=True)
     candidateFileNameOriginal = models.FileField(upload_to='files/', blank=True, null=True)
     candidateFileNamePDF = models.CharField(max_length=255, null=True, blank=True)
-    fileUploadDate = models.DateTimeField(blank=True, null=True)
+    fileUploadDate = models.DateField(blank=True, null=True)
     candidateFileNameOriginalFull = models.CharField(max_length=255, null=True, blank=True)
     fileUploadUser = models.CharField(max_length=255, null=True, blank=True)
     archive = models.IntegerField(null=True, blank=True)
@@ -123,38 +123,50 @@ class CandidateTable(models.Model):
 
         if self.candidateFileNameOriginal and not self.candidateFileContents:
             filename = f"{self.candidateFileNameOriginal}"
-            blob = get_blob(filename)
 
-            with open(f"{filename}", "wb") as download_file:
-                download_file.write(blob.download_blob().readall())
-            
-            text = getText(f"{filename}")
+            text,textlst = read_file(filename)
+
             self.candidateFileContents = text
 
             skills = Keyword.objects.all()
             skillfullkeywords=[]
-            text = text.lower()
-            text = text.replace("\n","")
-            text = text.replace("\t","")
-            text = list(text.split(" "))
-            print("text",text)
             for skill in skills:
                 skill = str(skill)
-                if skill.lower() in text:
+                if skill.lower() in textlst:
                     skillfullkeywords.append(skill)
-                
 
             if len(skillfullkeywords):
                 self.skill_keywords_full = ' '.join([str(elem) for elem in skillfullkeywords])
 
             file, file_extension = os.path.splitext(f"{filename}")
             self.candidateFileNamePDF = f"{file}.pdf"
-
-            try:
-                os.remove(filename)
-            except :
-                pass
+            self.fileUploadDate = datetime.now().strftime('%Y-%m-%d')
+            self.fileUploadUser = "comming soon"
+         
             self.save()
+
+            # blob = get_blob(filename)
+
+            # with open(f"{filename}", "wb") as download_file:
+            #     download_file.write(blob.download_blob().readall())
+            
+            # text = getText(f"{filename}")
+            # self.candidateFileContents = text
+
+            # skills = Keyword.objects.all()
+            # skillfullkeywords=[]
+            # text = text.lower()
+            # text = text.replace("\n","")
+            # text = text.replace("\t","")
+            # text = list(text.split(" "))
+            # print("text",text)
+            # for skill in skills:
+            #     skill = str(skill)
+            #     if skill.lower() in text:
+            #         skillfullkeywords.append(skill)
+                
+
+            
 
             # pythoncom.CoInitialize()
             # convert(f"{filename}")
