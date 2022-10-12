@@ -125,6 +125,8 @@ class CandidateTable(models.Model):
             filename = f"{self.candidateFileNameOriginal}"
 
             text,textlst = read_file(filename)
+            print("text",text)
+            print("textlst",textlst)
 
             self.candidateFileContents = text
 
