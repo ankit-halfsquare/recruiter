@@ -9,11 +9,12 @@ class AssignmentAdmin(admin.ModelAdmin):
 
 class CandidateTableAdmin(admin.ModelAdmin):
     readonly_fields=('fileUploadUser','candidateFileName','candidateFileNamePDF','skill_keywords_full','candidateFileContents','date_added','fileUploadDate')
-    list_display = ('candidate_id','skill_keywords_found','first_name','last_name','city','state','country','phone','email','active_assignment','candidateFileNameOriginal','fileUploadDate','date_added',)
-    list_display_links = ('candidate_id','first_name','last_name','skill_keywords_found',)
+    list_display = ('skill_keywords_found','first_name','last_name','city','state','country','phone','email','active_assignment','candidateFileNameOriginal','fileUploadDate','date_added',)
+    list_display_links = ('first_name','last_name','skill_keywords_found',)
+    list_filter = (('skill_keywords_full',admin.EmptyFieldListFilter),'active','city','state','date_added')
 
     def skill_keywords_found(self,obj):
-        return format_html(f'<h3 style="color:green" >{obj.skill_keywords_full}</h3>')
+        return format_html(f'<h4 style="color:green" >{obj.skill_keywords_full}</h4>')
 class HelpTextAdmin(admin.ModelAdmin):
     list_display = ('Help_Text_ID','Help_ID_Name','Help_Text')
 
