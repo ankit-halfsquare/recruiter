@@ -2,36 +2,26 @@ from distutils.command.upload import upload
 from email.policy import default
 from django.db import models
 from django.core.files.base import ContentFile,File
-from azure.storage.fileshare import ShareFileClient
-from docx2pdf import convert
-
-from azure.storage.blob import BlobClient
-# import pythoncom
-from PyPDF2 import PdfReader
-from django.conf import settings 
 
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
+from .utils import *
 
-
-def get_file_client(file):
-    file_client = ShareFileClient.from_connection_string(
-                conn_str=os.getenv('connection_string'), 
-                share_name=os.getenv('share_name'),
-                file_path=f"{file}.pdf")
-
-    return file_client
-
-def get_blob(filename):
-    print("os.getenv('account_url')",os.getenv('account_url'))
-    blob = BlobClient(account_url="https://recruiterstorageacc.blob.core.windows.net",
-                    container_name=settings.AZURE_CONTAINER,
-                    blob_name=f"{filename}",
-                    credential=settings.AZURE_ACCOUNT_KEY)
-    return blob
 # Create your models here.
+
+
+class Keyword(models.Model):
+    keyword_id = models.AutoField(primary_key=True)
+    text = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        managed = False
+        db_table = 'keyword'
 
 
 class Company(models.Model):
@@ -137,27 +127,55 @@ class CandidateTable(models.Model):
 
             with open(f"{filename}", "wb") as download_file:
                 download_file.write(blob.download_blob().readall())
+            
+            text = getText(f"{filename}")
+            self.candidateFileContents = text
 
-            # pythoncom.CoInitialize()
-            convert(f"{filename}")
+            skills = Keyword.objects.all()
+            skillfullkeywords=[]
+            text = text.lower()
+            text = text.replace("\n","")
+            text = text.replace("\t","")
+            text = list(text.split(" "))
+            print("text",text)
+            for skill in skills:
+                skill = str(skill)
+                if skill.lower() in text:
+                    skillfullkeywords.append(skill)
+                
+
+            if len(skillfullkeywords):
+                self.skill_keywords_full = ' '.join([str(elem) for elem in skillfullkeywords])
 
             file, file_extension = os.path.splitext(f"{filename}")
-
-            file_client = get_file_client(file)
-            file_client.upload_file(f"{file}.pdf")
-
-            reader = PdfReader(f"{file}.pdf")
-            page = reader.pages[0]
-            text = page.extract_text()
-
-            self.candidateFileContents = text
             self.candidateFileNamePDF = f"{file}.pdf"
+
             try:
-                os.remove(f"{file}.pdf")
                 os.remove(filename)
-            except print(0):
+            except :
                 pass
             self.save()
+
+            # pythoncom.CoInitialize()
+            # convert(f"{filename}")
+
+            # file, file_extension = os.path.splitext(f"{filename}")
+
+            # file_client = get_file_client(file)
+            # file_client.upload_file(f"{file}.pdf")
+
+            # reader = PdfReader(f"{file}.pdf")
+            # page = reader.pages[0]
+            # text = page.extract_text()
+
+            # self.candidateFileContents = text
+            # self.candidateFileNamePDF = f"{file}.pdf"
+            # try:
+            #     os.remove(f"{file}.pdf")
+            #     os.remove(filename)
+            # except print(0):
+            #     pass
+            # self.save()
             
 
             # if not self.candidateFileNamePDF:
@@ -211,6 +229,11 @@ class CandidateTable(models.Model):
         # super().save(*args, **kwargs)
 
 
+
+
+
+
+
 # class HelpText(models.Model):
 #     Help_Text = models.TextField(max_length=255, blank=True, null=True)
 #     Help_Text_ID = models.AutoField(primary_key=True)
@@ -224,16 +247,7 @@ class CandidateTable(models.Model):
 #         db_table = 'help_text'
 
 
-# class Keyword(models.Model):
-#     keyword_id = models.AutoField(primary_key=True)
-#     text = models.CharField(max_length=255, blank=True, null=True)
 
-#     def __str__(self):
-#         return self.text
-
-#     class Meta:
-#         #managed = False
-#         db_table = 'keyword'
 
 
 # class Repository(models.Model):

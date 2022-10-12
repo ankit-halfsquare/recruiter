@@ -11,8 +11,8 @@ django-cors-headers==3.13.0
 django-storages==1.13.1
 azure-storage-blob==12.13.1
 azure-storage-file-share==12.9.0
-PyPDF2==2.11.1
-docx2pdf==0.1.8
+python-docx==0.8.11
+
 
 
 
