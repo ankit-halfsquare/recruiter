@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'core',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -92,7 +93,9 @@ if os.getenv('DB_NAME', ''):
             'HOST':  os.getenv('DB_HOST'),   # Or an IP Address that your DB is hosted on
             'PORT': '1433',
             'OPTIONS': {
-                'driver': 'ODBC Driver 17 for SQL Server',
+                'driver': 'ODBC Driver 18 for SQL Server',
+                # 'driver': 'ODBC Driver 17 for SQL Server',
+                
             },
         }
     }
@@ -151,9 +154,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
+DEFAULT_FILE_STORAGE = os.getenv('DEFAULT_FILE_STORAGE') 
+AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME') 
+AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY') 
+AZURE_CONTAINER = os.getenv('AZURE_CONTAINER') 
 
-DEFAULT_FILE_STORAGE='storages.backends.azure_storage.AzureStorage'
-AZURE_ACCOUNT_NAME='recruiterstorageacc'
-AZURE_ACCOUNT_KEY='TMIx6oaskIB8HdwDPCI4zBaYfxucJcSryzQTgaIpt8PwWs2+JzTXP3TNd9bwJwlz2uHUfZ8jgF5q+AStGCB1vA=='
-AZURE_CONTAINER='demo'
-# AZURE_CONTAINER='recruiter-file-share'
+

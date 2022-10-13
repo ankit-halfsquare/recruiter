@@ -8,11 +8,16 @@ djangorestframework==3.13.1
 pyjwt==2.4.0
 django-crispy-forms==1.14.0
 django-cors-headers==3.13.0
-
 django-storages==1.13.1
-azure==4.0.0
 azure-storage-blob==12.13.1
 azure-storage-file-share==12.9.0
-wheel==0.37.1
+pdfreader 0.1.12
+textract==1.6.5
+antiword-0.1.0
+# python-docx==0.8.11
+# django-3-jet==1.0.8
+# django-admin-interface==0.22.0
+
+
 
 

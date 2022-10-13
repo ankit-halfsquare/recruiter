@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import format_html
 from .models import *
 # Register your models here.
 
@@ -7,8 +8,13 @@ class AssignmentAdmin(admin.ModelAdmin):
     list_display = ('project_division', 'positionname', 'desired_keywords','target_start_date','est_completion_date','assigneeid','actual_start_date','active','actual_completion_date','assigner','date_added','comments','statusid')
 
 class CandidateTableAdmin(admin.ModelAdmin):
-    list_display = ('candidate_id','first_name','last_name','state','phone','email','city','history','active','active_assignment','adder','date_added','fk_ra_company','fk_ra_project','fk_ra_position','skill_keywords','country','candidateFileName','candidateFileNameOriginal','candidateFileNamePDF','fileUploadDate','candidateFileNameOriginalFull','fileUploadUser','archive')
+    readonly_fields=('fileUploadUser','candidateFileName','candidateFileNamePDF','skill_keywords_full','candidateFileContents','date_added','fileUploadDate')
+    list_display = ('skill_keywords_found','first_name','last_name','city','state','country','phone','email','active_assignment','candidateFileNameOriginal','fileUploadDate','date_added',)
+    list_display_links = ('first_name','last_name','skill_keywords_found',)
+    list_filter = (('skill_keywords_full',admin.EmptyFieldListFilter),'active','city','state','date_added')
 
+    def skill_keywords_found(self,obj):
+        return format_html(f'<h4 style="color:green" >{obj.skill_keywords_full}</h4>')
 class HelpTextAdmin(admin.ModelAdmin):
     list_display = ('Help_Text_ID','Help_ID_Name','Help_Text')
 
@@ -31,12 +37,14 @@ class SynonymAdmin(admin.ModelAdmin):
 
 admin.site.register(Assignment,AssignmentAdmin)
 admin.site.register(CandidateTable,CandidateTableAdmin)
-admin.site.register(HelpText,HelpTextAdmin)
 admin.site.register(Keyword,KeywordAdmin)
-admin.site.register(Repository,RepositoryAdmin)
-admin.site.register(Status,StatusAdmin)
-admin.site.register(Synonym,SynonymAdmin)
 
 admin.site.register(Company)
 admin.site.register(Project)
 admin.site.register(Position)
+
+# admin.site.register(HelpText,HelpTextAdmin)
+
+# admin.site.register(Repository,RepositoryAdmin)
+# admin.site.register(Status,StatusAdmin)
+# admin.site.register(Synonym,SynonymAdmin)
