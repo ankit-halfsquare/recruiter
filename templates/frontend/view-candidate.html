@@ -1,0 +1,231 @@
+{% extends "base/base.html"%} {% load static %} {% block css %} {% endblock %}
+{% block content %}
+
+<section class="section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="tableheader">
+          <h4 class="details-title mb-0">
+            <small class="text-muted d-block font-12">First Name</small
+            >{{candidate.first_name|title}}
+          </h4>
+          <h4 class="details-title mb-0 ml-4">
+            <small class="text-muted d-block font-12">Contact Number</small
+            >{{candidate.phone}}
+          </h4>
+          <h4 class="details-title mb-0 ml-4 mr-auto">
+            <small class="text-muted d-block font-12">Email</small>{{candidate.email}}
+          </h4>
+          <a class="btn btn-primary btn-round" href="">Edit</a>
+          <a class="btn btn-danger btn-round ml-3" href="{% url 'home' %}">Back</a>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="details-card">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> First Name</small>
+                <label>{{candidate.first_name|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small>Last Name</small>
+                <label>{{candidate.last_name|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small>Phone </small>
+                <label>{{candidate.phone|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small>Email </small>
+                <label>{{candidate.email}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small>City </small>
+                <label>{{candidate.city|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> State </small>
+                <label>{{candidate.state|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> State </small>
+                <label>{{candidate.state|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Country </small>
+                <label>{{candidate.country|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> History </small>
+                <label>{{candidate.history|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Active </small>
+                <label>{{candidate.active|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Active Assignment </small>
+                <label>{{candidate.active_assignment|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Adder </small>
+                <label>{{candidate.adder|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Aate Added </small>
+                <label>{{candidate.date_added|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Aate Added </small>
+                <label>{{candidate.date_added|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Company</small>
+                <label>{{candidate.fk_ra_company|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Project</small>
+                <label>{{candidate.fk_ra_project|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> position</small>
+                <label>{{candidate.fk_ra_position|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Skill Keywords</small>
+                <label>{{candidate.skill_keywords|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Candidate FileName </small>
+                <label>{{candidate.candidateFileName|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Candidate FileName Original </small>
+                <label>{{candidate.candidateFileNameOriginal|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Candidate FileName Original </small>
+                <label>{{candidate.candidateFileNameOriginal|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Candidate FileName PDF </small>
+                <label>{{candidate.candidateFileNamePDF|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> File Upload Date </small>
+                <label>{{candidate.ileUploadDate|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Candidate FileName OriginalFull </small>
+                <label>{{candidate.candidateFileNameOriginalFull|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> File Upload User </small>
+                <label>{{candidate.fileUploadUser|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Archive </small>
+                <label>{{candidate.archive|title}}</label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="detilslist">
+                <small> Skill Keywords Full </small>
+                <label>{{candidate.skill_keywords_full|title}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="">
+    <label> Candidate File Contents </label>
+        <div class="detilslist">
+          <textarea  style="width: 1200px;height: 1000px;">
+                {{candidate.candidateFileContents}}
+            </textarea>
+        </div>
+      </div>
+  </div>
+</section>
+
+{% endblock %}

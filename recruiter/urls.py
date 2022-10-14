@@ -21,7 +21,7 @@ admin.site.site_title = "AMWorks Admin Portal"
 admin.site.index_title = "Welcome to AMWorks Researcher Portal"
 
 urlpatterns = [
-    # path("", include("frontend.urls")),
+    path("", include("frontend.urls")),
     path('admin/', admin.site.urls, name='admin'),
     path("accounts/", include("django.contrib.auth.urls")),
 ]
