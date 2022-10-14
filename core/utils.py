@@ -1,8 +1,8 @@
 
 import os
-# import docx
+import docx
 import PyPDF2
-import textract
+# import textract
 from dotenv import load_dotenv
 from django.conf import settings
 from azure.storage.blob import BlobClient
@@ -23,9 +23,12 @@ def getText(filename):
         return text
 
     if file_extension == ".docx":
-        text = textract.process(f"{filename}")
-        return text
-
+        doc = docx.Document(filename)
+        fullText = []
+        for para in doc.paragraphs:
+            fullText.append(para.text)
+        return '\n'.join(fullText)
+        
 
     if file_extension == ".txt":
         with open(f"{filename}") as f:
@@ -44,7 +47,7 @@ def get_file_client(file):
 
 
 def get_blob(filename):
-    print("os.getenv('account_url')", os.getenv('account_url'))
+    # print("os.getenv('account_url')", os.getenv('account_url'))
     blob = BlobClient(account_url="https://recruiterstorageacc.blob.core.windows.net",
                       container_name=settings.AZURE_CONTAINER,
                       blob_name=f"{filename}",

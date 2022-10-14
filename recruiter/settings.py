@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'core',
-    'accounts',
+    'frontend',
 ]
 
 MIDDLEWARE = [
@@ -93,8 +93,8 @@ if os.getenv('DB_NAME', ''):
             'HOST':  os.getenv('DB_HOST'),   # Or an IP Address that your DB is hosted on
             'PORT': '1433',
             'OPTIONS': {
-                'driver': 'ODBC Driver 18 for SQL Server',
-                # 'driver': 'ODBC Driver 17 for SQL Server',
+                # 'driver': 'ODBC Driver 18 for SQL Server',
+                'driver': 'ODBC Driver 17 for SQL Server',
                 
             },
         }
@@ -151,7 +151,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+LOGIN_REDIRECT_URL = "/admin"
 
 
 DEFAULT_FILE_STORAGE = os.getenv('DEFAULT_FILE_STORAGE') 
