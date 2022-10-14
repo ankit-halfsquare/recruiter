@@ -17,7 +17,7 @@
           <h4 class="details-title mb-0 ml-4 mr-auto">
             <small class="text-muted d-block font-12">Email</small>{{candidate.email}}
           </h4>
-          <a class="btn btn-primary btn-round" href="">Edit</a>
+          <a class="btn btn-primary btn-round" href="{% url 'update-candidate' candidate.candidate_id %}">Edit</a>
           <a class="btn btn-danger btn-round ml-3" href="{% url 'home' %}">Back</a>
         </div>
       </div>
