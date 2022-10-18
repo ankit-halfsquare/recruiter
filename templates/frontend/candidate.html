@@ -9,7 +9,7 @@
           <h2 class="p-3"></h2>
         </div>
         <div class="card-body">
-          <form method="post">
+          <form method="post"  action="" enctype="multipart/form-data" >
             {% csrf_token %} 
             {{ form.first_name|as_crispy_field }} 
             {{form.last_name|as_crispy_field }} 
@@ -30,7 +30,7 @@
             {{form.active|as_crispy_field }}
 
             <div class="d-grid">
-             
+             <button type="submit" class="btn btn-outline-dark">Submit</button>
             </div>
           </form>
         </div>

@@ -8,7 +8,7 @@ class AssignmentAdmin(admin.ModelAdmin):
     list_display = ('project_division', 'positionname', 'desired_keywords','target_start_date','est_completion_date','assigneeid','actual_start_date','active','actual_completion_date','assigner','date_added','comments','statusid')
 
 class CandidateTableAdmin(admin.ModelAdmin):
-    readonly_fields=('fileUploadUser','candidateFileName','candidateFileNamePDF','skill_keywords_full','candidateFileContents','date_added','fileUploadDate')
+    readonly_fields=('fileUploadUser','candidateFileName','candidateFileNamePDF','candidateFileContents','date_added','fileUploadDate')
     list_display = ('skill_keywords_found','first_name','last_name','city','state','country','phone','email','active_assignment','candidateFileNameOriginal','fileUploadDate','date_added',)
     list_display_links = ('first_name','last_name','skill_keywords_found',)
     list_filter = (('skill_keywords_full',admin.EmptyFieldListFilter),'active','city','state','date_added')
@@ -42,6 +42,7 @@ admin.site.register(Keyword,KeywordAdmin)
 admin.site.register(Company)
 admin.site.register(Project)
 admin.site.register(Position)
+admin.site.register(PowerSearch)
 
 # admin.site.register(HelpText,HelpTextAdmin)
 

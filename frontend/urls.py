@@ -12,6 +12,12 @@ urlpatterns = [
 
 
     path('candidate/<int:pk>', views.viewCandidate, name='view-candidate'),
+    path('search', views.searchCandidate, name='search-candidate'),
+    path('candidate/add', views.addUpdateCandidate, name='add-candidate'),
     path('candidate/update/<int:pk>', views.addUpdateCandidate, name='update-candidate'),
+
+
+    path('logout', views.logout, name='request-logout'),
+
     
 ]

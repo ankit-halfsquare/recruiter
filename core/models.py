@@ -15,6 +15,15 @@ from .utils import *
 # Create your models here.
 
 
+class PowerSearch(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    query = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+
+
 class Keyword(models.Model):
     keyword_id = models.AutoField(primary_key=True)
     text = models.CharField(max_length=255, blank=True, null=True)
@@ -109,8 +118,8 @@ class CandidateTable(models.Model):
     archive = models.IntegerField(null=True, blank=True)
     skill_keywords_full = models.TextField(blank=True, null=True)
 
-    def __str__(self):
-        return self.first_name
+    # def __str__(self):
+    #     return self.first_name
 
     class Meta:
         #managed = False

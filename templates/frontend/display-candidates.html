@@ -6,9 +6,40 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="tableheader">
-          <h4 class="section-title mb-0">Candidates</h4>
-          {% comment %} <a class="btn btn-primary btn-round" href="#">Add Building</a> {% endcomment %}
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Search Candidates
+          </button>
+          
+          <div class="container">
+            <a
+              class="nav-link dropdown-toggle btn btn-outline-dark"
+              href="#"
+              id="navbarDropdown2"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Power Search
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% for search in powerSearch %}
+              <li class='mt-2' >
+                <button class="btn btn-outline-success"  value={{search.query}}  onclick='newwin(this.value)' >{{search.name|title}}</button> 
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <a class="btn btn-primary btn-round" href="{%  url 'add-candidate' %}"
+            >Add Candidates</a
+          >
         </div>
+
         <table class="table table-striped table-bordered">
           <thead>
             <tr>
@@ -35,10 +66,14 @@
               <td>{{condidate.state}}</td>
               <td>{{condidate.country}}</td>
               <td class="actiontd">
-                <a class="btn btn-outline-success btn-circle btn-sm" href="{% url 'view-candidate' condidate.candidate_id %}"
+                <a
+                  class="btn btn-outline-success btn-circle btn-sm"
+                  href="{% url 'view-candidate' condidate.candidate_id %}"
                   ><i class="fa fa-eye" aria-hidden="true"></i
                 ></a>
-                <a class="btn btn-outline-info btn-circle btn-sm ml-2" href="{% url 'update-candidate' condidate.candidate_id %}"
+                <a
+                  class="btn btn-outline-info btn-circle btn-sm ml-2"
+                  href="{% url 'update-candidate' condidate.candidate_id %}"
                   ><i class="fa fa-edit" aria-hidden="true"></i
                 ></a>
               </td>
@@ -51,5 +86,17 @@
     </div>
   </div>
 </section>
+
+
+
+<script>
+
+function newwin(e) {      
+  var Url = "{% url 'home' %}";
+  Url+=e
+  window.location = Url;
+}
+</script>
+
 
 {% endblock %}
