@@ -1,5 +1,6 @@
 
 import os
+import re
 import docx
 import PyPDF2
 # import textract

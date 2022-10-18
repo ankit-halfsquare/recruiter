@@ -128,6 +128,12 @@ class CandidateTable(models.Model):
 
 
     def save(self,*args, **kwargs):
+        filename = f"{self.candidateFileNameOriginal}"
+
+        print("filename",filename)
+        print("first_name",self.first_name)
+        print("last_name",self.last_name)
+
         super().save(*args, **kwargs)
 
         if self.candidateFileNameOriginal and not self.candidateFileContents:
@@ -136,6 +142,14 @@ class CandidateTable(models.Model):
             text,textlst = read_file(filename)
             # print("text",text)
             # print("textlst",textlst)
+
+            try: 
+                line = text.strip()
+                emails = re.findall("[0-9a-zA-z]+@[0-9a-zA-z]+\.[0-9a-zA-z]+", line)
+                if(len(emails) > 0):
+                    self.email = emails[0]
+            except Exception as e:
+                print(e)
 
             self.candidateFileContents = text
 
@@ -153,6 +167,10 @@ class CandidateTable(models.Model):
             self.candidateFileNamePDF = f"{file}.pdf"
             self.fileUploadDate = datetime.now().strftime('%Y-%m-%d')
             self.fileUploadUser = "comming soon"
+
+            if not self.first_name and not self.last_name:
+                self.first_name = file.split('/')[1].split('_')[0]
+                self.last_name = file.split('/')[1].split('_')[1]
          
             self.save()
 
