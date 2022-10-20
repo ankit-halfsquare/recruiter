@@ -1,3 +1,129 @@
+from dotenv import load_dotenv
+from django.conf import settings
+from azure.storage.blob import BlobClient,BlobServiceClient
+from azure.storage.fileshare import ShareFileClient
+import os
+
+load_dotenv()
+
+connect_str = os.getenv('connection_string')
+container_name = os.getenv('AZURE_CONTAINER')
+
+blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+# container_client = blob_service_client.create_container(container_name)
+
+def uploadFile(filename):
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=filename)
+    with open(filename, "rb") as data:
+        blob_client.upload_blob(data)
+
+
+
+uploadFile("files/DAMINI BDE (1) (1).pdf")
+
+
+
+
+
+# import cloudconvert
+
+# cloudconvert.configure(api_key=API_KEY, sandbox=False)
+
+# cloudconvert.download(filename="", url="https://recruiterstorageacc.blob.core.windows.net/demo/files/Starleen_Burton_Resume.docx")
+
+# job = cloudconvert.Job.create(payload={
+#      "tasks": {
+#          'import-my-file': {
+#               'operation': 'import/url',
+#               'url': 'https://recruiterstorageacc.blob.core.windows.net/demo/files/Starleen_Burton_Resume.docx'
+#          },
+#          'convert-my-file': {
+#              'operation': 'convert',
+#              'input': 'import-my-file',
+#              'output_format': 'pdf',
+#              'some_other_option': 'value'
+#          },
+#          'export-my-file': {
+#              'operation': 'export/url',
+#              'input': 'convert-my-file'
+#          }
+#      }
+#  })
+
+# job = cloudconvert.Job.wait(id=job['id'])
+
+
+
+# for task in job["tasks"]:
+#     if task.get("name") == "export-my-file" and task.get("status") == "finished":
+#         export_task = task
+
+# file = export_task.get("result").get("files")[0]
+
+# print("file",file)
+# print("file",file['filename'])
+# print("file",file['url'])
+# cloudconvert.download(filename=file['filename'], url=file['url'])
+
+
+
+
+# cloudconvert.Job.create(payload={
+#     "tasks": {
+#         'import-my-file': {
+#             'operation': 'import/url',
+#             'url': 'https://recruiterstorageacc.blob.core.windows.net/demo/files/Starleen_Burton_Resume.docx'
+#         },
+#         'convert-my-file': {
+#             'operation': 'convert',
+#             'input': 'import-my-file',
+#             'output_format': 'pdf',
+#             'some_other_option': 'value'
+#         },
+#         'export-my-file': {
+#             'operation': 'https://recruiterstorageacc.blob.core.windows.net/demo/files/test.pdf',
+#             'input': 'convert-my-file'
+#         }
+#     }
+# })
+
+
+# job = cloudconvert.Job.create(payload={
+#      "tasks": {
+#          'import-my-file': {
+#               'operation': 'import/url',
+#               'url': 'https://my.url/file.docx'
+#          },
+#          'convert-my-file': {
+#              'operation': 'convert',
+#              'input': 'import-my-file',
+#              'input_format': 'docx',
+#              'output_format': 'pdf'
+#          },
+#          'export-my-file': {
+#              'operation': 'export/url',
+#              'input': 'convert-my-file'
+#          }
+#      }
+#  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # from bs4 import BeautifulSoup as bs

@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from .utils import *
+from .cloudConvert import convertAndDownloadFile,downloadFile
 
 # Create your models here.
 
@@ -128,20 +129,21 @@ class CandidateTable(models.Model):
 
 
     def save(self,*args, **kwargs):
-        filename = f"{self.candidateFileNameOriginal}"
-
-        print("filename",filename)
-        print("first_name",self.first_name)
-        print("last_name",self.last_name)
 
         super().save(*args, **kwargs)
 
         if self.candidateFileNameOriginal and not self.candidateFileContents:
             filename = f"{self.candidateFileNameOriginal}"
 
+            if ".pdf" in filename:
+                downloadFile(filename)
+            else:
+                filename = convertAndDownloadFile(filename)
+                uploadFile(filename)
+                
+
             text,textlst = read_file(filename)
-            # print("text",text)
-            # print("textlst",textlst)
+            
 
             try: 
                 line = text.strip()
