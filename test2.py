@@ -1,27 +1,12 @@
-from dotenv import load_dotenv
-from django.conf import settings
-from azure.storage.blob import BlobClient,BlobServiceClient
-from azure.storage.fileshare import ShareFileClient
-import os
-
-load_dotenv()
-
-connect_str = os.getenv('connection_string')
-container_name = os.getenv('AZURE_CONTAINER')
-
-blob_service_client = BlobServiceClient.from_connection_string(connect_str)
-# container_client = blob_service_client.create_container(container_name)
-
-def uploadFile(filename):
-    blob_client = blob_service_client.get_blob_client(container=container_name, blob=filename)
-    with open(filename, "rb") as data:
-        blob_client.upload_blob(data)
 
 
 
-uploadFile("files/DAMINI BDE (1) (1).pdf")
+{% static  %}
 
-
+{% static  %}
+{% static  %}
+{% static  %}
+{% static  %}
 
 
 

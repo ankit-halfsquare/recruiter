@@ -24,4 +24,5 @@ urlpatterns = [
     path("", include("frontend.urls")),
     path('admin/', admin.site.urls, name='admin'),
     path("accounts/", include("django.contrib.auth.urls")),
+    path('core/api/v1/', include('core.api.v1.urls')),
 ]

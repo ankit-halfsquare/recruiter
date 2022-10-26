@@ -7,11 +7,49 @@
 
 {% endblock %}
 
-{% block content %}
+{% block loginContent %}
+ <section id="wrapper" class="login-register login-sidebar">
+        <div class="logo-box">
+            <img src={% static "assets/images/logo-white.png" %}   alt="logo" />
+        </div>
+        <div class="login-box">
+            <div class="login-body">
+                <h2>Welcome back</h2>
+                <p class="text-muted">Kindly, use your email and password to sign in.</p>
+                <form class="form-horizontal" id="loginform" method="post">
+                {% csrf_token %}
+                    <div class="form-group m-t-40">
+                        <label>Email</label>    
+                        <div class="icon-icon-input">
+                            <input class="form-control" type="text" name="username" required="" placeholder="Enter email address">
+                            <i class="isax isax-sms"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="icon-icon-input">
+                            <input class="form-control" name="password" type="password" required="" placeholder="Password">
+                            <i class="isax isax-eye"></i>
+                        </div>
+                    </div>
+                    <div class="form-group text-center mt-5">
+                        <div class="col-xs-12">
+                            <!-- <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Log In</button> -->
+                            <button  class="btn btn-primary btn-block waves-effect waves-light" type="submit">
+                                <span>Login</span>
+                                <i class="isax isax-login ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </section>
+{% endblock %}
 
 
-
-<html lang="en">
+{% comment %} <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -52,7 +90,7 @@
   </div>
 </body>
 
-</html>
+</html> {% endcomment %}
 
 {% comment %} <h2>Log In</h2>
 <form method="post">
@@ -61,4 +99,3 @@
   <button type="submit">Log In</button>
 </form> {% endcomment %}
  
-{% endblock %}

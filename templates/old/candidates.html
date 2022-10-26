@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Recruiter Service</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+
+    <!-- Preloader-->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+
+    <!-- Main wrapper -->
+
+    <div id="main-wrapper">
+
+        <!-- Topbar header -->
+
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- Logo -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                        <!-- Logo icon -->
+                        <b><img src="assets/images/logo.png" alt="homepage" class="light-logo" /></b>
+                        <!-- Logo text -->
+                        <span><img src="assets/images/logo-text.svg" class="text-logo" alt="homepage" /></span>
+                    </a>
+                </div>
+                <!-- End Logo -->
+                <div class="navbar-collapse">
+                    <!-- toggle and nav items -->
+                    <ul class="navbar-nav mr-auto mt-md-0 align-items-center">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a
+                                class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark"
+                                href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                        <li class="nav-item"> <a
+                                class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark"
+                                href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                       
+                    </ul>
+
+                    <!-- User profile and search -->
+
+                    <ul class="navbar-nav my-lg-0">
+
+                        <!-- Profile -->
+                        <li class="nav-item dropdown usersettings">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="assets/images/user.png" alt="user" class="profile-pic" />
+                                <i class="ti-menu"></i></a>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right scale-up">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-img"><img src="assets/images/user.png" alt="user"></div>
+                                            <div class="u-text">
+                                                <h4>Steave candidates</h4>
+                                                <p class="text-muted">sandip@gmail.com</p><a href="profile.html"
+                                                    class="btn btn-rounded btn-primary btn-sm">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                    <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="index.html"><i class="fa fa-power-off"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <!-- End Topbar header -->
+
+
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li><a class="waves-effect waves-dark" href="dashboard.html">
+                                <i class="isax isax-home"></i> <span class="hide-menu">Dashboard</span></a></li>
+                        <!-- <li class="nav-small-cap">Assignments</li> -->
+                        <li><a class="waves-effect waves-dark" href="javascript:void(0)"><i class="isax isax-note"></i>
+                                <span class="hide-menu">Assignments</span></a></li>
+                                <li class="dropdownli active"> <a class="has-arrow waves-effect waves-dark" href="#"
+                                    aria-expanded="false">
+                                    <i class="isax isax-chart-success"></i><span class="hide-menu">Candidates</span></a>
+                                <ul aria-expanded="false" class="collapse in">
+                                    <li><a href="candidates.html"><i class="isax isax-user"></i> Candidates</a></li>
+                                    <li><a href="javascript:void(0)"><i class="isax isax-add-circle"></i> Add New Candidate</a></li>
+                                </ul>
+                            </li>
+                        <li><a class="waves-effect waves-dark" href="javascript:void(0)"><i
+                                    class="isax isax-building"></i> <span class="hide-menu">Companies</span></a></li>
+                        <li><a class="waves-effect waves-dark" href="javascript:void(0)"><i class="isax isax-task"></i>
+                                <span class="hide-menu">Projects</span></a></li>
+                        <li class="dropdownli"> <a class="has-arrow waves-effect waves-dark" href="#"
+                                aria-expanded="false">
+                                <i class="isax isax-chart-success"></i><span class="hide-menu">Click For more</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="javascript:void(0)"><i class="isax isax-task"></i> Positions</a></li>
+                                <li><a href="javascript:void(0)"><i class="isax isax-bill"></i> Keywords</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+
+        <!-- Page wrapper  -->
+
+        <div class="page-wrapper">
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+                <div class="pagetitle mb-3 align-items-center justify-content-between">
+                    <h3 class="mb-0">Candidates</h3>
+                    <a href="javascript:void(0)" class="btn btn-primary btn-sm waves-effect">
+                        Add New</a>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="listview-with-details">
+                            <div class="candidatelist-leftside">
+                                <div class="listheader">
+                                    <form class="app-search">
+                                        <div class="serchboxs">
+                                            <i class="ti-search"></i>
+                                            <input type="text" class="form-control" id="searchcandidate" placeholder="Search Candidate">
+                                            <a id="filterBtn" title="Filter Search" data-toggle="modal" data-target="#openFilter" class="filterbtn">
+                                                <i class="isax isax-filter"></i>
+                                            </a>
+                                            <div class="dropdownmenu">
+                                                <ul class="nav nav-column">
+                                                    <li>Search saved 1</li>
+                                                    <li>Search saved 2</li>
+                                                    <li>Search saved 2</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="candidates-list">
+                                    <ul>
+                                        <li>
+                                            <a>
+                                                <div class="candidate-info">
+                                                    <h4>Sandip Patel</h4>
+                                                    <p class="mb-0"> 
+                                                        <i class="isax isax-setting"></i>
+                                                        <span>Technician PLC Automation Gas Electrical</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a>
+                                                <div class="candidate-info">
+                                                    <h4>Virat Kohli </h4>
+                                                    <p class="mb-0"> 
+                                                        <i class="isax isax-setting"></i>
+                                                        <span>Mechanical Engineer</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <div class="candidate-info">
+                                                    <h4>Olive Yew</h4>
+                                                    <p class="mb-0"> 
+                                                        <i class="isax isax-setting"></i>
+                                                        <span>Account Executive</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <div class="candidate-info">
+                                                    <h4>Aida Bugg.</h4>
+                                                    <p class="mb-0"> 
+                                                        <i class="isax isax-setting"></i>
+                                                        <span>Project Manager</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <div class="candidate-info">
+                                                    <h4>Maureen Biologist</h4>
+                                                    <p class="mb-0"> 
+                                                        <i class="isax isax-setting"></i>
+                                                        <span>Medical Assistant</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <div class="candidate-info">
+                                                    <h4>Peg Legge</h4>
+                                                    <p class="mb-0"> 
+                                                        <i class="isax isax-setting"></i>
+                                                        <span>Software Engineer</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <div class="candidate-info">
+                                                    <h4>Aida Bugg.</h4>
+                                                    <p class="mb-0"> 
+                                                        <i class="isax isax-setting"></i>
+                                                        <span>Project Manager</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <div class="candidate-info">
+                                                    <h4>Maureen Biologist</h4>
+                                                    <p class="mb-0"> 
+                                                        <i class="isax isax-setting"></i>
+                                                        <span>Medical Assistant</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a>
+                                                <div class="candidate-info">
+                                                    <h4>Olive Yew</h4>
+                                                    <p class="mb-0"> 
+                                                        <i class="isax isax-setting"></i>
+                                                        <span>Account Executive</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="candidatedetails-rightside">
+                                <div class="detailsheader">
+                                    <div class="candidate-info">
+                                        <h4>Virat Kohli</h4>
+                                        <div class="d-flex">
+                                            <p class="mb-0">  <i class="isax isax-setting"></i> <span> Mechanical Engineer </span></p>
+                                            <p class="mb-0"> <i class="fa fa-map-marker-alt"></i> <span>New York City</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="candidate-header-action">
+                                        <a class="editcandidate"><i class="isax isax-edit"></i>
+                                        <span>Edit</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="candidate-descriptions">
+                                    <h5 class="mb-2">Candidate Information</h5>
+                                    <div class="cardinfo">
+                                        <div class="row">
+                                            <div class="col-md-4 mt-2">
+                                                <label class="cad-infolabel">Name</label>
+                                                <span class="c-detsls">Virat Kohli</span>
+                                            </div>
+                                            <div class="col-md-4 mt-2">
+                                                <label class="cad-infolabel">Phone</label>
+                                                <span class="c-detsls">+1 (903) 392-9285</span>
+                                            </div>
+                                            <div class="col-md-4 mt-2">
+                                                <label class="cad-infolabel">E-Mail</label>
+                                                <span class="c-detsls">virat.kohli@gmail.com</span>
+                                            </div>
+                                            <div class="col-md-4 mt-2">
+                                                <label class="cad-infolabel">Address</label>
+                                                <span class="c-detsls">
+                                                    12, Avenenue park, Jersey city, New York, USA
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="candidate-resume mt-4">
+                                        <h5 class="mb-2">Candidate Resume</h5>
+                                        <div class="resume-conntents">
+                                            <div>
+                                                Stephen Farrell <br/>
+                                                Mandeville, LA  70448 <br/>
+                                                stevefarrell5683@yahoo.com <br/>
+                                                (504) 265-2297 <br/>
+                                                Authorized to work in the US for any employer
+                                                Work Experience <br/>
+                                                Instrument & Control Technician <br/>
+                                                MMR ProCom  - Houston, TX <br/>
+                                                August 2020 to Present <br/>
+                                                Assigned to the nitro-celluloses expansion project, Radford Army Ammunition Plant. 
+                                                Responsibilities included LOOP verification, commissioning and the start-up of a new 
+                                                Nitro-Celluloses plant for the US Army. This included testing and calibration for all SSI, process
+                                                control devices and verification of the cause and effect safety devices. The specific instruments were
+                                                Endress+Hauser and Rosemount. The communication protocol was Siemens Profi Buss. The DCS was
+                                                Honeywell. <br/>
+                                                Instrument and Electrical Technician <br/>
+                                                Logic Control Systems  - Lafayette, LA
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- End Page wrapper  -->
+
+<!-- The Modal -->
+<div class="modal" id="openFilter">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Search Filter</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+  
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Please fill out only those fields that are needed to refine your search.Not all fields are required</p>
+          <div class="form-group">
+             <input type="text" class="form-control" placeholder="Enter Search Name to Save this Search and Future Use" />
+          </div>
+          <div class="form-group">
+             <input type="text" class="form-control" placeholder="Enter Skills To Filter Records Comma Separated (',')" />
+          </div>
+          <div class="form-group">
+             <input type="text" class="form-control" placeholder="Enter Skills that you want to exclude Comma Separated (',')" />
+          </div>
+          <div class="form-group">
+             <input type="text" class="form-control" placeholder="Enter City Name  Comma Separated (',')" />
+          </div>
+          <div class="form-group">
+             <input type="text" class="form-control" placeholder="Comming Soon...." />
+          </div>
+          <div class="form-group">
+             <input type="text" class="form-control" placeholder="Comming Soon...." />
+          </div>
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer text-center">
+          <button type="button" class="btn btn-primary waves-effect mx-auto" data-dismiss="modal">Search</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+    <!-- End Wrapper -->
+
+    <!-- All Jquery -->
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/plugins/popper/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="assets/js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="assets/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="assets/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="assets/js/custom.js"></script>
+
+</body>
+
+
+
+</html>

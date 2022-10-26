@@ -21,6 +21,12 @@ from django.contrib.auth.decorators import login_required
 
 
 
+@login_required(login_url='/accounts/login/')
+def dashboard(request):
+    # f = CandidateFilter(request.GET, queryset=CandidateFilter.objects.all())
+    return render(request,"frontend/dashboard.html")
+
+
 
 @login_required(login_url='/accounts/login/')
 def searchCandidate(request):
@@ -63,12 +69,14 @@ def home(request):
     else:
         Candidates = CandidateTable.objects.all()
 
+
     powerSearch = PowerSearch.objects.all()
     context = {
-        "candidates":Candidates,
-        "powerSearch":powerSearch
+        "candidates": Candidates,
+        "powerSearch":powerSearch,
+        "dummy":"summy"
     }
-    return render(request,"frontend/display-candidates.html",context)
+    return render(request,"frontend/candidates.html",context)
 
 
 @login_required(login_url='/accounts/login/')
