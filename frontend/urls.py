@@ -10,6 +10,7 @@ urlpatterns = [
     path('position', views.position, name='position'),
     path('keyword', views.keyword, name='keyword'),
     path('dashboard', views.dashboard, name='dashboard'),
+    path('test', views.test, name='test'),
 
 
     path('candidate/<int:pk>', views.viewCandidate, name='view-candidate'),

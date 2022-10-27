@@ -117,6 +117,12 @@ def addUpdateCandidate(request,pk=None):
     # default_storage.save(file.name, file)
 
 
+
+
+def test(request):
+    return render(request,"frontend/test.html",)
+
+
 @login_required(login_url='/accounts/login/')
 def assignment(request):
     Assignments = Assignment.objects.all()

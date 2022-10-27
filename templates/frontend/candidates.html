@@ -37,44 +37,7 @@
                                     </form>
                                 </div>
                                 <div class="candidates-list"   id="candidates-list" >
-                                    <ul>
-                                     {% for condidate in candidates %}
-                                        <li>
-                                            <a>
-                                                <div class="candidate-info"  onclick='getCandidate({{condidate.candidate_id}})' >
-                                                    <h4>
-                                                    {% if condidate.first_name %}
-                                                        {{condidate.first_name}}
-                                                    {% endif %}
-                                                    {% if condidate.last_name %}
-                                                        {{condidate.last_name}}
-                                                    {% endif %}
-                                                    <p id="demo"></p>
-                                                    </h4>
-                                                    <p class="mb-0"> 
-                                                        <i class="isax isax-setting"></i>
-                                                        <span>
-                                                        {% if condidate.skill_keywords_full %}
-                                                            {{condidate.skill_keywords_full}}
-                                                        {% endif %}
-                                                        </span>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    {% endfor %}
-                                        <li class="active">
-                                            <a>
-                                                <div class="candidate-info">
-                                                    <h4>Virat Kohli </h4>
-                                                    <p class="mb-0"> 
-                                                        <i class="isax isax-setting"></i>
-                                                        <span>Mechanical Engineer</span>
-                                                    </p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                   
                                 </div>
                             </div>
                             <div class="candidatedetails-rightside">
@@ -118,25 +81,10 @@
                                     </div>
                                     <div class="candidate-resume mt-4">
                                         <h5 class="mb-2">Candidate Resume</h5>
-                                        <div class="resume-conntents">
+                                        <div class="">
                                             <div id="resume" >
-                                                Stephen Farrell <br/>
-                                                Mandeville, LA  70448 <br/>
-                                                stevefarrell5683@yahoo.com <br/>
-                                                (504) 265-2297 <br/>
-                                                Authorized to work in the US for any employer
-                                                Work Experience <br/>
-                                                Instrument & Control Technician <br/>
-                                                MMR ProCom  - Houston, TX <br/>
-                                                August 2020 to Present <br/>
-                                                Assigned to the nitro-celluloses expansion project, Radford Army Ammunition Plant. 
-                                                Responsibilities included LOOP verification, commissioning and the start-up of a new 
-                                                Nitro-Celluloses plant for the US Army. This included testing and calibration for all SSI, process
-                                                control devices and verification of the cause and effect safety devices. The specific instruments were
-                                                Endress+Hauser and Rosemount. The communication protocol was Siemens Profi Buss. The DCS was
-                                                Honeywell. <br/>
-                                                Instrument and Electrical Technician <br/>
-                                                Logic Control Systems  - Lafayette, LA
+                                              <iframe src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/files/Allison_Kent-Vandehey_Resume.pdf &embedded=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen >
+                                              </iframe>
                                             </div>
                                         </div>
                                     </div>
@@ -217,11 +165,7 @@
         success: function (data) {
 
           createCandidateList(data)
-          
-
-          $("#candidate-name").html("Hello World");
-          $("#email").html("Hello World");
-          
+        
         },
         error: function (error) {
           console.log(`Error ${error}`);
@@ -237,14 +181,19 @@
     for (var i in candidates){
 
       row = candidates[i];
+      if(i==0){
+        displayCandidate(row)
+        console.log("row",row)
+      }
+      displayCandidate(row)
       item +=
             `<li>` +
                 `<a>` +
                    `<div class="candidate-info"  onclick='' >`+                             
-                      `<h4> <p id="demo"></p> ${row.first_name} </h4> `+                                
+                      `<h4> <p id="demo"></p> ${row.first_name+ ' ' +row.last_name} </h4> `+                                
                         `<p class="mb-0">`+
                         `<i class="isax isax-setting"></i>`+
-                        `<span> ${row.first_name} </span>`+
+                        `<span> ${row.skill_keywords_full} </span>`+
                         ` </p>`+    
                     `</div>`+    
                   `</a>`+    
@@ -259,15 +208,23 @@
   }
 
 
+  function displayCandidate(row){
+    
 
 
+    var resume =  `<iframe src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/${row.candidateFileNamePDF} &embedded=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen >` +
+                  `</iframe>`
 
-
-
-
-
-
-
+    $("#candidate-name").html(row.first_name+ ' ' +row.last_name);
+    $("#skills").html(row.skill_keywords_full);
+    $("#city").html(row.city);
+    $("#candidate-fullname").html(row.first_name+ ' ' +row.last_name);
+    $("#phone").html(row.phone);
+    $("#email").html(row.email);
+    $("#address").html(row.city + '\n' + row.state + '\n' + row.country);
+    $("#resume").html(resume);
+    
+  }
 
 </script> 
 {% endblock %}

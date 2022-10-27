@@ -67,7 +67,7 @@ class CandidateView(APIView):
 
 
 
-
+# test
         if obj and "," in obj:
             return obj.split(",")
         return [obj] if obj else []
