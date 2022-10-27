@@ -185,7 +185,7 @@
         displayCandidate(row)
         console.log("row",row)
       }
-      displayCandidate(row)
+      
       item +=
             `<li>` +
                 `<a>` +
@@ -212,7 +212,7 @@
     
 
 
-    var resume =  `<iframe src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/${row.candidateFileNamePDF} &embedded=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen >` +
+    var resume =  `<iframe src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/${row.candidateFileNamePDF} &embedded=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="width: 100%; height: 100%;" >` +
                   `</iframe>`
 
     $("#candidate-name").html(row.first_name+ ' ' +row.last_name);
