@@ -166,7 +166,8 @@
         dataType: "json",
         success: function (data) {
 
-          createCandidateList(Data)
+          console.log("data",data)
+          createCandidateList(data)
           Data=data
         
         },
@@ -185,10 +186,10 @@
 
       row = candidates[i];
       if(i==0){
-        displayCandidate(i)
         console.log("row",row)
+        displayCandidate(row)
       }
-      displayCandidate(row)
+      
       item +=
             `<li>` +
                 `<a>` +
@@ -211,10 +212,12 @@
   }
 
 
-  function displayCandidate(i){
-    row = Data[i]
+  function displayCandidate(row){
+    
     var resume =  `<iframe src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/${row.candidateFileNamePDF} &embedded=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="width: 100%; height: 100%;" >` +
                   `</iframe>`
+    
+        resume = '<iframe src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/files/Allison_Kent-Vandehey_Resume.pdf &embedded=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="width: 100%; height: 100%;"> </iframe>'
 
     $("#candidate-name").html(row.first_name+ ' ' +row.last_name);
     $("#skills").html(row.skill_keywords_full);
