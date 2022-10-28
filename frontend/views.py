@@ -1,3 +1,4 @@
+import imp
 from django.shortcuts import render
 from django.contrib.auth import logout
 from django.shortcuts import redirect
@@ -16,6 +17,21 @@ from .forms import CandidateTableForm
 
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import View
+from django.http import Http404, HttpResponseRedirect
+
+
+class LogoutRequiredMixin(View):
+    def dispatch(self, request, *args, **kwargs):
+        if  request.user.is_authenticated:
+            return HttpResponseRedirect('/')
+        return super().dispatch(request, *args, **kwargs)
+
+
+class CustomeLoginView(LogoutRequiredMixin,LoginView):
+    pass
 
 # Create your views here.
 
@@ -36,7 +52,7 @@ def searchCandidate(request):
 
 
 @login_required(login_url='/accounts/login/')
-def home(request):
+def candidate(request):
 
     def strtolst(obj):
         if obj and "," in obj:

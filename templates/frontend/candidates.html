@@ -83,8 +83,7 @@
                                         <h5 class="mb-2">Candidate Resume</h5>
                                         <div class="">
                                             <div id="resume" >
-                                              <iframe src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/files/Allison_Kent-Vandehey_Resume.pdf &embedded=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen >
-                                              </iframe>
+                                              pdf
                                             </div>
                                         </div>
                                     </div>
@@ -152,9 +151,16 @@
 
   $(document).ready(function () {
       getCandidates()
-  } )
 
+      console.log("ready")
+
+  } )
+  var Data = ""
   function getCandidates() 
+
+
+  console.log("testttt...")
+
   {
       var url = "{% url 'candidate-listCreateAPI-View'  %}";
    
@@ -164,7 +170,8 @@
         dataType: "json",
         success: function (data) {
 
-          createCandidateList(data)
+          createCandidateList(Data)
+          Data=data
         
         },
         error: function (error) {
@@ -182,14 +189,14 @@
 
       row = candidates[i];
       if(i==0){
-        displayCandidate(row)
+        displayCandidate(i)
         console.log("row",row)
       }
       displayCandidate(row)
       item +=
             `<li>` +
                 `<a>` +
-                   `<div class="candidate-info"  onclick='' >`+                             
+                   `<div class="candidate-info"  onclick='displayCandidate()' >`+                             
                       `<h4> <p id="demo"></p> ${row.first_name+ ' ' +row.last_name} </h4> `+                                
                         `<p class="mb-0">`+
                         `<i class="isax isax-setting"></i>`+
@@ -208,10 +215,8 @@
   }
 
 
-  function displayCandidate(row){
-    
-
-
+  function displayCandidate(i){
+    row = Data[i]
     var resume =  `<iframe src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/${row.candidateFileNamePDF} &embedded=true" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="width: 100%; height: 100%;" >` +
                   `</iframe>`
 
@@ -225,6 +230,8 @@
     $("#resume").html(resume);
     
   }
+
+  
 
 </script> 
 {% endblock %}
