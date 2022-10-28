@@ -145,6 +145,7 @@
 {% endblock %}
 
 {% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
 
@@ -152,15 +153,10 @@
   $(document).ready(function () {
       getCandidates()
 
-      console.log("ready")
 
   } )
   var Data = ""
   function getCandidates() 
-
-
-  console.log("testttt...")
-
   {
       var url = "{% url 'candidate-listCreateAPI-View'  %}";
    
