@@ -1,119 +1,92 @@
-{% extends "base/base.html"%} {% load static %} {% block css %} {% endblock %}
+{% extends "base/base.html"%} 
+{% load static %} 
+{% block css %} 
+{% endblock %}
 {% block content %}
 
 
-           
-        <div class="page-wrapper">
-            <!-- Container fluid  -->
-            <div class="container-fluid">
-                <!-- Start Page Content -->
-                <div class="pagetitle mb-3 align-items-center justify-content-between">
-                    <h3 class="mb-0">Candidates</h3>
-                    <a href="javascript:void(0)" class="btn btn-primary btn-sm waves-effect">
-                        Add New</a>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="listview-with-details">
+<div class="page-wrapper">
+    <!-- Container fluid  -->
+    <div class="container-fluid">
+        <!-- Start Page Content -->
+        <div class="pagetitle mb-3 align-items-center justify-content-between">
+            <h3 class="mb-0">Add New Candidate</h3>
+            <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm waves-effect"> Add New</a> -->
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="listview-with-details">
 
-                            
+                    
 
-                            <div class="candidatedetails-rightside candidat-main-wrapper">
+                    <div class="candidatedetails-rightside candidat-main-wrapper">
+                         
+                        <div class="add-candidat-form-wrapper">
 
-                                <div class="detailsheader">
-                                    <div class="candidate-info">
-                                        <h4>Virat Kohli</h4>
-                                        <div class="d-flex">
-                                            <p class="mb-0">  <i class="isax isax-setting"></i> <span> Mechanical Engineer </span></p>
-                                            <p class="mb-0"> <i class="fa fa-map-marker-alt"></i> <span>New York City</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="candidate-header-action">
-                                        <a class="editcandidate"><i class="isax isax-edit"></i>
-                                        <span>Edit</span>
-                                        </a>
+                          <form action="<?php echo $_SERVER['PHP_SELF'] ?>">
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group mb-3">
+                                        <label for="" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="">
                                     </div>
                                 </div>
-
-                                <div class="candidate-descriptions">
-
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <h5 class="mb-2">Candidate Information</h5>
-                                            <div class="cardinfo">
-                                                <div class="row">
-                                                    <div class="col-md-12 mt-2">
-                                                        <label class="cad-infolabel">Name</label>
-                                                        <span class="c-detsls">Virat Kohli</span>
-                                                    </div>
-                                                    <div class="col-md-12 mt-2">
-                                                        <label class="cad-infolabel">Phone</label>
-                                                        <span class="c-detsls">+1 (903) 392-9285</span>
-                                                    </div>
-                                                    <div class="col-md-12 mt-2">
-                                                        <label class="cad-infolabel">E-Mail</label>
-                                                        <span class="c-detsls">virat.kohli@gmail.com</span>
-                                                    </div>
-                                                    <div class="col-md-12 mt-2">
-                                                        <label class="cad-infolabel">Address</label>
-                                                        <span class="c-detsls">
-                                                            12, Avenenue park, Jersey city, New York, USA
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="candidate-resume mt-4">
-                                                <h5 class="mb-2">Candidate Resume</h5>
-                                                <div class="resume-conntents">
-                                                    <div>
-                                                        Stephen Farrell <br/>
-                                                        Mandeville, LA  70448 <br/>
-                                                        stevefarrell5683@yahoo.com <br/>
-                                                        (504) 265-2297 <br/>
-                                                        Authorized to work in the US for any employer
-                                                        Work Experience <br/>
-                                                        Instrument & Control Technician <br/>
-                                                        MMR ProCom  - Houston, TX <br/>
-                                                        August 2020 to Present <br/>
-                                                        Assigned to the nitro-celluloses expansion project, Radford Army Ammunition Plant. 
-                                                        Responsibilities included LOOP verification, commissioning and the start-up of a new 
-                                                        Nitro-Celluloses plant for the US Army. This included testing and calibration for all SSI, process
-                                                        control devices and verification of the cause and effect safety devices. The specific instruments were
-                                                        Endress+Hauser and Rosemount. The communication protocol was Siemens Profi Buss. The DCS was
-                                                        Honeywell. <br/>
-                                                        Instrument and Electrical Technician <br/>
-                                                        Logic Control Systems  - Lafayette, LA
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <h5 class="mb-2">Candidate Resume</h5>
-                                            <div id="resume">
-                                                <iframe src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/files/Allison_Kent-Vandehey_Resume.pdf &amp;embedded=true" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" style="width: 100%; height: 100%;"> </iframe>
-                                            </div>
-                                        </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group mb-3">
+                                        <label for="" class="form-label">Phone</label>
+                                        <input type="text" class="form-control" id="">
                                     </div>
-                                    
-
-
                                 </div>
-
-
                             </div>
 
+                            <div class="form-group mb-3">
+                                <label for="" class="form-label">E-Mail</label>
+                                <input type="email" class="form-control" id="" >
+                            </div>
 
+                            <div class="form-group mb-5">
+                                <label for="" class="form-label">Address</label>
+                                <textarea class="form-control" id="" rows="5"></textarea>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <div id="file-upload-form" >
+                                    <input id="file-upload" type="file" name="fileUpload" />
+                                    <label for="file-upload" id="file-drag">
+                                        <img src="assets/images/cloud-computing.png" class="upload-icon" />
+                                        <br />Drag and Drop here
+                                        <br /><span class="or">OR</span>
+                                        <br /><strong>Browse File</strong>
+                                    </label>
+                                    
+                                    <progress id="file-progress" value="0">
+                                        <span>0</span>%
+                                    </progress>
+                                    
+                                    <output for="file-upload" id="messages"></output>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary">Add Candidate</button>
+                            </div>
+
+                           
+
+                          </form>
 
                         </div>
+
                     </div>
+
+
+
                 </div>
             </div>
-
         </div>
+    </div>
 
-
-        
-
-
+</div>
 
 {% endblock %}

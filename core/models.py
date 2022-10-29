@@ -102,7 +102,7 @@ class CandidateTable(models.Model):
     country = models.CharField(max_length=50, blank=True, null=True)
     history = models.CharField(max_length=500, blank=True, null=True)
     active = models.BooleanField(default=True)
-    active_assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
+    active_assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE , blank=True, null=True )
     adder = models.IntegerField(blank=True, null=True)
     date_added = models.DateField(auto_now_add=True, blank=True, null=True)
     fk_ra_company = models.ForeignKey(Company, on_delete=models.CASCADE, blank=True, null=True)

@@ -1,0 +1,83 @@
+{% extends "base/base.html"%} 
+{% load static %} 
+{% block css %} 
+{% endblock %}
+{% block content %}
+
+
+<div class="page-wrapper">
+    <!-- Container fluid  -->
+    <div class="container-fluid">
+        <!-- Start Page Content -->
+        <div class="pagetitle mb-3 align-items-center justify-content-between">
+            <h3 class="mb-0">Add New Candidate</h3>
+            <!-- <a href="javascript:void(0)" class="btn btn-primary btn-sm waves-effect"> Add New</a> -->
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="listview-with-details">
+                    <div class="candidatedetails-rightside candidat-main-wrapper">           
+                        <div class="add-candidat-form-wrapper">
+                          <form method="post"  action="" enctype="multipart/form-data" >
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group mb-3">
+                                        <label for="" class="form-label">First Name</label>
+                                        <input type="text" name="first_name" class="form-control" id="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group mb-3">
+                                        <label for="" class="form-label">Last Name</label>
+                                        <input type="text" name="last_name" class="form-control" id="">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group mb-3">
+                                <label for="" class="form-label">E-Mail</label>
+                                <input type="email" name="email" class="form-control" id="" >
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="" class="form-label">Phone</label>
+                                <input type="text" name="phone" class="form-control" id="" >
+                            </div>
+
+                            <div class="form-group mb-5">
+                                <label for="" class="form-label">Address</label>
+                                <textarea class="form-control" id="" rows="5"></textarea>
+                            </div>   
+                            <div class="mb-3">
+                                <div id="file-upload-form" >
+                                    <input id="file-upload"  type="file" name="candidateFileNameOriginal" />
+                                    <label for="file-upload" id="file-drag">
+                                        <img src="{% static  'assets/images/cloud-computing.png' %}" class="upload-icon" />
+                                        <br />Drag and Drop here
+                                        <br /><span class="or">OR</span>
+                                        <br /><strong>Browse File</strong>
+                                    </label>
+                                    
+                                    <progress id="file-progress" value="0">
+                                        <span>0</span>%
+                                    </progress>
+                                    
+                                    <output for="file-upload" id="messages"></output>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary">Add Candidate</button>
+                            </div>
+                          </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

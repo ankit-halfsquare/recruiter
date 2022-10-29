@@ -11,6 +11,7 @@ from operator import or_,and_
 
 
 from core.models import CandidateTable,Assignment,Company,Project,Position,Keyword,PowerSearch
+from core.api.v1.serializers import CandidateTableSerializer
 from .forms import CandidateTableForm
 
 # from core.filters import CandidateFilter
@@ -35,12 +36,25 @@ class CustomeLoginView(LogoutRequiredMixin,LoginView):
 
 # Create your views here.
 
+def addCandidate(request):
+    if request.method == "POST":
+        print("post",request.POST)
+        print("FILES",request.FILES)
+        candidateForm = CandidateTableForm(request.POST, request.FILES)
+        if candidateForm.is_valid(): 
+            candidateForm.save()
+            return redirect('dashboard')
 
+    return render(request,"frontend/add-candidate.html")
 
 @login_required(login_url='/accounts/login/')
 def dashboard(request):
+    obj = CandidateTable.objects.all()
+    serializer = CandidateTableSerializer(obj)
+   
+    context = {"Data":serializer.data}
     # f = CandidateFilter(request.GET, queryset=CandidateFilter.objects.all())
-    return render(request,"frontend/dashboard.html")
+    return render(request,"frontend/dashboard.html",context)
 
 
 
@@ -141,11 +155,11 @@ def test(request):
 
 @login_required(login_url='/accounts/login/')
 def assignment(request):
-    Assignments = Assignment.objects.all()
-    context = {
-        "assignment":Assignments
-    }
-    return render(request,"frontend/display-company.html",context)
+    # Assignments = Assignment.objects.all()
+    # context = {
+    #     "assignment":Assignments
+    # }
+    return render(request,"frontend/assignment.html")
 
 
 
@@ -155,26 +169,26 @@ def company(request):
     context = {
         "company":Companies
     }
-    return render(request,"frontend/display-company.html",context)
+    return render(request,"frontend/company.html",context)
 
 
 @login_required(login_url='/accounts/login/')
 def project(request):
-    Projects = Project.objects.all()
-    context = {
-        "project":Projects
-    }
-    return render(request,"frontend/display-company.html",context)
+    # Projects = Project.objects.all()
+    # context = {
+    #     "project":Projects
+    # }
+    return render(request,"frontend/project.html")
 
 
 
 @login_required(login_url='/accounts/login/')
 def position(request):
-    Positions = Position.objects.all()
-    context = {
-        "position":Positions
-    }
-    return render(request,"frontend/display-company.html",context)
+    # Positions = Position.objects.all()
+    # context = {
+    #     "position":Positions
+    # }
+    return render(request,"frontend/position.html")
 
 
 @login_required(login_url='/accounts/login/')
@@ -183,6 +197,6 @@ def keyword(request):
     context = {
         "keyword":Keywords
     }
-    return render(request,"frontend/display-company.html",context)
+    return render(request,"frontend/keywords.html",context)
 
 

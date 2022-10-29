@@ -9,9 +9,35 @@ from functools import reduce
 from operator import or_,and_
 from django.db.models import Q
 
-from core.models import CandidateTable
-from .serializers import CandidateTableSerializer
+from core.models import CandidateTable,Assignment,Company,Project,Position,Keyword
+from .serializers import CandidateTableSerializer,AssignmentSerializer,CompanySerializer,ProjectSerializer,PositionSerializer,KeywordSerializer
 
+
+class KeywordListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Keyword.objects.all()
+    serializer_class = KeywordSerializer
+
+
+
+class AssignmentListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Assignment.objects.all()
+    serializer_class = AssignmentSerializer
+
+
+class CompanyListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+
+
+class ProjectListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+
+
+
+class PositionListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Position.objects.all()
+    serializer_class = PositionSerializer
 
 
 class CandidateRetrieveAPIView(generics.RetrieveAPIView):
