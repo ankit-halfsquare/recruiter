@@ -627,3 +627,12 @@ body .daterangepicker td.end-date {
 
 
 /* & NEW 29 - 10 - 2022 */
+.candidate-descriptions .col-sm-4 {
+  height: calc(100vh - 230px);
+  overflow: auto;
+}
+
+.candidate-descriptions .col-sm-8 {
+  height: calc(100vh - 230px);
+  overflow: auto;
+}
