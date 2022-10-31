@@ -119,6 +119,21 @@ class CandidateTable(models.Model):
     archive = models.IntegerField(null=True, blank=True)
     skill_keywords_full = models.TextField(blank=True, null=True)
 
+    plateformOrReferral = models.CharField(max_length=255,blank=True,null=True)
+    sourcePositionOrPerson = models.CharField(max_length=255,blank=True,null=True)
+    refferedBy = models.CharField(max_length=255,blank=True,null=True)
+    skillLevel = models.CharField(max_length=255,blank=True,null=True)
+    specialitySkillSet = models.CharField(max_length=255,blank=True,null=True)
+    semi = models.CharField(max_length=255,blank=True,null=True)
+    intel = models.CharField(max_length=255,blank=True,null=True)
+    project1 = models.CharField(max_length=255,blank=True,null=True)
+    project2 = models.CharField(max_length=255,blank=True,null=True)
+    project3 = models.CharField(max_length=255,blank=True,null=True)
+    status = models.CharField(max_length=255,blank=True,null=True)
+    priority = models.CharField(max_length=255,blank=True,null=True)
+    activity = models.TextField(blank=True,null=True)
+    pay = models.TextField(blank=True,null=True)
+
     # def __str__(self):
     #     return self.first_name
 

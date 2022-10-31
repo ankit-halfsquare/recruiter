@@ -66,7 +66,10 @@ def searchCandidate(request):
 
 
 @login_required(login_url='/accounts/login/')
-def candidate(request):
+def candidate(request,pk=None):
+
+    if pk:
+        pass
 
     def strtolst(obj):
         if obj and "," in obj:

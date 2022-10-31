@@ -24,6 +24,7 @@
           },
         });
         var data = await response.json();
+        console.log("DATA=>",data)
         return data;
       };
 
@@ -36,12 +37,9 @@
   <!-- Container fluid  -->
   <div class="container-fluid">   
   <!-- Start Page Content -->
-  <div class="pagetitle mb-3 align-items-center justify-content-between">
-    <h3 class="mb-0">Dashboard</h3>
-    <a href={% url 'add-candidate' %}  href="javascript:void(0)" class="btn btn-primary btn-sm waves-effect">
-        Add New Candidate</a>
-</div>
-    
+    <div class="pagetitle">
+        <h3>Dashboard</h3>
+    </div>
     <script type="text/javascript" charset="utf-8">
       // Dataset Load
       dataset = [
@@ -475,20 +473,13 @@
           select: "row",
           view: "datatable",
           columns: [
-          {
-            id: "",
-            header: {
-              text: "View",
-              autoheight: true,
-              css: "multiline",
-              mode: "text",
-            },
-            cssFormat: "",
-            sort: "string",
-            width: 100,
-            hidden: 0,
+           {
+                    header: "Action",
+                    template:
+                      "<div class='link'><a class='viewbtn ' type='button' value='View'>View</a></div>",
+                    width: 100,
+
           },
-            
             {
               id: "first_name",
               header: {
@@ -546,7 +537,7 @@
               hidden: 0,
             },
             {
-              id: "email",
+              id: "Email",
               header: {
                 text: "Email",
                 autoheight: true,
@@ -588,9 +579,20 @@
               hidden: 0,
             },
           ],
-          height: 1600,
-          width: 1600,
+          
+          autoheight:true,
+          autowidth:true,
+          scrollX:true,
+          scrollY:true,
           data: tableData(),
+          onClick: {
+                  viewbtn: function (e, id, trg) {
+                    console.log("Click")
+                    data = this.getItem(id);
+                    console.log("data",data);
+                    webix.send(`candidate/${data.candidate_id}`,{},'get')
+                  },
+                },
           /*on: {
             onItemDblClick: function () {
               var row_id = gridA.getSelectedId(true, true);
