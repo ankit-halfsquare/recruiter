@@ -119,8 +119,10 @@ class CandidateTable(models.Model):
     archive = models.IntegerField(null=True, blank=True)
     skill_keywords_full = models.TextField(blank=True, null=True)
 
+    year = models.IntegerField(blank=True,null=True)
+    ww = models.IntegerField(blank=True,null=True)
     plateformOrReferral = models.CharField(max_length=255,blank=True,null=True)
-    sourcePositionOrPerson = models.CharField(max_length=255,blank=True,null=True)
+    positionOrPerson = models.CharField(max_length=255,blank=True,null=True)
     refferedBy = models.CharField(max_length=255,blank=True,null=True)
     skillLevel = models.CharField(max_length=255,blank=True,null=True)
     specialitySkillSet = models.CharField(max_length=255,blank=True,null=True)
