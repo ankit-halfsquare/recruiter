@@ -13,6 +13,23 @@ from core.models import CandidateTable,Assignment,Company,Project,Position,Keywo
 from .serializers import CandidateTableSerializer,AssignmentSerializer,CompanySerializer,ProjectSerializer,PositionSerializer,KeywordSerializer
 
 
+
+
+class CandidateUpdateAPIView(generics.UpdateAPIView):
+    queryset = CandidateTable.objects.all()
+    serializer_class = CandidateTableSerializer
+    lookup_feild = 'pk'
+
+    # def perform_update(self, serializer): # optional if need any modification before
+    #     title = serializer.validated_data.get('title')
+    #     content = serializer.validated_data.get('content') or None
+    #     if content is None: 
+    #             content = title
+    #     instance = serializer.save(content=content)
+
+
+
+
 class KeywordListCreateAPIView(generics.ListCreateAPIView):
     queryset = Keyword.objects.all()
     serializer_class = KeywordSerializer
