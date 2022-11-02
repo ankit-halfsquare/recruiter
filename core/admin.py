@@ -43,6 +43,10 @@ admin.site.register(Company)
 admin.site.register(Project)
 admin.site.register(Position)
 admin.site.register(PowerSearch)
+admin.site.register(CandidateStatus)
+admin.site.register(CandidatePriority)
+admin.site.register(CandidateSkillLevel)
+
 
 # admin.site.register(HelpText,HelpTextAdmin)
 

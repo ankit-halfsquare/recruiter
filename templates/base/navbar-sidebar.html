@@ -8,12 +8,14 @@
         <header class="topbar">
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
+                <div class="navbar-header" style="background-color: #f8f9fa">
+                    <a class="navbar-brand"  href="#">
                         <!-- Logo icon -->
-                        <b><img src={% static "assets/images/logo.png" %}  alt="homepage" class="light-logo" /></b>
+                        
+                        <img src={% static "amworks_logo.png" %}  alt="homepage" class="text-logo" />
+                        {% comment %} <b><img src={% static "assets/images/logo.png" %}  alt="homepage" class="light-logo" /></b>
                         <!-- Logo text -->
-                        <span><img src={% static "assets/images/logo-text.svg" %} class="text-logo" alt="homepage"/></span> 
+                        <span><img src={% static "assets/images/logo-text.svg" %} class="text-logo" alt="homepage"/></span>  {% endcomment %}
                     </a>
                 </div>
                 <!-- End Logo -->

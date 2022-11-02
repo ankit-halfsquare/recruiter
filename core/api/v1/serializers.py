@@ -7,8 +7,9 @@ from core.models import CandidateTable,Assignment,Company,Project,Position,Keywo
 class CandidateTableSerializer(serializers.ModelSerializer):
     class Meta:
         model = CandidateTable
+        depth = 1
         # fields = '__all__'
-        exclude = ('active_assignment',)
+        exclude = ('active_assignment','skillLevel')
         # fields = ('id','name', 'company_id')
 
 

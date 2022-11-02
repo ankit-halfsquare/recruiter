@@ -115,8 +115,10 @@ def candidate(request,pk=None):
 @login_required(login_url='/accounts/login/')
 def viewCandidate(request,pk):
     candidate = CandidateTable.objects.get(pk=pk)
+    form = CandidateTableForm(instance=candidate)
     context = {
-        "candidate":candidate
+        "candidate":candidate,
+        "form":form
     }
     return render(request,"frontend/view-candidate.html",context)
 

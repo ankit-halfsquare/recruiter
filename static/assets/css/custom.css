@@ -637,6 +637,10 @@ body .daterangepicker td.end-date {
   overflow: auto;
 }
 
+.form-group {
+  margin-bottom: 0px;
+}
+
 /* toast */
 
 #toast {

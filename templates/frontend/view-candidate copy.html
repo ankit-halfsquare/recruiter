@@ -2,7 +2,6 @@
 {% load static %} 
 {% block css %} 
 {% endblock %}
-{% load crispy_forms_tags %}
 {% block content %}
     <div class="page-wrapper">
         <div id="toast"><div id="img"></div><div id="desc">Data updated Succefully</div></div>
@@ -94,7 +93,12 @@
                                                             <input type="text"  name="refferedBy" class="form-control" id="refferedBy" value={{candidate.refferedBy}}>
                                                         </span>
                                                     </div>
-                                                   
+                                                    <div class="col-md-12 mt-2">
+                                                        <label class="cad-infolabel">Skill Level</label>
+                                                        <span class="c-detsls"> 
+                                                            <input type="text"   name="skillLevel" class="form-control" id="skillLevel" value={{candidate.skillLevel}}>
+                                                        </span>
+                                                    </div>
                                                     <div class="col-md-12 mt-2">
                                                         <label class="cad-infolabel">Specialty Skill Set</label>
                                                         <span class="c-detsls"> 
@@ -131,14 +135,18 @@
                                                             <input type="text"  name="project3" class="form-control" id="project3" value={{candidate.project3}} >
                                                         </span>
                                                     </div> 
+                                                    
                                                     <div class="col-md-12 mt-2">
-                                                            {{ form.status|as_crispy_field }} 
-                                                    </div> 
+                                                        <label class="cad-infolabel">Status</label>
+                                                        <span class="c-detsls"> 
+                                                            <input type="text"  name="status" class="form-control" id="status" value={{candidate.status}} >
+                                                        </span>
+                                                    </div>
                                                     <div class="col-md-12 mt-2">
-                                                        {{ form.priority|as_crispy_field }} 
-                                                    </div> 
-                                                    <div class="col-md-12 mt-2">
-                                                        {{ form.skillLevel|as_crispy_field }} 
+                                                        <label class="cad-infolabel">Priority</label>
+                                                        <span class="c-detsls"> 
+                                                            <input type="text"  name="priority" class="form-control" id="priority" value={{candidate.priority}}>
+                                                        </span>
                                                     </div>
                                                     <div class="col-md-12 mt-2">
                                                         <label class="cad-infolabel">$$$</label>                                                           
@@ -174,6 +182,10 @@
         </div>
 
     </div>
+
+   
+      
+
 {% endblock %}
 
 

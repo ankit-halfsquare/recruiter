@@ -91,6 +91,32 @@ class Assignment(models.Model):
         db_table = 'assignment'
 
 
+class CandidateStatus(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    class Meta:
+        verbose_name_plural = "status"
+
+    def __str__(self):
+        return self.name
+
+class CandidatePriority(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    class Meta:
+        verbose_name_plural = "priority"
+        
+    def __str__(self):
+        return self.name
+
+
+class CandidateSkillLevel(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    class Meta:
+        verbose_name_plural = "Skill Level"
+
+    def __str__(self):
+        return self.name
+
+
 class CandidateTable(models.Model):
     candidate_id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=50, blank=True, null=True)
@@ -124,15 +150,15 @@ class CandidateTable(models.Model):
     plateformOrReferral = models.CharField(max_length=255,blank=True,null=True)
     positionOrPerson = models.CharField(max_length=255,blank=True,null=True)
     refferedBy = models.CharField(max_length=255,blank=True,null=True)
-    skillLevel = models.CharField(max_length=255,blank=True,null=True)
     specialitySkillSet = models.CharField(max_length=255,blank=True,null=True)
     semi = models.CharField(max_length=255,blank=True,null=True)
     intel = models.CharField(max_length=255,blank=True,null=True)
     project1 = models.CharField(max_length=255,blank=True,null=True)
     project2 = models.CharField(max_length=255,blank=True,null=True)
     project3 = models.CharField(max_length=255,blank=True,null=True)
-    status = models.CharField(max_length=255,blank=True,null=True)
-    priority = models.CharField(max_length=255,blank=True,null=True)
+    status = models.ForeignKey(CandidateStatus,on_delete=models.CASCADE,blank=True,null=True)
+    priority = models.ForeignKey(CandidatePriority,on_delete=models.CASCADE,blank=True,null=True)
+    skillLevel = models.ManyToManyField(CandidateSkillLevel,blank=True,null=True)
     activity = models.TextField(blank=True,null=True)
     pay = models.TextField(blank=True,null=True)
 

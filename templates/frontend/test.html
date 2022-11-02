@@ -1,32 +1,42 @@
-{% extends "base/base.html"%} 
-{% load static %} 
-{% block css %} 
-{% endblock %}
+{% extends "base/base.html"%} {% load static %} {% block css %} {% endblock %}
+{% load crispy_forms_tags %} {% block content %}
 
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-6">
+      <div class="card shadow">
+        <div class="card-title text-center border-bottom">
+          <h2 class="p-3"></h2>
+        </div>
+        <div class="card-body">
+          <form method="post"  action="" enctype="multipart/form-data" >
+            {% csrf_token %} 
+            {{ form.first_name|as_crispy_field }} 
+            {{form.last_name|as_crispy_field }} 
+            {{ form.phone|as_crispy_field }}
+            {{ form.email|as_crispy_field }} 
+            {{ form.candidateFileNameOriginal|as_crispy_field }} 
+            {{ form.city|as_crispy_field }} 
+            {{ form.state|as_crispy_field }}
+            {{ form.country|as_crispy_field }} 
+            {{ form.history|as_crispy_field }} 
+            {{ form.active_assignment|as_crispy_field }} 
+            {{ form.adder|as_crispy_field }} 
+            {{ form.fk_ra_company|as_crispy_field }}
+            {{form.fk_ra_project|as_crispy_field }} 
+            {{ form.fk_ra_position|as_crispy_field }} 
+            {{form.fk_ra_position|as_crispy_field }} 
+            {{ form.skill_keywords|as_crispy_field }} 
+            {{form.active|as_crispy_field }}
 
-{% block content %}
-
-<h2>Toast</h2>
-<p>Click on the button to show the Toast. It will disappear after 5 seconds.</p>
-
-<button onclick="launch_toast()">Show Toast</button>
-
-<div id="toast"><div id="img">Icon</div><div id="desc">A notification message..</div></div>
-
-<!-- http://jsfiddle.net/m8x1g0q8/ -->
-
-
-
-<script>
-
-
-
-    function launch_toast() {
-        var x = document.getElementById("toast")
-        x.className = "show";
-        setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
-    }
-</script>
-
+            <div class="d-grid">
+             <button type="submit" class="btn btn-outline-dark">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
