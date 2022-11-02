@@ -740,3 +740,22 @@ white-space: nowrap;
   from {bottom: 30px; opacity: 1;}
   to {bottom: 60px; opacity: 0;}
 }
+
+
+
+
+
+.fix-sidebar .topbar .top-navbar .navbar-header .navbar-brand .light-logo {
+  height: 16px;
+}
+.logo-box { background-color: #e7f2ff !important;}
+.text-logo {		
+    height: 40px !important;
+}
+
+
+.logo-box img {
+  width: 460px;
+  margin: auto;
+  max-width: 100%;
+}
