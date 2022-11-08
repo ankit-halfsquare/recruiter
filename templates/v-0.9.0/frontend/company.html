@@ -1,5 +1,5 @@
 
-{% extends "base/base.html"%} {% load static %} 
+{% extends "v-0.9.0/base/base.html"%} {% load static %} 
 
 {% block head %} 
 <script
@@ -15,7 +15,7 @@
     <script>
       const tableData = async () => {
         
-        var url = " {% url 'assignment-listCreateAPI-View' %}"  ; 
+        var url = " {% url 'v-0.9.0/company-listCreateAPI-View' %}"  ; 
         const response = await fetch(url, {
           method: "GET",
           headers: {
@@ -37,9 +37,9 @@
   <div class="container-fluid">   
   <!-- Start Page Content -->
   <div class="pagetitle mb-3 align-items-center justify-content-between">
-    <h3 class="mb-0">Assignment</h3>
-    <a   href="javascript:void(0)" class="btn btn-primary btn-sm waves-effect">
-        Add New Assignment</a>
+    <h3 class="mb-0">Comapany</h3>
+    <a href={% url 'v-0.9.0/add-candidate' %}  href="javascript:void(0)" class="btn btn-primary btn-sm waves-effect">
+        Add New Comapany</a>
 </div>
     
     <script type="text/javascript" charset="utf-8">
@@ -490,9 +490,9 @@
           },
             
             {
-              id: "active",
+              id: "name",
               header: {
-                text: "Active",
+                text: "Company",
                 autoheight: true,
                 //css: "multiline",
                 content: "excelFilter",
@@ -503,90 +503,7 @@
               width: 200,
               hidden: 0,
             },
-            {
-              id: "actual_completion_date",
-              header: {
-                text: "Completion Date",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              cssFormat: "",
-              sort: "string",
-              width: 100,
-              hidden: 0,
-            },
-            {
-              id: "actual_start_date",
-              header: {
-                text: "Start Date",
-                autoheight: true,
-                css: "multiline",
-                content: "excelFilter",
-                mode: "number",
-              },
-              cssFormat: "colorByBuildingItemCategory",
-              sort: "string",
-              width: 150,
-              hidden: 0,
-            },
-            {
-              id: "assigneeid",
-              header: {
-                text: "Assigneeid",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              cssFormat: "",
-              sort: "string",
-              width: 100,
-              hidden: 0,
-            },
-            {
-              id: "assigner",
-              header: {
-                text: "Assigner",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              cssFormat: "",
-              sort: "string",
-              width: 100,
-              hidden: 0,
-            },
-            {
-              id: "comments",
-              header: {
-                text: "Comments",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              cssFormat: "",
-              sort: "string",
-              width: 100,
-              hidden: 0,
-            },
-            {
-              id: "date_added",
-              header: {
-                text: "Date Added",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              cssFormat: "",
-              sort: "string",
-              width: 100,
-              hidden: 0,
-            },
+
           ],
           height: 1600,
           width: 1600,
@@ -865,7 +782,7 @@
       const tableData = async () => {
         var url = "https://jsonplaceholder.typicode.com/todos/" ; 
         var url = "https://app-service-recruiter.azurewebsites.net/core/api/v1/candidate/" ; 
-        var url = " {% url 'candidate-View' %}"  ; 
+        var url = " {% url 'v-0.9.0/candidate-View' %}"  ; 
         const response = await fetch(url, {
           method: "GET",
           headers: {

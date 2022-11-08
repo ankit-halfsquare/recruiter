@@ -1,8 +1,8 @@
 
-{% extends "base/base.html"%} {% load static %} 
+{% extends "v-0.9.0/base/base.html"%} {% load static %} 
 
 {% block head %} 
-<script
+    <script
       type="text/javascript"
       src="{% static 'codebase/webix.js' %}"
     ></script>
@@ -15,7 +15,7 @@
     <script>
       const tableData = async () => {
         
-        var url = " {% url 'project-listCreateAPI-View' %}"  ; 
+        var url = " {% url 'keyword-listCreateAPI-View' %}"  ; 
         const response = await fetch(url, {
           method: "GET",
           headers: {
@@ -37,9 +37,9 @@
   <div class="container-fluid">   
   <!-- Start Page Content -->
   <div class="pagetitle mb-3 align-items-center justify-content-between">
-    <h3 class="mb-0">Project</h3>
-    <a  href="javascript:void(0)" class="btn btn-primary btn-sm waves-effect">
-        Add New Project</a>
+    <h3 class="mb-0">Position</h3>
+    <a href={% url 'add-candidate' %}  href="javascript:void(0)" class="btn btn-primary btn-sm waves-effect">
+        Add New Position</a>
 </div>
     
     <script type="text/javascript" charset="utf-8">
@@ -490,9 +490,9 @@
           },
             
             {
-              id: "name",
+              id: "keyword_id",
               header: {
-                text: "Project",
+                text: "Keyword ID",
                 autoheight: true,
                 //css: "multiline",
                 content: "excelFilter",
@@ -503,6 +503,21 @@
               width: 200,
               hidden: 0,
             },
+
+            {
+                id: "text",
+                header: {
+                  text: "Text",
+                  autoheight: true,
+                  //css: "multiline",
+                  content: "excelFilter",
+                  mode: "text",
+                },
+                cssFormat: "",
+                sort: "string",
+                width: 200,
+                hidden: 0,
+              },
 
           ],
           height: 1600,

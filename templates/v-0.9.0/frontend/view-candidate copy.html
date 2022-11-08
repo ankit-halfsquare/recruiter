@@ -1,4 +1,4 @@
-{% extends "base/base.html"%} 
+{% extends "v-0.9.0/base/base.html"%} 
 {% load static %} 
 {% block css %} 
 {% endblock %}
@@ -222,7 +222,7 @@
 
         console.log("serializedData",serializedData)
         var method = "PUT";
-        var Url = "{% url 'candidate-updateAPI-view' pk=1234 %}";
+        var Url = "{% url 'v-0.9.0/candidate-updateAPI-view' pk=1234 %}";
         Url = Url.replace("1234", pk);
 
         console.log("Url",Url)
@@ -239,7 +239,7 @@
             .done(function (msg) {
                 launch_toast()
               console.log("msg", msg);
-              var Redirect =  "{% url 'dashboard'  %}";
+              var Redirect =  "{% url 'v-0.9.0/dashboard'  %}";
               window.location.href = Redirect;
             })
             .fail(function (error) {

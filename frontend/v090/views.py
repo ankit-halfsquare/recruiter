@@ -11,7 +11,8 @@ from operator import or_,and_
 
 
 from core.models import CandidateTable,Assignment,Company,Project,Position,Keyword,PowerSearch
-from core.api.v1.serializers import CandidateTableSerializer
+from core.api.v090.serializers import CandidateTableSerializer
+
 from .forms import CandidateTableForm
 
 # from core.filters import CandidateFilter
@@ -45,7 +46,7 @@ def addCandidate(request):
             candidateForm.save()
             return redirect('dashboard')
 
-    return render(request,"frontend/add-candidate.html")
+    return render(request,"v-0.9.0/frontend/add-candidate.html")
 
 @login_required(login_url='/accounts/login/')
 def dashboard(request):
@@ -54,14 +55,14 @@ def dashboard(request):
    
     context = {"Data":serializer.data}
     # f = CandidateFilter(request.GET, queryset=CandidateFilter.objects.all())
-    return render(request,"frontend/dashboard.html",context)
+    return render(request,"v-0.9.0/frontend/dashboard.html",context)
 
 
 
 @login_required(login_url='/accounts/login/')
 def searchCandidate(request):
     # f = CandidateFilter(request.GET, queryset=CandidateFilter.objects.all())
-    return render(request,"frontend/search-form.html")
+    return render(request,"v-0.9.0/frontend/search-form.html")
 
 
 
@@ -109,7 +110,7 @@ def candidate(request,pk=None):
         "powerSearch":powerSearch,
         "dummy":"summy"
     }
-    return render(request,"frontend/candidates.html",context)
+    return render(request,"v-0.9.0/frontend/candidates.html",context)
 
 
 @login_required(login_url='/accounts/login/')
@@ -120,7 +121,7 @@ def viewCandidate(request,pk):
         "candidate":candidate,
         "form":form
     }
-    return render(request,"frontend/view-candidate.html",context)
+    return render(request,"v-0.9.0/frontend/view-candidate.html",context)
 
 
 @login_required(login_url='/accounts/login/')
@@ -146,7 +147,7 @@ def addUpdateCandidate(request,pk=None):
     else:
         form = CandidateTableForm()
     context = {"form":form}
-    return render(request,"frontend/candidate.html",context)
+    return render(request,"v-0.9.0/frontend/candidate.html",context)
 
     # file = request.FILES['candidateFileNameOriginal']
     # default_storage.save(file.name, file)
@@ -155,7 +156,7 @@ def addUpdateCandidate(request,pk=None):
 
 
 def test(request):
-    return render(request,"frontend/test.html",)
+    return render(request,"v-0.9.0/frontend/test.html",)
 
 
 @login_required(login_url='/accounts/login/')
@@ -164,7 +165,7 @@ def assignment(request):
     # context = {
     #     "assignment":Assignments
     # }
-    return render(request,"frontend/assignment.html")
+    return render(request,"v-0.9.0/frontend/assignment.html")
 
 
 
@@ -174,7 +175,7 @@ def company(request):
     context = {
         "company":Companies
     }
-    return render(request,"frontend/company.html",context)
+    return render(request,"v-0.9.0/frontend/company.html",context)
 
 
 @login_required(login_url='/accounts/login/')
@@ -183,7 +184,7 @@ def project(request):
     # context = {
     #     "project":Projects
     # }
-    return render(request,"frontend/project.html")
+    return render(request,"v-0.9.0/frontend/project.html")
 
 
 
@@ -193,7 +194,7 @@ def position(request):
     # context = {
     #     "position":Positions
     # }
-    return render(request,"frontend/position.html")
+    return render(request,"v-0.9.0/frontend/position.html")
 
 
 @login_required(login_url='/accounts/login/')
@@ -202,6 +203,6 @@ def keyword(request):
     context = {
         "keyword":Keywords
     }
-    return render(request,"frontend/keywords.html",context)
+    return render(request,"v-0.9.0/frontend/keywords.html",context)
 
 
