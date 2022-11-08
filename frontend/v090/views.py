@@ -44,7 +44,7 @@ def addCandidate(request):
         candidateForm = CandidateTableForm(request.POST, request.FILES)
         if candidateForm.is_valid(): 
             candidateForm.save()
-            return redirect('dashboard')
+            return redirect('v-0.9.0/dashboard')
 
     return render(request,"v-0.9.0/frontend/add-candidate.html")
 
