@@ -20,8 +20,9 @@ body .btn {
 }
 
 .form-group label {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  color: #666;
+  /* font-weight: 600; */
 }
 
 body .form-control:focus {
@@ -393,7 +394,7 @@ body .daterangepicker td.end-date {
 
 .cad-infolabel {
   display: block;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 300;
   color: #666;
   margin-bottom: 0px;
@@ -758,4 +759,21 @@ white-space: nowrap;
   width: 460px;
   margin: auto;
   max-width: 100%;
+}
+
+.view-form-font{
+  font-size: 13px !important;
+} 
+
+.form-group .select {
+  font-size: 13px !important;
+}
+
+.form-group .selectmultiple {
+  font-size: 13px !important;
+  }
+
+.webix_cell .link{
+  cursor: pointer;
+  color: #007bff !important;
 }

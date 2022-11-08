@@ -1128,7 +1128,7 @@ a.mytooltip { font-weight: 500; color: #009efb }
 .plugin-details { display: none }
 .plugin-details-active { display: block }
 .form-control-line .form-control { -webkit-box-shadow: none; box-shadow: none }
-.left-sidebar { position: fixed; width: 250px; height: 100%; top: 70px; z-index: 20; padding-top: 30px; background: #192a56; }
+.left-sidebar { position: fixed; width: 200px; height: 100%; top: 70px; z-index: 20; padding-top: 30px; background: #192a56; }
 .fix-sidebar .left-sidebar { position: fixed !important; }
 .user-profile { position: relative; background-size: cover }
 .user-profile .profile-img { width: 50px; margin-left: 30px; padding: 35px 0; border-radius: 100% }
@@ -1176,7 +1176,7 @@ to { -webkit-box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.1); box-shadow: 0 0 0 20px r
 .collapse.in { display: block }
 .sidebar-nav ul { margin: 0px; padding: 0px }
 .sidebar-nav ul li { list-style: none }
-.sidebar-nav ul li a { color: #607d8b; padding: 8px 35px 8px 15px; display: block; font-size: 15px; white-space: nowrap }
+.sidebar-nav ul li a { color: #607d8b; padding: 8px 35px 8px 15px; display: block; font-size: 12px; white-space: nowrap }
 .sidebar-nav ul li ul { padding-left: 5px; padding-top: 10px }
 .sidebar-nav > ul > li.active > a::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background-color: #0C7CFF; }
 .sidebar-nav ul li ul li a { padding: 15px 15px 15px 31px; position: relative; }
@@ -1217,7 +1217,7 @@ to { -webkit-box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.1); box-shadow: 0 0 0 20px r
 .mini-sidebar .hide-menu,  .mini-sidebar .nav-small-cap,  .mini-sidebar .sidebar-footer,  .mini-sidebar .user-profile .profile-text { display: none }
 .mini-sidebar .nav-devider { width: 50px }
 .mini-sidebar .sidebar-nav { background: transparent }
-.mini-sidebar .sidebar-nav #sidebarnav>li>a { padding: 9px 15px; width: 50px }
+.mini-sidebar .sidebar-nav #sidebarnav>li>a { padding: 9px 15px; width: 45px }
 .mini-sidebar .sidebar-nav #sidebarnav>li:hover>a { width: 280px; background: #002044; color: #ffffff; border-color: #009efb }
 .mini-sidebar .sidebar-nav #sidebarnav>li:hover>a i { color: #ffffff }
 .mini-sidebar .sidebar-nav #sidebarnav>li:hover>a .hide-menu { display: inline }
@@ -1462,7 +1462,7 @@ a.link:hover, a.link:focus { color: #563d7b !important; }
 .widget-app-columns { -webkit-column-count: 2; column-count: 2 }
 }
  @media (min-width:1024px) {
-.page-wrapper { padding-left: 250px }
+.page-wrapper { padding-left: 200px }
 .footer { left: 250px }
 }
  @media (max-width:1023px) {
@@ -1472,7 +1472,7 @@ a.link:hover, a.link:focus { color: #563d7b !important; }
 .inbox-center a { width: 200px }
 }
  @media (min-width:768px) {
-.navbar-header { width: 250px; -ms-flex-negative: 0; flex-shrink: 0 }
+.navbar-header { width: 200px; -ms-flex-negative: 0; flex-shrink: 0 }
 .navbar-header .navbar-brand { padding-top: 0px }
 .material-icon-list-demo .icons div { width: 33%; padding: 15px; display: inline-block; line-height: 40px }
 .mini-sidebar .page-wrapper { padding-left: 60px }

@@ -1,0 +1,232 @@
+{% load static%}
+
+
+    {% comment %} <div id="main-wrapper"> {% endcomment %}
+       
+        <!-- Topbar header -->
+       
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- Logo -->
+                <div class="navbar-header" style="background-color: #f8f9fa; display: flex;justify-content: center;position: relative;">
+                    <a class="navbar-brand" href="#">
+                        <!-- Logo icon -->
+                        <b><img src={% static 'assets/images/logo.png' %} alt="homepage" class="light-logo" /></b>
+                        <!-- Logo text -->
+                        <span><img src= {% static 'assets/images/logo-text.png' %} class="text-logo" alt="homepage" /></span> 
+                    </a>
+                    <br><span style="font-size:10px;position: absolute;padding-top: 22px;">v0.9.1</span>
+                </div>
+                <!-- End Logo -->
+                <div class="navbar-collapse">
+                    <!-- toggle and nav items -->
+                    <ul class="navbar-nav mr-auto mt-md-0 align-items-center">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        
+                    </ul>
+                   
+                    <!-- User profile and search -->
+                   
+                    <ul class="navbar-nav my-lg-0">
+                      
+                        <!-- Profile -->
+                        <li class="nav-item dropdown usersettings">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src={% static "assets/images/user.png" %}  alt="user" class="profile-pic" />
+                                <i class="ti-menu"></i></a>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right scale-up">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-img"><img src={% static "assets/images/user.png" %}  alt="user"></div>
+                                            <div class="u-text">
+                                                <h4>{{  request.user.first_name|title }} {{  request.user.last_name|title }}</h4>
+                                                <p class="text-muted">{{  request.user.email }}</p><a href="profile.html" class="btn btn-rounded btn-primary btn-sm">View Profile</a></div>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                    <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="{% url 'logout' %}"><i class="fa fa-power-off"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </nav>
+        </header>
+       
+        <!-- End Topbar header -->
+       
+       
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+       
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                                <li><a class="waves-effect waves-dark" href="{% url 'v-0.9.1/candidates' %}"><i class="isax isax-user"></i> <span class="hide-menu">Candidates</span></a></li>
+                                <li><a class="waves-effect waves-dark" href="{% url 'v-0.9.1/add-candidate' %}"   href="javascript:void(0)"><i class="isax isax-add-circle"></i> Add New Candidate</a></li>
+                                <li><a class="waves-effect waves-dark"  href="{% url 'v-0.9.1/project' %}" href="javascript:void(0)"><i class="isax isax-task"></i>
+                                <span class="hide-menu">Projects</span></a></li>
+                                 <li><a class="waves-effect waves-dark"  href="{% url 'v-0.9.1/status' %}" href="javascript:void(0)"><i class="bi bi-bar-chart"></i>
+                                <span class="hide-menu">Status</span></a></li>
+                                 {% comment %} <li><a class="waves-effect waves-dark"   href="javascript:void(0)"><i class="bi bi-person-plus-fill"></i>
+                                <span class="hide-menu">Platform/Referral</span></a></li> {% endcomment %}
+                                <li><a class="waves-effect waves-dark"   href="javascript:void(0)"><i class="bi bi-stack"></i>
+                                <span class="hide-menu">Skill Level</span></a></li>
+                                <li><a class="waves-effect waves-dark"   href="javascript:void(0)"><i class="bi bi-card-list"></i>
+                                <span class="hide-menu">Priority</span></a></li>
+
+
+                        <!-- <li class="nav-small-cap">Assignments</li> -->
+                        {% comment %} <li><a class="waves-effect waves-dark" href="{% url 'assignment' %}" href="javascript:void(0)"><i class="isax isax-note"></i>
+                                <span class="hide-menu">Assignments</span></a></li>
+                                <li class="dropdownli active"> <a class="has-arrow waves-effect waves-dark" href="#"
+                                    aria-expanded="false">
+                                    <i class="isax isax-chart-success"></i><span class="hide-menu">Candidates</span></a>
+                                <ul aria-expanded="false" class="collapse in">
+                                    <li><a href="{% url 'dashboard' %}" ><i class="isax isax-user"></i> Candidates</a></li>
+                                </ul>
+                            </li>
+                        <li><a class="waves-effect waves-dark"  href="{% url 'company' %}" href="javascript:void(0)"><i
+                                    class="isax isax-building"></i> <span class="hide-menu">Companies</span></a></li>
+                        
+
+
+                        <li class="dropdownli"> <a class="has-arrow waves-effect waves-dark" href="#"
+                                aria-expanded="false">
+                                <i class="isax isax-chart-success"></i><span class="hide-menu">Click For more</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a  href="{% url 'position' %}" href="javascript:void(0)"><i class="isax isax-task"></i> Positions</a></li>
+                                <li><a  href="{% url 'keyword' %}" href="javascript:void(0)"><i class="isax isax-bill"></i> Keywords</a></li>
+                            </ul>
+                        </li> {% endcomment %}
+                     
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+       
+        <!-- Page wrapper  -->
+        
+        {% comment %} <div class="page-wrapper">
+            <!-- Container fluid  -->
+            <div class="container-fluid">   
+            <!-- Start Page Content -->
+            <div class="pagetitle">
+                <h3>Dashboard</h3>
+            </div>
+            <div class="section-card">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row mt-4">
+                            <!-- Column -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card bg-light-primary dashcard">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-row">
+                                            <div class="round round-lg align-self-center round-info"><i class="isax isax-user"></i></div>
+                                            <div class="ml-auto text-right align-self-end">
+                                                <h2 class="m-b-0">128k</h2>
+                                                <h5 class="text-right m-b-0">Candidates</h5></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Column -->
+                            <!-- Column -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card bg-light-warning dashcard">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-row">
+                                            <div class="round round-lg align-self-center round-warning"><i class="isax isax-building"></i></div>
+                                            <div class="ml-auto text-right align-self-end">
+                                                <h2 class="m-b-0">110</h2>
+                                                <h5 class="text-right m-b-0">Companies</h5></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Column -->
+                            <!-- Column -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card bg-light-danger dashcard">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-row">
+                                            <div class="round round-lg align-self-center round-danger"><i class="isax isax-briefcase"></i></div>
+                                            <div class="ml-auto text-right align-self-end">
+                                                <h2 class="m-b-0">150+</h2>
+                                                <h5 class="text-right m-b-0">Jobs</h5></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Column -->
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <!-- <table class="table tablemain">
+                                <thead>
+                                    <tr>
+                                        <th>S. No.</th>
+                                        <th>OMC</th>
+                                        <th>Vehicle type</th>
+                                        <th>Total</th>
+                                        <th>Approved</th>
+                                        <th>REJECTED</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Jacob Jones</td>
+                                        <td>Loading</td>
+                                        <td>14</td>
+                                        <td>12</td>
+                                        <td>2</td>
+                                        <td class="actionstd"><a href="#"><span>View</span><i class="isax isax-eye"></i> </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Jacob Jones</td>
+                                        <td>Loading</td>
+                                        <td>14</td>
+                                        <td>12</td>
+                                        <td>2</td>
+                                        <td class="actionstd"><a href="#"><span>View</span><i class="isax isax-eye"></i> </a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Jacob Jones</td>
+                                        <td>Loading</td>
+                                        <td>14</td>
+                                        <td>12</td>
+                                        <td>2</td>
+                                        <td class="actionstd"><a href="#"><span>View</span><i class="isax isax-eye"></i> </a></td>
+                                    </tr>
+                                </tbody>
+                            </table> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+           
+        </div> {% endcomment %}
+       
+        <!-- End Page wrapper  -->
+       
+    {% comment %} </div> {% endcomment %}
