@@ -14,7 +14,7 @@ class CandidateTableForm(ModelForm):
     class Meta:
         model = CandidateTable
         fields = '__all__'
-        exclude=("skill_keywords_full","candidateFileNamePDF","candidateFileContents")
+        exclude=("skill_keywords_full","candidateFileNamePDF")
        
 
    

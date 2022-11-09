@@ -24,6 +24,7 @@ urlpatterns = [
     path("", include("frontend.v090.urls")),
     path("", include("frontend.v091.urls")),
     path('admin/', admin.site.urls, name='admin'),
+    path('tinymce/', include('tinymce.urls')),
     path("accounts/", include("django.contrib.auth.urls")),
     path('core/api/v-0.9.0/', include('core.api.v090.urls')),
     path('core/api/v-0.9.1/', include('core.api.v091.urls')),

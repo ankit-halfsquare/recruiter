@@ -211,11 +211,16 @@ def keyword(request):
 ##v-0.9.1 views
 
 @login_required(login_url='/accounts/login/')
-def editResume(request):  
+def editResume(request): 
+    pk = request.GET['id']
+    candidate = CandidateTable.objects.get(pk=pk)
+    form = CandidateTableForm(instance=candidate)
     context = {
+        "candidate":candidate,
+        "form":form,
         "id":request.GET['id'], 
         "resume":request.GET['resume']
-    }
+    } 
     return render(request,"v-0.9.1/frontend/edit-resume.html",context)
 
 

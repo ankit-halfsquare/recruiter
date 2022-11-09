@@ -46,6 +46,7 @@ admin.site.register(PowerSearch)
 admin.site.register(CandidateStatus)
 admin.site.register(CandidatePriority)
 admin.site.register(CandidateSkillLevel)
+admin.site.register(PlatformOrReferral)
 
 
 # admin.site.register(HelpText,HelpTextAdmin)

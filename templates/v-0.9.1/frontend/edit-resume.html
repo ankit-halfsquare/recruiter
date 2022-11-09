@@ -9,40 +9,19 @@
   <div class="container-fluid">
     <!-- Start Page Content -->
     <div class="pagetitle mb-3 align-items-center justify-content-between">
-      <h3 class="mb-0">
-        <i class="bi bi-arrow-left-circle-fill" onClick="viewBack()">
-        <span></span>
-        </i>
-      </h3> 
     </div>
     <div class="row">
       <div class="col-12">
         <div class="listview-with-details">
           <div class="candidatedetails-rightside candidat-main-wrapper">
             <div class="detailsheader">
-              <div class="candidate-info">
-                <h4>
-                  {{candidate.first_name|title}} {{candidate.last_name|title}}
-                </h4>
-
-                <div class="d-flex">
-                  <p class="mb-0">
-                    <i class="isax isax-setting"></i>
-                    <span> {{candidate.skill_keywords_full}}</span>
-                  </p>
-                  <p class="mb-0">
-                    <i class="fa fa-map-marker-alt"></i>
-                    <span>{{candidate.city}}</span>
-                  </p>
-                </div>
-              </div>
               <div
                 class="candidate-header-action"
-                onclick="updateCandidate({{candidate.candidate_id}})"
+                onclick=""
               >
                 <a class="editcandidate"
                   ><i class="isax isax-save-2"></i>
-                  <span>Save Changes</span>
+                  <span>Save</span>
                 </a>
               </div>
             </div>
@@ -65,7 +44,11 @@
                     </div>
                   </div>
                   <div class="col-sm-6 right-side">
-                    comming soon
+                     <div class="col-md-12 mt-2 view-form-font">
+                          {{ form.media }}
+                          {{ form.candidateFileContents }}
+                         
+                        </div>
                   </div>
                 </div>
               </div>
@@ -80,68 +63,7 @@
 
 <script>
   $(document).ready(function () {
-    cleanForm();
+   
   });
-
-  function launch_toast() {
-    var x = document.getElementById("toast");
-    x.className = "show";
-    setTimeout(function () {
-      x.className = x.className.replace("show", "");
-    }, 5000);
-  }
-
-  function cleanForm() {
-    $(".alert").alert();
-    var form = document.getElementById("myForm");
-    var serializedData = $(form).serialize();
-    arr = serializedData.split("&");
-    for (i in arr) {
-      if (arr[i].includes("None")) {
-        fieldId = arr[i].replace("=None", "");
-        document.getElementById(fieldId).value = "";
-      }
-    }
-  }
-
-  function updateCandidate(pk) {
-    var form = document.getElementById("myForm");
-    var serializedData = $(form).serialize();
-
-    console.log("serializedData", serializedData);
-    var method = "PUT";
-    var Url = "{% url 'v-0.9.1/candidate-updateAPI-view' pk=1234 %}";
-    Url = Url.replace("1234", pk);
-
-    console.log("Url", Url);
-    var crf_token = $('[name="csrfmiddlewaretoken"]').attr("value");
-
-    console.log("crf_token", crf_token);
-
-    $.ajax({
-      method: method,
-      url: Url,
-      data: serializedData,
-      headers: { "X-CSRFToken": crf_token },
-    })
-      .done(function (msg) {
-        launch_toast();
-        console.log("msg", msg);
-      })
-      .fail(function (error) {
-        console.log("error", error.responseJSON);
-      });
-  }
-
-  function viewBack() {
-    var Redirect = "{% url 'v-0.9.1/candidates'  %}";
-    window.location.href = Redirect;
-  }
-
-  function edit_resume() {
-    url = `id={{candidate.candidate_id}}&resume={{candidate.candidateFileNamePDF}}` 
-    console.log("edit_resume working",url)
-
-  }
 </script>
 {% endblock %}
