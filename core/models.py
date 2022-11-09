@@ -17,13 +17,17 @@ from .cloudConvert import convertAndDownloadFile,downloadFile
 # Create your models here.
 
 
+class CandidateResumeTemplates(models.Model):
+    template = HTMLField(blank=True, null=True)
+
+
+
 class PowerSearch(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     query = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name
-
 
 
 class Keyword(models.Model):
@@ -148,8 +152,8 @@ class CandidateTable(models.Model):
     fk_ra_position = models.ForeignKey(Position, on_delete=models.CASCADE, blank=True, null=True)
     skill_keywords = models.TextField(blank=True, null=True)
     candidateFileName = models.CharField(max_length=255, blank=True, null=True)
-    # candidateFileContents = models.TextField(blank=True, null=True)
-    candidateFileContents = HTMLField(blank=True, null=True)
+    candidateFileContents = models.TextField(blank=True, null=True)
+    # candidateFileContents = HTMLField(blank=True, null=True)
     candidateFileNameOriginal = models.FileField(upload_to='files/', blank=True, null=True)
     candidateFileNamePDF = models.CharField(max_length=255, null=True, blank=True)
     fileUploadDate = models.DateField(blank=True, null=True)
