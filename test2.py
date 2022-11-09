@@ -1,12 +1,65 @@
+from reportlab.pdfgen.canvas import Canvas
+from pdfrw import PdfReader
+from pdfrw.toreportlab import makerl
+from pdfrw.buildxobj import pagexobj
+
+input_file = "test.pdf"
+output_file = "my_file_with_footer.pdf"
+
+# Get pages
+reader = PdfReader(input_file)
+pages = [pagexobj(p) for p in reader.pages]
+
+
+# Compose new pdf
+canvas = Canvas(output_file)
+
+for page_num, page in enumerate(pages, start=1):
+
+    # Add page
+    canvas.setPageSize((page.BBox[2], page.BBox[3]))
+    canvas.doForm(makerl(canvas, page))
+
+    # Draw footer
+    footer_text = "test ankit "
+    x = 128
+    canvas.saveState()
+    canvas.setStrokeColorRGB(0, 0, 0)
+    canvas.setLineWidth(0.5)
+    canvas.line(66, 78, page.BBox[2] - 66, 78)
+    canvas.setFont('Times-Roman', 10)
+    canvas.drawString(page.BBox[2]-x, 65, footer_text)
+    canvas.restoreState()
+
+    canvas.showPage()
+
+canvas.save()
 
 
 
-{% static  %}
 
-{% static  %}
-{% static  %}
-{% static  %}
-{% static  %}
+
+# import PyPDF2
+
+
+# # bg_filename = pdfs_dir + 'Client_Name_Header_Footer.pdf'
+# # fg_filename = pdfs_dir + 'Client_Report.pdf'
+
+# bg_filename = "amworks_logo.pdf"
+# fg_filename = "test.pdf"
+
+# with open(bg_filename, 'rb') as bg_file, open(fg_filename, 'rb') as fg_file:
+# 	bg_page = PyPDF2.PdfFileReader(bg_file).getPage(0)
+# 	pdf_out = PyPDF2.PdfFileWriter()
+# 	for page in PyPDF2.PdfFileReader(fg_file).pages:
+# 		if page.extractText():  # Do not copy pages that have no text
+# 			page.mergePage(bg_page)
+# 			pdf_out.addPage(page)
+# 	if pdf_out.getNumPages():
+# 		with open('New.pdf', 'wb') as out_file:
+# 			# Caution: All three files MUST be open when write() is called
+# 			pdf_out.write(out_file)
+
 
 
 

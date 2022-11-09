@@ -9,6 +9,8 @@ from functools import reduce
 from operator import or_,and_
 from django.db.models import Q
 
+from core.utils import html_start,html_end,convert_html_to_pdf
+
 from core.models import ( 
     CandidateTable,Assignment,Company,Project,Position,Keyword,CandidateStatus,CandidateSkillLevel,
     CandidatePriority
@@ -132,3 +134,17 @@ class SkillLevelListCreateAPIView(generics.ListCreateAPIView):
 class PriorityListCreateAPIView(generics.ListCreateAPIView):
     queryset = CandidatePriority.objects.all()
     serializer_class = PrioritySerializer
+
+
+
+
+class CreateCustomeResume(APIView):
+    def post(self, request,pk=None, *args, **kwarg):
+        id = request.POST['id']
+        html = request.POST['test']
+        filename = request.POST['filename']
+        convert_html_to_pdf(html, filename)
+        return Response({ "data":"data"})
+
+        
+

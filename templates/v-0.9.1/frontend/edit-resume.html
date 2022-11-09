@@ -1,5 +1,9 @@
-{% extends "v-0.9.1/base/base.html"%} {% load static %} {% block css %} {% endblock %}
-{% load crispy_forms_tags %} {% block content %}
+{% extends "v-0.9.1/base/base.html"%} 
+{% load static %} 
+{% block css %} 
+{% endblock %} 
+{% load crispy_forms_tags %} 
+{% block content %}
 <div class="page-wrapper">
   <div id="toast">
     <div id="img"></div>
@@ -8,17 +12,15 @@
   <!-- Container fluid  -->
   <div class="container-fluid">
     <!-- Start Page Content -->
-    <div class="pagetitle mb-3 align-items-center justify-content-between">
-    </div>
+    <div
+      class="pagetitle mb-3 align-items-center justify-content-between"
+    ></div>
     <div class="row">
       <div class="col-12">
         <div class="listview-with-details">
           <div class="candidatedetails-rightside candidat-main-wrapper">
             <div class="detailsheader">
-              <div
-                class="candidate-header-action"
-                onclick=""
-              >
+              <div class="candidate-header-action" onclick="">
                 <a class="editcandidate"
                   ><i class="isax isax-save-2"></i>
                   <span>Save</span>
@@ -29,7 +31,7 @@
               {% csrf_token %}
               <div class="candidate-descriptions">
                 <div class="row">
-                     <div class="col-sm-6 left-side">
+                  <div class="col-sm-6 left-side">
                     <h5 class="mb-2">Candidate Resume</h5>
                     <div id="resume">
                       <iframe
@@ -44,10 +46,18 @@
                     </div>
                   </div>
                   <div class="col-sm-6 right-side">
-                     <div class="col-md-12 mt-2 view-form-font">
-                          {{ form.media }}
-                          {{ form.candidateFileContents }}
-                        </div>
+                    <h5 class="mb-2">Craete Custom Resume</h5>
+
+                    <div id="test" class="col-md-12 mt-2 view-form-font">
+                      <form
+                        method="post"
+                        id="myForm"
+                        action=""
+                        enctype="multipart/form-data"
+                      >
+                        {% csrf_token %} {{ form.media }} {{ form.template }}
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -61,8 +71,12 @@
 {% endblock %} {% block script %}
 
 <script>
-  $(document).ready(function () {
-   
-  });
+  $(document).ready(function () {});
+
+  function test() {
+    var html = document.getElementById("id_template").value;
+
+    console.log("html", html);
+  }
 </script>
 {% endblock %}

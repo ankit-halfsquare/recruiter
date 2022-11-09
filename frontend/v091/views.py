@@ -10,10 +10,10 @@ from operator import or_,and_
 
 
 
-from core.models import CandidateTable,Assignment,Company,Project,Position,Keyword,PowerSearch
+from core.models import CandidateTable,Assignment,Company,Project,Position,Keyword,PowerSearch,CandidateResumeTemplates
 from core.api.v090.serializers import CandidateTableSerializer
 
-from .forms import CandidateTableForm
+from .forms import CandidateTableForm,TemplateForm
 
 # from core.filters import CandidateFilter
 
@@ -211,20 +211,6 @@ def keyword(request):
 ##v-0.9.1 views
 
 @login_required(login_url='/accounts/login/')
-def editResume(request): 
-    pk = request.GET['id']
-    candidate = CandidateTable.objects.get(pk=pk)
-    form = CandidateTableForm(instance=candidate)
-    context = {
-        "candidate":candidate,
-        "form":form,
-        "id":request.GET['id'], 
-        "resume":request.GET['resume']
-    } 
-    return render(request,"v-0.9.1/frontend/edit-resume.html",context)
-
-
-@login_required(login_url='/accounts/login/')
 def status(request):
     return render(request,"v-0.9.1/frontend/status.html")
 
@@ -236,6 +222,24 @@ def skillLevel(request):
 @login_required(login_url='/accounts/login/')
 def priority(request):
     return render(request,"v-0.9.1/frontend/priority.html")
+
+
+
+@login_required(login_url='/accounts/login/')
+def editResume(request): 
+    if request.method == 'POST':
+        print("post",request.POST)
+
+    pk = 1
+    template = CandidateResumeTemplates.objects.get(pk=pk)
+    form = TemplateForm(instance=template)
+    context = {
+        "candidate":template,
+        "form":form,
+        "id":request.GET['id'], 
+        "resume":request.GET['resume']
+    } 
+    return render(request,"v-0.9.1/frontend/edit-resume.html",context)
 
 
 

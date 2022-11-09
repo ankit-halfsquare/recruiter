@@ -21,6 +21,7 @@
 
       // Webix Prep
       var url2 = " {% url 'v-0.9.1/candidate-View' %}"  ; 
+     
       webix.ready(function () {
         gridA = webix.ui({
           id: "qbcudpyz",
@@ -398,7 +399,7 @@
                     console.log("Click")
                     data = this.getItem(id);
                     console.log("data",data);
-                    webix.send(`candidate/${data.candidate_id}`,{},'get')
+                    webix.send(`v-0.9.1/candidate/${data.candidate_id}`,{},'get')
                   },
                 },
           /*on: {
