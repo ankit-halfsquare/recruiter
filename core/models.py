@@ -19,6 +19,8 @@ from .cloudConvert import convertAndDownloadFile,downloadFile
 
 class CandidateResumeTemplates(models.Model):
     template = HTMLField(blank=True, null=True)
+    class Meta:
+        verbose_name_plural = "templates"
 
 
 
