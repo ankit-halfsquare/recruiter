@@ -26,6 +26,7 @@ urlpatterns = [
     path('v-0.9.1/status', views.status, name='v-0.9.1/status'),
     path('v-0.9.1/skill-level', views.skillLevel, name='v-0.9.1/skill-level'),
     path('v-0.9.1/priority', views.priority, name='v-0.9.1/priority'),
+    path('v-0.9.1/platform-referral', views.platformOrReferral, name='v-0.9.1/platform-referral'),
 
     
 ]

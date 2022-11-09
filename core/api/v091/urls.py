@@ -18,6 +18,7 @@ urlpatterns = [
     path("status-list/", views.StatusListCreateAPIView.as_view(), name = "v-0.9.1/status-listCreateAPI-View"),
     path("skill-level-list/", views.StatusListCreateAPIView.as_view(), name = "v-0.9.1/skill-level-listCreateAPI-View"),
     path("priority-list/", views.PriorityListCreateAPIView.as_view(), name = "v-0.9.1/priority-listCreateAPI-View"),
+    path("platform-referral-list/", views.PlatformOrReferralListCreateAPIView.as_view(), name = "v-0.9.1/platform-R-referral-ListCreateAPI-View"),
     path("create-custome-resume/", views.CreateCustomeResume.as_view(), name = "v-0.9.1/create-custome-resume-api-view"),
 
 ]

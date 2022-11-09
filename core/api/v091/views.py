@@ -13,11 +13,11 @@ from core.utils import html_start,html_end,convert_html_to_pdf
 
 from core.models import ( 
     CandidateTable,Assignment,Company,Project,Position,Keyword,CandidateStatus,CandidateSkillLevel,
-    CandidatePriority
+    CandidatePriority,PlatformOrReferral
 )
 from .serializers import ( 
     CandidateTableSerializer,AssignmentSerializer,CompanySerializer,ProjectSerializer,PositionSerializer,
-    KeywordSerializer,StatusSerializer,SkillLevelSerializer,PrioritySerializer
+    KeywordSerializer,StatusSerializer,SkillLevelSerializer,PrioritySerializer,PlatformOrReferralSerializer
 )
 
 
@@ -134,6 +134,11 @@ class SkillLevelListCreateAPIView(generics.ListCreateAPIView):
 class PriorityListCreateAPIView(generics.ListCreateAPIView):
     queryset = CandidatePriority.objects.all()
     serializer_class = PrioritySerializer
+
+
+class PlatformOrReferralListCreateAPIView(generics.ListCreateAPIView):
+    queryset = PlatformOrReferral.objects.all()
+    serializer_class = PlatformOrReferralSerializer
 
 
 

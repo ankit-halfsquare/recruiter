@@ -1,71 +1,63 @@
-
-{% extends "v-0.9.1/base/base.html"%} {% load static %} 
-{% block head %} 
-    <script
-      type="text/javascript"
-      src="{% static 'codebase/webix.js' %}"
-    ></script>
-{% endblock %}
-
-{% block content %}
+{% extends "v-0.9.1/base/base.html"%} {% load static %} {% block head %}
+<script type="text/javascript" src="{% static 'codebase/webix.js' %}"></script>
+{% endblock %} {% block content %}
 
 <div class="page-wrapper">
   <!-- Container fluid  -->
-  <div class="container-fluid">   
-  <!-- Start Page Content -->
+  <div class="container-fluid">
+    <!-- Start Page Content -->
     <div class="pagetitle">
-        <h3>Candidates</h3>
+      <h3>Candidates</h3>
     </div>
     <script type="text/javascript" charset="utf-8">
-     
-
       // Webix Prep
-      var url2 = " {% url 'v-0.9.1/candidate-View' %}"  ; 
-     
+      var url2 = " {% url 'v-0.9.1/candidate-View' %}";
+
       webix.ready(function () {
         gridA = webix.ui({
           id: "qbcudpyz",
           container: "webix_datatable",
           select: "row",
-          view:"datatable", 
-          autoheight:true,
-          minHeight:80,
-          leftSplit:4, rightSplit:0,
-           columns: [
-           {
-                    header: "Action",
-                    template:
-                      "<div class='link'> <a class='viewbtn' type='button'>View</a> </div>",
-                    width: 50,
-          },
-          {
-            id: "year",
-            header: {
-              text: "Year",
-              autoheight: true,
-              //css: "multiline",
-              content: "excelFilter",
-              mode: "number",
+          view: "datatable",
+          autoheight: true,
+          minHeight: 80,
+          leftSplit: 4,
+          rightSplit: 0,
+          columns: [
+            {
+              header: "Action",
+              template:
+                "<div class='link'> <a class='viewbtn' type='button'>View</a> </div>",
+              width: 50,
             },
-            cssFormat: "",
-            sort: "string",
-            width: 60,
-            hidden: 0,
-          },
-          {
-            id: "ww",
-            header: {
-              text: "WW",
-              autoheight: true,
-              //css: "multiline",
-              content: "excelFilter",
-              mode: "number",
+            {
+              id: "year",
+              header: {
+                text: "Year",
+                autoheight: true,
+                //css: "multiline",
+                content: "excelFilter",
+                mode: "number",
+              },
+              cssFormat: "",
+              sort: "string",
+              width: 60,
+              hidden: 0,
             },
-            cssFormat: "",
-            sort: "string",
-            width: 60,
-            hidden: 0,
-          },
+            {
+              id: "ww",
+              header: {
+                text: "WW",
+                autoheight: true,
+                //css: "multiline",
+                content: "excelFilter",
+                mode: "number",
+              },
+              cssFormat: "",
+              sort: "string",
+              width: 60,
+              hidden: 0,
+            },
             {
               id: "first_name",
               header: {
@@ -247,12 +239,11 @@
               sort: "string",
               width: 100,
               hidden: 0,
-              template:function(obj){
-                if(obj.status?.name){
-                  return obj.status.name
-                }
-                else{ 
-                  return " "
+              template: function (obj) {
+                if (obj.status?.name) {
+                  return obj.status.name;
+                } else {
+                  return " ";
                 }
               },
             },
@@ -269,11 +260,11 @@
               sort: "string",
               width: 100,
               hidden: 0,
-              template:function(obj){if(obj.status?.name){
-                  return obj.priority.name
-                }
-                else{ 
-                  return " "
+              template: function (obj) {
+                if (obj.status?.name) {
+                  return obj.priority.name;
+                } else {
+                  return " ";
                 }
               },
             },
@@ -376,32 +367,30 @@
               hidden: 0,
             },
           ],
-          on:{
-            onBeforeLoad:function(){
+          on: {
+            onBeforeLoad: function () {
               this.showOverlay("Loading...");
             },
-            onAfterLoad:function(){
-              if (!this.count())
-                this.showOverlay("Sorry, there is no data");
-              else
-                this.hideOverlay();
-            }
+            onAfterLoad: function () {
+              if (!this.count()) this.showOverlay("Sorry, there is no data");
+              else this.hideOverlay();
+            },
           },
-          url:function(){
-            return webix.promise(function(res){
-              setTimeout(function(){
+          url: function () {
+            return webix.promise(function (res) {
+              setTimeout(function () {
                 res(webix.ajax(url2));
-              }, 1000)
+              }, 1000);
             });
           },
           onClick: {
-                  viewbtn: function (e, id, trg) {
-                    console.log("Click")
-                    data = this.getItem(id);
-                    console.log("data",data);
-                    webix.send(`v-0.9.1/candidate/${data.candidate_id}`,{},'get')
-                  },
-                },
+            viewbtn: function (e, id, trg) {
+              console.log("Click");
+              data = this.getItem(id);
+              console.log("data", data);
+              webix.send(`v-0.9.1/candidate/${data.candidate_id}`, {}, "get");
+            },
+          },
           /*on: {
             onItemDblClick: function () {
               var row_id = gridA.getSelectedId(true, true);
@@ -649,815 +638,6 @@
     </script>
     <div id="webix_datatable"></div>
   </div>
- 
 </div>
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-{% comment %} {% extends "base/base.html"%} {% load static %} {% block css %} {% endblock %}
-{% block content %}
-
-<div class="page-wrapper">
-            <!-- Container fluid  -->
-            <div class="container-fluid">   
-            <!-- Start Page Content -->
-            <div class="pagetitle">
-                <h3>Dashboard</h3>
-            </div>
-            <div class="section-card">
-                <script type="text/javascript">
-                    var dataset = [
-                      {
-                        id: "290",
-                        name: "P29",
-                        building_item_category_name: "Tool",
-                        building_item_category_color: "cm_b3b3b3",
-                        ta5: "",
-                        sl5_name: "",
-                        sl6_name: "",
-                        additional_data_type_form_name: "ADF 101",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "",
-                        sl9_name: "Ben Kraft",
-                        file_count: "2",
-                      },
-                      {
-                        id: "291",
-                        name: "P29_112_GB",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Ductwork",
-                        sl6_name: "SCRA",
-                        additional_data_type_form_name: "ADF Item Test",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "Ductwork",
-                        sl9_name: "Scott Jessop",
-                        file_count: "4",
-                      },
-                      {
-                        id: "292",
-                        name: "P29_925_CA",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Drain",
-                        sl6_name: "DOWD",
-                        additional_data_type_form_name: "ADF 202",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "PT Only",
-                        sl9_name: "Scott Jessop",
-                        file_count: "1",
-                      },
-                      {
-                        id: "293",
-                        name: "P29_510_MA",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Water",
-                        sl6_name: "NPW",
-                        additional_data_type_form_name: "ADF 202",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "PT Only",
-                        sl9_name: "Mark Sheridan",
-                        file_count: "3",
-                      },
-                      {
-                        id: "294",
-                        name: "G916",
-                        building_item_category_name: "Tool",
-                        building_item_category_color: "cm_b3b3b3",
-                        ta5: "",
-                        sl5_name: "",
-                        sl6_name: "",
-                        additional_data_type_form_name: "ADF 101",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "",
-                        sl9_name: "Ben Kraft",
-                        file_count: "1",
-                      },
-                      {
-                        id: "295",
-                        name: "G916_101_IR",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Water",
-                        sl6_name: "UPW",
-                        additional_data_type_form_name: "ADF 101",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "UPW",
-                        sl9_name: "Ben Kraft",
-                        file_count: "3",
-                      },
-                      {
-                        id: "296",
-                        name: "G916_15_DOR",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Drain",
-                        sl6_name: "IWD",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "PT Only",
-                        sl9_name: "Ben Kraft",
-                        file_count: "1",
-                      },
-                      {
-                        id: "297",
-                        name: "G916_78_VAN",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Ductwork",
-                        sl6_name: "GE",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "Ductwork",
-                        sl9_name: "Ben Kraft",
-                        file_count: "",
-                      },
-                      {
-                        id: "298",
-                        name: "J426",
-                        building_item_category_name: "Tool",
-                        building_item_category_color: "cm_b3b3b3",
-                        ta5: "",
-                        sl5_name: "",
-                        sl6_name: "",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "",
-                        sl9_name: "David Jones",
-                        file_count: "",
-                      },
-                      {
-                        id: "299",
-                        name: "J426_128_MA",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Bulk Gas",
-                        sl6_name: "HPN2",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "HP\/LP",
-                        sl9_name: "David Jones",
-                        file_count: "2",
-                      },
-                      {
-                        id: "300",
-                        name: "J426_904_PJ",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Vacuum",
-                        sl6_name: "PV",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "PT Only",
-                        sl9_name: "David Jones",
-                        file_count: "2",
-                      },
-                      {
-                        id: "301",
-                        name: "J426_321_JE",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Drain",
-                        sl6_name: "HFWD",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "PT Only",
-                        sl9_name: "David Jones",
-                        file_count: "",
-                      },
-                      {
-                        id: "302",
-                        name: "S706",
-                        building_item_category_name: "Tool",
-                        building_item_category_color: "cm_b3b3b3",
-                        ta5: "",
-                        sl5_name: "",
-                        sl6_name: "",
-                        additional_data_type_form_name: "",
-                        sl7_name: "",
-                        comments: "",
-                        sl8_name: "",
-                        sl9_name: "Mark Sheridan",
-                        file_count: "",
-                      },
-                      {
-                        id: "303",
-                        name: "S706_17_TW",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Drain",
-                        sl6_name: "IWD",
-                        additional_data_type_form_name: "ADF Item Test",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "HP\/LP",
-                        sl9_name: "",
-                        file_count: "3",
-                      },
-                      {
-                        id: "304",
-                        name: "S706_28_SC",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Vacuum",
-                        sl6_name: "BCL3",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "PT Only",
-                        sl9_name: "",
-                        file_count: "3",
-                      },
-                      {
-                        id: "305",
-                        name: "S706_153_MI",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Water",
-                        sl6_name: "PV",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "UPW",
-                        sl9_name: "",
-                        file_count: "",
-                      },
-                      {
-                        id: "306",
-                        name: "D826",
-                        building_item_category_name: "Tool",
-                        building_item_category_color: "cm_b3b3b3",
-                        ta5: "",
-                        sl5_name: "",
-                        sl6_name: "",
-                        additional_data_type_form_name: "",
-                        sl7_name: "",
-                        comments: "",
-                        sl8_name: "",
-                        sl9_name: "",
-                        file_count: "",
-                      },
-                      {
-                        id: "307",
-                        name: "D826_008_CI",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Bulk Gas",
-                        sl6_name: "IWD",
-                        additional_data_type_form_name: "ADF 101",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "HP\/LP",
-                        sl9_name: "",
-                        file_count: "3",
-                      },
-                      {
-                        id: "308",
-                        name: "D826_727_WZ",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Exhaust",
-                        sl6_name: "SCRA",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "EVAC\/POU\/Vent\/SCRA\/Abate",
-                        sl9_name: "",
-                        file_count: "",
-                      },
-                      {
-                        id: "309",
-                        name: "D826_602_PD",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Water",
-                        sl6_name: "BCL3",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "UPW",
-                        sl9_name: "",
-                        file_count: "2",
-                      },
-                      {
-                        id: "310",
-                        name: "A409",
-                        building_item_category_name: "Tool",
-                        building_item_category_color: "cm_b3b3b3",
-                        ta5: "",
-                        sl5_name: "",
-                        sl6_name: "",
-                        additional_data_type_form_name: "",
-                        sl7_name: "",
-                        comments: "",
-                        sl8_name: "",
-                        sl9_name: "Mark Sheridan",
-                        file_count: "",
-                      },
-                      {
-                        id: "311",
-                        name: "A409_512_VA",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Bulk Gas",
-                        sl6_name: "GE",
-                        additional_data_type_form_name: "ADF 101",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "HP\/LP",
-                        sl9_name: "",
-                        file_count: "1",
-                      },
-                      {
-                        id: "312",
-                        name: "A409_130_AP",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Vacuum",
-                        sl6_name: "PV",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "PT Only",
-                        sl9_name: "",
-                        file_count: "",
-                      },
-                      {
-                        id: "313",
-                        name: "A409_821_AM",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Water",
-                        sl6_name: "IWD",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "Ductwork",
-                        sl9_name: "",
-                        file_count: "",
-                      },
-                      {
-                        id: "341",
-                        name: "A409_975_PA",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Water",
-                        sl6_name: "IWD",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "PT Only",
-                        sl9_name: "",
-                        file_count: "",
-                      },
-                      {
-                        id: "342",
-                        name: "A409_512_VA Orig",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Bulk Gas",
-                        sl6_name: "GE",
-                        additional_data_type_form_name: "ADF 101",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "HP\/LP",
-                        sl9_name: "",
-                        file_count: "",
-                      },
-                      {
-                        id: "343",
-                        name: "G916_101_IR",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Water",
-                        sl6_name: "UPW",
-                        additional_data_type_form_name: "",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "UPW",
-                        sl9_name: "Ben Kraft",
-                        file_count: "",
-                      },
-                      {
-                        id: "382",
-                        name: "A409_512_VA TEST",
-                        building_item_category_name: "Pipe",
-                        building_item_category_color: "cm_66ccff",
-                        ta5: "",
-                        sl5_name: "Bulk Gas",
-                        sl6_name: "GE",
-                        additional_data_type_form_name: "ADF 101",
-                        sl7_name: "Yes",
-                        comments: "",
-                        sl8_name: "HP\/LP",
-                        sl9_name: "",
-                        file_count: "",
-                      },
-                    ];
-              
-                    webix.ready(function () {
-                      webix.ui({
-                        id: "datatable",
-                        container: "webix_datatable",
-                        select: "row",
-                        view: "datatable",
-                        columns: [
-                          {
-                            id: "book",
-                            header: { text: "&nbsp;", autoheight: true, css: "multiline" },
-                            css: "webix_el_button",
-                            width: 75,
-                            template:
-                              "<a href='javascript:act_upon_function(#id#)' >Act Upon</a>",
-                          },
-                          {
-                            map: "#first_name#",
-                            id: "first_name",
-                            header: {
-                              text: "Firstname",
-                              autoheight: true,
-                              css: "multiline",
-                              content: "excelFilter",
-                              mode: "text",
-                            },
-                            cssFormat: "colorByBuildingItemCategory",
-                            sort: "string",
-                            width: 150,
-                            hidden: 0,
-                          },
-                          {
-                            map: "#last_name#",
-                            id: "last_name",
-                            header: {
-                              text: "Last Name",
-                              autoheight: true,
-                              css: "multiline",
-                              content: "excelFilter",
-                              mode: "text",
-                            },
-                            cssFormat: "",
-                            sort: "string",
-                            width: 200,
-                            hidden: 0,
-                          },
-                          {
-                            map: "#city#",
-                            id: "city",
-                            header: {
-                              text: "City",
-                              autoheight: true,
-                              css: "multiline",
-                            },
-                            cssFormat: "",
-                            sort: "string",
-                            width: 100,
-                            hidden: 1,
-                          },
-                          {
-                            map: "#phone#",
-                            id: "phone",
-                            header: {
-                              text: "Phone",
-                              autoheight: true,
-                              css: "multiline",
-                              content: "excelFilter",
-                              mode: "text",
-                            },
-                            cssFormat: "",
-                            sort: "string",
-                            width: 100,
-                            hidden: 0,
-                          },
-                        ],
-                        height: 700,
-                        width: 1600,
-                        data: tableData(),
-                        on: {
-                          onItemDblClick: function () {
-                            var row_id = gridA.getSelectedId(true, true);
-                            act_upon_function(row_id);
-                          },
-                        },
-                      });
-                    });
-                  </script>
-            </div>
-            </div>
-           
-</div>
-
-{% endblock %}
-<!DOCTYPE html>
-{% comment %} <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Recruiter Service</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
-</head>
-
-<body class="fix-header fix-sidebar card-no-border">
-   
-    <!-- Preloader-->
-    <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-    </div>
-   
-    <!-- Main wrapper -->
-   
-    <div id="main-wrapper">
-       
-        <!-- Topbar header -->
-       
-        <header class="topbar">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <!-- Logo -->
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#">
-                        <!-- Logo icon -->
-                        <b><img src="assets/images/logo.png" alt="homepage" class="light-logo" /></b>
-                        <!-- Logo text -->
-                        <span><img src="assets/images/logo-text.svg" class="text-logo" alt="homepage" /></span> 
-                    </a>
-                </div>
-                <!-- End Logo -->
-                <div class="navbar-collapse">
-                    <!-- toggle and nav items -->
-                    <ul class="navbar-nav mr-auto mt-md-0 align-items-center">
-                        <!-- This is  -->
-                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                        
-                    </ul>
-                   
-                    <!-- User profile and search -->
-                   
-                    <ul class="navbar-nav my-lg-0">
-                      
-                        <!-- Profile -->
-                        <li class="nav-item dropdown usersettings">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="assets/images/user.png" alt="user" class="profile-pic" />
-                                <i class="ti-menu"></i></a>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right scale-up">
-                                <ul class="dropdown-user">
-                                    <li>
-                                        <div class="dw-user-box">
-                                            <div class="u-img"><img src="assets/images/user.png" alt="user"></div>
-                                            <div class="u-text">
-                                                <h4>Steave Jobs</h4>
-                                                <p class="text-muted">sandip@gmail.com</p><a href="profile.html" class="btn btn-rounded btn-primary btn-sm">View Profile</a></div>
-                                        </div>
-                                    </li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                                    <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="index.html"><i class="fa fa-power-off"></i> Logout</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                       
-                    </ul>
-                </div>
-            </nav>
-        </header>
-       
-        <!-- End Topbar header -->
-       
-       
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-       
-        <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li><a class="waves-effect waves-dark" href="dashboard.html">
-                                <i class="isax isax-home"></i> <span class="hide-menu">Dashboard</span></a></li>
-                        <!-- <li class="nav-small-cap">Assignments</li> -->
-                        <li><a class="waves-effect waves-dark" href="javascript:void(0)"><i class="isax isax-note"></i>
-                                <span class="hide-menu">Assignments</span></a></li>
-                                <li class="dropdownli"> <a class="has-arrow waves-effect waves-dark" href="#"
-                                    aria-expanded="false">
-                                    <i class="isax isax-chart-success"></i><span class="hide-menu">Candidates</span></a>
-                                <ul aria-expanded="false" class="collapse">
-                                    <li><a href="candidates.html"><i class="isax isax-user"></i> Candidates</a></li>
-                                    <li><a href="javascript:void(0)"><i class="isax isax-add-circle"></i> Add New Candidate</a></li>
-                                </ul>
-                            </li>
-                        <li><a class="waves-effect waves-dark" href="javascript:void(0)"><i
-                                    class="isax isax-building"></i> <span class="hide-menu">Companies</span></a></li>
-                        <li><a class="waves-effect waves-dark" href="javascript:void(0)"><i class="isax isax-task"></i>
-                                <span class="hide-menu">Projects</span></a></li>
-                        <li class="dropdownli"> <a class="has-arrow waves-effect waves-dark" href="#"
-                                aria-expanded="false">
-                                <i class="isax isax-chart-success"></i><span class="hide-menu">Click For more</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="javascript:void(0)"><i class="isax isax-task"></i> Positions</a></li>
-                                <li><a href="javascript:void(0)"><i class="isax isax-bill"></i> Keywords</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </aside>
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-       
-        <!-- Page wrapper  -->
-       
-        <div class="page-wrapper">
-            <!-- Container fluid  -->
-            <div class="container-fluid">   
-            <!-- Start Page Content -->
-            <div class="pagetitle">
-                <h3>Dashboard</h3>
-            </div>
-            <div class="section-card">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="row mt-4">
-                            <!-- Column -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card bg-light-primary dashcard">
-                                    <div class="card-body">
-                                        <div class="d-flex flex-row">
-                                            <div class="round round-lg align-self-center round-info"><i class="isax isax-user"></i></div>
-                                            <div class="ml-auto text-right align-self-end">
-                                                <h2 class="m-b-0">128k</h2>
-                                                <h5 class="text-right m-b-0">Candidates</h5></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Column -->
-                            <!-- Column -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card bg-light-warning dashcard">
-                                    <div class="card-body">
-                                        <div class="d-flex flex-row">
-                                            <div class="round round-lg align-self-center round-warning"><i class="isax isax-building"></i></div>
-                                            <div class="ml-auto text-right align-self-end">
-                                                <h2 class="m-b-0">110</h2>
-                                                <h5 class="text-right m-b-0">Companies</h5></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Column -->
-                            <!-- Column -->
-                            <div class="col-lg-4 col-md-6">
-                                <div class="card bg-light-danger dashcard">
-                                    <div class="card-body">
-                                        <div class="d-flex flex-row">
-                                            <div class="round round-lg align-self-center round-danger"><i class="isax isax-briefcase"></i></div>
-                                            <div class="ml-auto text-right align-self-end">
-                                                <h2 class="m-b-0">150+</h2>
-                                                <h5 class="text-right m-b-0">Jobs</h5></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Column -->
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="table-responsive">
-                            <!-- <table class="table tablemain">
-                                <thead>
-                                    <tr>
-                                        <th>S. No.</th>
-                                        <th>OMC</th>
-                                        <th>Vehicle type</th>
-                                        <th>Total</th>
-                                        <th>Approved</th>
-                                        <th>REJECTED</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Jacob Jones</td>
-                                        <td>Loading</td>
-                                        <td>14</td>
-                                        <td>12</td>
-                                        <td>2</td>
-                                        <td class="actionstd"><a href="#"><span>View</span><i class="isax isax-eye"></i> </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Jacob Jones</td>
-                                        <td>Loading</td>
-                                        <td>14</td>
-                                        <td>12</td>
-                                        <td>2</td>
-                                        <td class="actionstd"><a href="#"><span>View</span><i class="isax isax-eye"></i> </a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Jacob Jones</td>
-                                        <td>Loading</td>
-                                        <td>14</td>
-                                        <td>12</td>
-                                        <td>2</td>
-                                        <td class="actionstd"><a href="#"><span>View</span><i class="isax isax-eye"></i> </a></td>
-                                    </tr>
-                                </tbody>
-                            </table> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div>
-           
-        </div>
-       
-        <!-- End Page wrapper  -->
-       
-    </div>
-   
-    <!-- End Wrapper -->
-   
-    <!-- All Jquery -->
-    <script src="assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="assets/plugins/popper/popper.min.js"></script>
-    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="assets/js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="assets/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="assets/js/sidebarmenu.js"></script>
-    <!--stickey kit -->
-    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="assets/js/custom.js"></script>
-
-</body>
-
-
-
-</html> {% endcomment %} 
-

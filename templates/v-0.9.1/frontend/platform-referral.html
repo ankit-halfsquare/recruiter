@@ -13,25 +13,23 @@
   <div class="container-fluid">
     <!-- Start Page Content -->
     <div class="pagetitle mb-3 align-items-center justify-content-between">
-      <h3 class="mb-0">Status</h3>
-        <a
-          href="javascript:void(0)"
-          onclick="add_status()"
-          class="btn btn-primary btn-sm waves-effect"
-        >
-          Add New Status</a
-        >
-      </div>
+      <h3 class="mb-0">Priority</h3>
+      <a
+        href="javascript:void(0)"
+        class="btn btn-primary btn-sm waves-effect"
+        onclick="add_priority()"
+      >
+        Add New Priority</a
+      >
     </div>
 
     <script type="text/javascript" charset="utf-8">
-      function add_status() {
-        Redirect = "{% url 'v-0.9.1/add-status'  %}";
+      function add_priority() {
+        Redirect = " {% url 'v-0.9.1/platform-R-referral-ListCreateAPI-View' %}";
         window.location.href = Redirect;
       }
       // Webix Prep
-      var url = " {% url 'v-0.9.1/status-listCreateAPI-View' %}";
-
+      var url = " {% url 'v-0.9.1/priority-listCreateAPI-View' %}";
       webix.ready(function () {
         gridA = webix.ui({
           id: "qbcudpyz",
@@ -42,7 +40,7 @@
             {
               id: "name",
               header: {
-                text: "Status",               
+                text: "Priority",
               },
               sort: "string",
               width: 200,
@@ -75,4 +73,3 @@
 </div>
 
 {% endblock %}
-

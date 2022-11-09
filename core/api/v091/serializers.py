@@ -1,5 +1,8 @@
 from rest_framework import serializers
-from core.models import CandidateTable,Assignment,Company,Project,Position,Keyword,CandidateStatus,CandidateSkillLevel,CandidatePriority
+from core.models import (
+    CandidateTable,Assignment,Company,Project,Position,Keyword,
+    CandidateStatus,CandidateSkillLevel,CandidatePriority,PlatformOrReferral
+) 
 
 
 class CandidateTableSerializer(serializers.ModelSerializer):
@@ -54,6 +57,13 @@ class SkillLevelSerializer(serializers.ModelSerializer):
 class PrioritySerializer(serializers.ModelSerializer):
     class Meta:
         model = CandidatePriority
+        fields = '__all__'
+
+
+
+class PlatformOrReferralSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlatformOrReferral
         fields = '__all__'
 
 

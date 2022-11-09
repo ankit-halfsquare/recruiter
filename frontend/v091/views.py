@@ -226,6 +226,12 @@ def priority(request):
 
 
 @login_required(login_url='/accounts/login/')
+def platformOrReferral(request):
+    return render(request,"v-0.9.1/frontend/platform-referral.html")
+
+
+
+@login_required(login_url='/accounts/login/')
 def editResume(request): 
     if request.method == 'POST':
         print("post",request.POST)
