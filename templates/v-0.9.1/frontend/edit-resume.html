@@ -68,11 +68,16 @@
     </div>
   </div>
 </div>
+
 {% endblock %} {% block script %}
+
 
 <script>
   $(document).ready(function () {});
 
+  $("#id_skillLevel").select2({
+    multiple: true,
+  })
   function test() {
     var html = document.getElementById("id_template").value;
 

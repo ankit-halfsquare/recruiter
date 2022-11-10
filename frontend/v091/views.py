@@ -11,7 +11,7 @@ from operator import or_,and_
 
 
 from core.models import CandidateTable,Assignment,Company,Project,Position,Keyword,PowerSearch,CandidateResumeTemplates
-from core.api.v090.serializers import CandidateTableSerializer
+from core.api.v091.serializers import CandidateTableSerializer
 
 from .forms import CandidateTableForm,TemplateForm
 

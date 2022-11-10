@@ -19446,11 +19446,16 @@
       notEqual: function (a, b) {
         return a.toLowerCase() !== b.toLowerCase();
       },
-      contains: function (a, b) {
-        return a.toLowerCase().indexOf(b.toLowerCase()) !== -1;
+      contains: function (a, b) { 
+        if(a){
+          return a.toLowerCase().indexOf(b.toLowerCase()) !== -1;
+        }
+        
       },
       notContains: function (a, b) {
+        if(a){
         return a.toLowerCase().indexOf(b.toLowerCase()) === -1;
+        }
       },
       beginsWith: function (a, b) {
         return a.toLowerCase().lastIndexOf(b.toLowerCase(), 0) === 0;
