@@ -1,38 +1,29 @@
-{% extends "v-0.9.1/base/base.html"%} {% load static %} {% block css %} {% endblock %}
-{% load crispy_forms_tags %} {% block content %}
+{% extends "v-0.9.1/base/base.html"%} {% load static %} {% block css %} 
+{% endblock %} {% load crispy_forms_tags %} {% block content %}
 
-<div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-6">
-      <div class="card shadow">
-        <div class="card-title text-center border-bottom">
-          <h2 class="p-3"></h2>
-        </div>
-        <div class="card-body">
-          <form method="post"  action="" enctype="multipart/form-data" >
-            {% csrf_token %} 
-            {{ form.first_name|as_crispy_field }} 
-            {{form.last_name|as_crispy_field }} 
-            {{ form.phone|as_crispy_field }}
-            {{ form.email|as_crispy_field }} 
-            {{ form.candidateFileNameOriginal|as_crispy_field }} 
-            {{ form.city|as_crispy_field }} 
-            {{ form.state|as_crispy_field }}
-            {{ form.country|as_crispy_field }} 
-            {{ form.history|as_crispy_field }} 
-            {{ form.active_assignment|as_crispy_field }} 
-            {{ form.adder|as_crispy_field }} 
-            {{ form.fk_ra_company|as_crispy_field }}
-            {{form.fk_ra_project|as_crispy_field }} 
-            {{ form.fk_ra_position|as_crispy_field }} 
-            {{form.fk_ra_position|as_crispy_field }} 
-            {{ form.skill_keywords|as_crispy_field }} 
-            {{form.active|as_crispy_field }}
+<div class="page-wrapper">
+  <div class="container-fluid">
+ <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      Add 
+    </button>
 
-            <div class="d-grid">
-             <button type="submit" class="btn btn-outline-dark">Submit</button>
-            </div>
-          </form>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          
+          <div class="modal-body">
+             <form>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button">Save</button>
+                </div>
+              </div>
+             </form>
+          </div>
+         
         </div>
       </div>
     </div>

@@ -25,10 +25,7 @@ class CandidateTableForm(ModelForm):
         model = CandidateTable
         fields = '__all__'
         exclude=("skill_keywords_full","candidateFileNamePDF")
-        widgets = {
-            'field': apply_select2(forms.Select),
-        }
-
+       
 
 class TemplateForm(ModelForm):
     class Meta:

@@ -155,15 +155,13 @@ def addUpdateCandidate(request,pk=None):
 
 
 def test(request):
-    return render(request,"v-0.9.1/frontend/test.html",)
+    form = CandidateTableForm()
+    context = {"form":form}
+    return render(request,"v-0.9.1/frontend/test.html",context)
 
 
 @login_required(login_url='/accounts/login/')
 def assignment(request):
-    # Assignments = Assignment.objects.all()
-    # context = {
-    #     "assignment":Assignments
-    # }
     return render(request,"v-0.9.1/frontend/assignment.html")
 
 
@@ -179,20 +177,12 @@ def company(request):
 
 @login_required(login_url='/accounts/login/')
 def project(request):
-    # Projects = Project.objects.all()
-    # context = {
-    #     "project":Projects
-    # }
     return render(request,"v-0.9.1/frontend/project.html")
 
 
 
 @login_required(login_url='/accounts/login/')
 def position(request):
-    # Positions = Position.objects.all()
-    # context = {
-    #     "position":Positions
-    # }
     return render(request,"v-0.9.1/frontend/position.html")
 
 

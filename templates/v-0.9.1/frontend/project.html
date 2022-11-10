@@ -1,10 +1,5 @@
 {% extends "v-0.9.1/base/base.html"%} {% load static %} {% block head %}
-<script type="text/javascript" src="{% static 'codebase/webix.js' %}"></script>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'codebase/webix.css' %}"
-/>
+
 
 {% endblock %} {% block content %}
 
@@ -14,52 +9,15 @@
     <!-- Start Page Content -->
     <div class="pagetitle mb-3 align-items-center justify-content-between">
       <h3 class="mb-0">Project</h3>
-      <a href="javascript:void(0)" class="btn btn-primary btn-sm waves-effect">
+      {% comment %} <a href="javascript:void(0)" class="btn btn-primary btn-sm waves-effect">
         Add New Project</a
-      >
+      > {% endcomment %}
     </div>
-
-    <script type="text/javascript" charset="utf-8">
-      // Webix Prep
-      var url = " {% url 'v-0.9.1/project-listCreateAPI-View' %}";
-      webix.ready(function () {
-        gridA = webix.ui({
-          id: "qbcudpyz",
-          container: "webix_datatable",
-          select: "row",
-          view: "datatable",
-          columns: [
-            {
-              id: "name",
-              header: {
-                text: "Project",
-              },
-              sort: "string",
-              width: 200,
-              hidden: 0,
-            },
-          ],
-          minHeight: 100,
-          autoheight: true,
-          on: {
-            onBeforeLoad: function () {
-              this.showOverlay("Loading...");
-            },
-            onAfterLoad: function () {
-              if (!this.count()) this.showOverlay("Sorry, there is no data");
-              else this.hideOverlay();
-            },
-          },
-          url: function () {
-            return webix.promise(function (res) {
-              setTimeout(function () {
-                res(webix.ajax(url));
-              }, 1000);
-            });
-          },
-        });
-      });
-    </script>
+      <script type="text/javascript" charset="utf-8">
+        var url = " {% url 'v-0.9.1/project-listCreateAPI-View' %}";
+        var name = "Project"
+        {% include "v-0.9.1/frontend/webix.html" %} 
+      </script>
     <div id="webix_datatable"></div>
   </div>
 </div>
