@@ -23,7 +23,6 @@ admin.site.index_title = "Welcome to AMWorks Researcher Portal"
 urlpatterns = [
     path("", include("frontend.v090.urls")),
     path("", include("frontend.v091.urls")),
-    path("select2/", include("django_select2.urls")),
     path('admin/', admin.site.urls, name='admin'),
     path('tinymce/', include('tinymce.urls')),
     path("accounts/", include("django.contrib.auth.urls")),
