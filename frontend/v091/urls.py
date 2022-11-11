@@ -22,7 +22,7 @@ urlpatterns = [
     ## New Urls
     path('', views.candidates, name='candidates'),
     path('v-0.9.1/', views.candidates, name='v-0.9.1/candidates'),
-    path('v-0.9.1/edit-resume/', views.editResume, name='v-0.9.1/edit-resume'),
+    path('v-0.9.1/template/', views.template, name='v-0.9.1/template'),
     path('v-0.9.1/status', views.status, name='v-0.9.1/status'),
     path('v-0.9.1/skill-level', views.skillLevel, name='v-0.9.1/skill-level'),
     path('v-0.9.1/priority', views.priority, name='v-0.9.1/priority'),

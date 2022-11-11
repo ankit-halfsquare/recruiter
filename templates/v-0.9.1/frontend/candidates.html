@@ -1,5 +1,35 @@
 {% extends "v-0.9.1/base/base.html"%} {% load static %} {% block head %}
 <script type="text/javascript" src="{% static 'codebase/webix.js' %}"></script>
+
+<script>
+      const tableData = async () => {
+        
+        var url = "{% url 'v-0.9.1/candidate-View' %}"  ; 
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        var data = await response.json();
+        data = data.data
+        for (let i = 0; i < data.length; i++) {
+          if(data[i].status?.name){
+            data[i].status = data[i].status.name
+          }else{
+            data[i].status =""
+          }
+          
+          console.log(data[i].status)
+         
+        }
+        console.log("data",data)
+        return data;
+      };
+
+</script>
+
+
 {% endblock %} {% block content %}
 
 <div class="page-wrapper">
@@ -12,7 +42,7 @@
     <script type="text/javascript" charset="utf-8">
       // Webix Prep
       var url = " {% url 'v-0.9.1/view-candidate' pk='123456' %}";
-      var url2 = " {% url 'v-0.9.1/candidate-View' %}";
+      var url2 = "{% url 'v-0.9.1/candidate-View' %}";
 
       webix.ready(function () {
         gridA = webix.ui({
@@ -228,7 +258,7 @@
               hidden: 0,
             },
             {
-              id: "",
+              id: "status",
               header: {
                 text: "Status",
                 autoheight: true,
@@ -240,13 +270,6 @@
               sort: "string",
               width: 100,
               hidden: 0,
-              template: function (obj) {
-                if (obj.status?.name) {
-                  return obj.status.name;
-                } else {
-                  return " ";
-                }
-              },
             },
             {
               id: "priority",
@@ -368,6 +391,7 @@
               hidden: 0,
             },
           ],
+          data: tableData(),
           on: {
             onBeforeLoad: function () {
               this.showOverlay("Loading...");
@@ -377,7 +401,7 @@
               else this.hideOverlay();
             },
           },
-          url: function () {
+          /*url: function () {
             return webix.promise(function (res) {
               setTimeout(function () {
                 console.log("url",url)
@@ -387,7 +411,7 @@
                 res(webix.ajax(url2));
               }, 1000);
             });
-          },
+          },*/
           onClick: {
             viewbtn: function (e, id, trg) {
               data = this.getItem(id);

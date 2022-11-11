@@ -222,7 +222,7 @@ def platformOrReferral(request):
 
 
 @login_required(login_url='/accounts/login/')
-def editResume(request): 
+def template(request): 
     if request.method == 'POST':
         print("post",request.POST)
 
@@ -235,7 +235,7 @@ def editResume(request):
         "id":request.GET['id'], 
         "resume":request.GET['resume']
     } 
-    return render(request,"v-0.9.1/frontend/edit-resume.html",context)
+    return render(request,"v-0.9.1/frontend/template.html",context)
 
 
 

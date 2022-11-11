@@ -398,7 +398,7 @@
   }
 
   function edit_resume() {
-    Url1 = "{% url 'v-0.9.1/edit-resume'  %}";
+    Url1 = "{% url 'v-0.9.1/template'  %}";
     Url2 = `?id={{candidate.candidate_id}}&resume={{candidate.candidateFileNamePDF}}` 
     Redirect = Url1+Url2
     window.location.href = Redirect;

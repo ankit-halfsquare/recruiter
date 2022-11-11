@@ -37,21 +37,526 @@
 
 
 <script>
-  $(document).ready(function () {
-  $('.selectmultiple').select2({
-          width: 'resolve'
-      });
-      $('.select2-w-100').parent().find('span')
-          .removeClass('select2-container')
-          .css("width", "100%")
-          .css("flex-grow", "1")
-          .css("box-sizing", "border-box")
-          .css("display", "inline-block")
-          .css("margin", "0")
-          .css("position", "relative")
-          .css("vertical-align", "middle")
-  });
+  
+  data= [
+    {
+      "candidate_id": 83,
+      "first_name": "Jamalia",
+      "last_name": "Hooper",
+      "phone": "+1",
+      "email": "2895@gmail.com",
+      "city": "Voluptas rerum inventore temporibus omnis est quo",
+      "state": "Et quidem aut consequatur neque",
+      "country": "Non deleniti ea et consequuntur laborum Qui quide",
+      "history": "Debitis numquam molestiae ab pariatur Voluptas voluptatem Debitis quia qui officiis nostrud",
+      "active": false,
+      "adder": 18,
+      "date_added": "2022-11-03",
+      "skill_keywords": "Voluptatem officia m",
+      "candidateFileName": null,
+      "candidateFileContents": "Curriculum Vitae                                     \n                      Address  : At & Po.Jokha    \n                 Ta.Kamrej , Di.Surat  \nPhone     : 9586541270  \nEmail     : rushil.mistri.2895@gmail.com  \n \nCareer Objective :  \n \n To build  a long -term career in your profession with opportunities for career froth \nand use my skill in the possible way for achieving the company’s goals.  \n \nProfile:  \n \n Bachelor of computer Application (B.C.A) 2016  \n Master of Computer Application  (M.C.A) 2021  \n \nEducation Qualification  : \n \nExamination  Name of Institution / \nCollege / School  Board / University  Year of  \nPassing  Performance  \n(% , CGPA)  \nM.C.A  - Suresh Gyan Vihar \nUniversity . \n(Jaypur)   2021  8 (SGPA)  \nB.C.A  Deviba Institute of \nComputer \nApplication, \nSabargam.  \n(Surat)  Veer Narmad South \nGujarat University.  \n(Surat)  April-\n2016  63.3% \nH.S.C  B.N.B High School \nVav. \n(Surat)  Gujarat  Secondary & \nHigher Secondary Board  \n(Gandhinagar)  March -\n2013  60.66%  \nS.S.C  B.N.B High School \nVav. \n(Surat)  Gujarat  Secondary & \nHigher Secondary Board  \n(Gandhinagar)  March -\n2011  54.4%  \n \nAchievement  : \n \n N.C.C Camp & Training Certificate.  \n State Examination Board, Gujarat State, Intermediate Drawing Grade \nExamination Certificate.  \n Certificate of Basic Computer Course (BCC) in Open Source Application Tool  \n \n \n \n Rushilkumar Mistri   \nPersonal skills  : \n \n Skilled problem solver and quick learner  \n Positive Attitude and Optimist  \n Believe in Smart work  \n \nPersonal Information  :  \n \n Date of Birth    : 28th September 1995  \n Languages known   : English , Hindi  , Guajarati  \n \nwork experience  : \n \n 5 year’s Experience as a  Computer Operator (Teacher , Administration ) . \n                    B.N.Bhakta High School,Vav . \n \nDeclaration  : \n \nI hereby declare that all the information provided in this application is factual and \ncorrect to the best of my knowledge and belief.  \n \n \nDate :   \n \nPlace :  \n \n \n Rushilkumar H. Mistri  ",
+      "candidateFileNameOriginal": "https://recruiterstorageacc.blob.core.windows.net/demo/files/CV_Bf6ZBks.pdf",
+      "candidateFileNamePDF": "files/CV_Bf6ZBks.pdf",
+      "fileUploadDate": "2022-11-03",
+      "candidateFileNameOriginalFull": "Jana Hubbard",
+      "fileUploadUser": "comming soon",
+      "archive": 79,
+      "skill_keywords_full": "Exercitation error a",
+      "year": 1997,
+      "ww": 75,
+      "positionOrPerson": "",
+      "refferedBy": "Sequi",
+      "specialitySkillSet": "Quaerat",
+      "semi": "Elit",
+      "intel": "Sit",
+      "project1": "Ipsam",
+      "project2": "Officia",
+      "project3": "Ullam",
+      "activity": "",
+      "pay": "Corrupti",
+      "customeTemplate": null,
+      "active_assignment": {
+        "id": 1,
+        "project_division": "Occaecat itaque et velit corrupti cupiditate quis",
+        "positionname": "Michael Townsend",
+        "desired_keywords": "Et quibusdam voluptatem sed itaque est reprehend",
+        "target_start_date": "2022-10-10",
+        "est_completion_date": "2022-10-10",
+        "assigneeid": 34,
+        "actual_start_date": "2022-10-10",
+        "active": 84,
+        "actual_completion_date": "2022-10-10",
+        "assigner": "Ea aspernatur ipsum ut blanditiis nisi eos tempor eu temporibus aut vel rerum dolor voluptas nihil est",
+        "date_added": "2022-10-10",
+        "comments": "Quis ut quas ad reiciendis reiciendis et expedita omnis asperiores sed",
+        "statusid": 90
+      },
+      "fk_ra_company": {
+        "id": 1,
+        "name": "Halfsquare"
+      },
+      "fk_ra_project": {
+        "id": 2,
+        "name": "Django app"
+      },
+      "fk_ra_position": {
+        "id": 1,
+        "name": "developer"
+      },
+      "plateformOrReferral": null,
+      "status": {
+        "id": 2,
+        "name": "Initial Contact"
+      },
+      "priority": {
+        "id": 5,
+        "name": "E"
+      }
+    },
+    {
+      "candidate_id": 84,
+      "first_name": "Buffy",
+      "last_name": "Vasquez",
+      "phone": "+1 (215) 134-5383",
+      "email": "SUMITBOGHARA61@GMAIL.COM",
+      "city": "Autem tempora qui iure quos aut occaecat quis elig",
+      "state": "Qui vel sit est temporibus animi molestias aut",
+      "country": "Pariatur Sapiente officia velit minima aut qui f",
+      "history": "Non quas omnis quis dolorem debitis omnis excepturi minima nostrum quos unde non dignissimos possimus consectetur anim",
+      "active": false,
+      "adder": 90,
+      "date_added": "2022-11-03",
+      "skill_keywords": "Aut quod quia quia v",
+      "candidateFileName": null,
+      "candidateFileContents": " \n \nCONTACT  \n9979579482  \nSUMITBOGHARA61@GMAIL.COM  \nSURAT   \n \n \n \nOBJECTIVE  \nI want to be a part of a company where my interpersonal and \ntechnical skills can be utilized, improve, and learn some new skills, \nand where I can work for the company and get an experience of \nprofessional work.  \n \nEXPERIENCE  \n \nLAST YEAR PROJECT  \nTITLE : CLOTHES ON RENT  \nIt's web application which manage clothes for rent. This is \nmultivendor .  \nframework : Laravel \nDatabase : MySQL  \n \nCOMMUNICATIONS LANGUAGES  \n \nEnglish \nGujarati \nHindi  \n \nEDUCATION  \n \nBACHELOR OF COMPUTER APPLICATION  \nSUTEX BANK COLLEGE OF COMPUTER APPLICATIONS & \nSCIENCE  \nPASSING YEAR:JANUARY -2021 \nBCA CGPA -8.52 SGPA - 9.26 \n \nSHREE SWAMINARAYAN GURUKUL , SURAT ,GUJARAT  \nMARCH 2018  \nHIGHER SECONDARY CERTIFICATE(HSC), SCIENCE (GROUP -A) \n \n \nSHREE SWAMINARAYAN GURUKUL , SURAT ,GUJARAT  \nMARCH 2016  \nSECONDARY SCHOOL CERTIFICATE  \n \n \nSKILLS  \n \nNode.js  \nMySQL  \nMongo DB   \n       \n",
+      "candidateFileNameOriginal": "https://recruiterstorageacc.blob.core.windows.net/demo/files/Sumit_boghara_N8piIpJ.pdf",
+      "candidateFileNamePDF": "files/Sumit_boghara_N8piIpJ.pdf",
+      "fileUploadDate": "2022-11-03",
+      "candidateFileNameOriginalFull": "Lesley Haynes",
+      "fileUploadUser": "comming soon",
+      "archive": 25,
+      "skill_keywords_full": "Exercitationem quisq",
+      "year": 1994,
+      "ww": 36,
+      "positionOrPerson": null,
+      "refferedBy": "Expedita voluptas qui velit nemo ex molestiae magna est consequat Nulla minima culpa occaecat quas eu fugiat",
+      "specialitySkillSet": "Sed sed voluptate in totam nesciunt dolor do assumenda aute dicta fugiat inventore rem cupiditate odio enim aut harum",
+      "semi": "Sequi tempore eligendi at obcaecati qui dolor in placeat irure reprehenderit commodo dolorem excepturi a aliquid",
+      "intel": "Vero non id natus voluptatem",
+      "project1": "Qui ut quae amet lorem cum facere similique non doloribus ipsum",
+      "project2": "Ducimus accusamus fugiat sit iste itaque quo odit rem impedit",
+      "project3": "Asperiores sunt quasi dolor aute assumenda assumenda dolor iusto est aute omnis",
+      "activity": "Adipisicing aut quae",
+      "pay": "Eligendi cillum est",
+      "customeTemplate": null,
+      "active_assignment": {
+        "id": 1,
+        "project_division": "Occaecat itaque et velit corrupti cupiditate quis",
+        "positionname": "Michael Townsend",
+        "desired_keywords": "Et quibusdam voluptatem sed itaque est reprehend",
+        "target_start_date": "2022-10-10",
+        "est_completion_date": "2022-10-10",
+        "assigneeid": 34,
+        "actual_start_date": "2022-10-10",
+        "active": 84,
+        "actual_completion_date": "2022-10-10",
+        "assigner": "Ea aspernatur ipsum ut blanditiis nisi eos tempor eu temporibus aut vel rerum dolor voluptas nihil est",
+        "date_added": "2022-10-10",
+        "comments": "Quis ut quas ad reiciendis reiciendis et expedita omnis asperiores sed",
+        "statusid": 90
+      },
+      "fk_ra_company": {
+        "id": 1,
+        "name": "Halfsquare"
+      },
+      "fk_ra_project": {
+        "id": 1,
+        "name": "Filter app"
+      },
+      "fk_ra_position": {
+        "id": 2,
+        "name": "Senior"
+      },
+      "plateformOrReferral": null,
+      "status": {
+        "id": 1,
+        "name": "New Resume"
+      },
+      "priority": {
+        "id": 4,
+        "name": "D"
+      }
+    },
+    {
+      "candidate_id": 85,
+      "first_name": "Fuller",
+      "last_name": "Pearson",
+      "phone": "+1 (641) 591-1764",
+      "email": "jsuhagiya13@gmail.com",
+      "city": "Blanditiis sunt est est proident reprehenderit",
+      "state": "Aliquid ullam officiis tempora a pariatur Saepe r",
+      "country": "Earum earum iusto aperiam iure et",
+      "history": "Et ea aliquam dolores sit eaque nihil consequatur Id quisquam quis",
+      "active": false,
+      "adder": 56,
+      "date_added": "2022-11-03",
+      "skill_keywords": "Eos nostrum reprehe",
+      "candidateFileName": null,
+      "candidateFileContents": "JAYDEEP SUHAGIYA\nFront-End Developer\nEXPERIENCE\n 1). I have 2.5+ year of experience as a\nFront-end developer in ForaStudio™\nPrivate Limited (since 2 months working\nin ReactJS)\nEDUCATION\nRK UNIVERSITY - RAJKOT\nBachelor's degree, Information Technology\n2015 – 2019\nSKILLS\nHTML5  \nCascading Style Sheets (CSS)  \njQuery \nJavaScript\nReact (3 Months)\nBootstrap\nResponsive EMail-Templates\nAdobe illustrator\nAdobe Photoshop\nAdobe XD \nAbstract knowledge of\nMagentoSHASHWAT SCHOOL OF SCIENCE - AMRELI\n2013 - 2015SUMMARY\nTo take a challenging role as a HTML\nDeveloper in a highly technical company\nwhere I could utilize my skills in web design\nand use these skills in providing quality\nservice to the company.\nCONTACT\nEmail : jsuhagiya13@gmail.com\nMo : +91-9998743559\nLinkedin:\nhttps://www.linkedin.com/in/jayd\neep-suhagiya-11a816150\nPROJECT DETAILS\nhttps://www.whizlabs.com/\nhttps://business.whizlabs.com/\nhttps://easydeploy.cloud/\nhttps://charlessuit.com/\nhttps://www.lunarpen.com/\nhttps://lanejofficial.com/",
+      "candidateFileNameOriginal": "https://recruiterstorageacc.blob.core.windows.net/demo/files/Jaydeep_Resume_nn9RUk1.pdf",
+      "candidateFileNamePDF": "files/Jaydeep_Resume_nn9RUk1.pdf",
+      "fileUploadDate": "2022-11-03",
+      "candidateFileNameOriginalFull": "Kitra Brennan",
+      "fileUploadUser": "comming soon",
+      "archive": 7,
+      "skill_keywords_full": "Developer",
+      "year": 2012,
+      "ww": 64,
+      "positionOrPerson": "",
+      "refferedBy": "Rem asperiores in consequatur nemo dolor culpa quam rerum non",
+      "specialitySkillSet": "Consequatur quis reprehenderit sint quaerat ut ut eos sit perspiciatis fuga Dolor ratione mollitia aliqua Velit adipisicing",
+      "semi": "Eius enim molestiae veniam laudantium",
+      "intel": "Voluptas voluptatum cupidatat sint mollit lorem aut magnam sint",
+      "project1": "Aut eum itaque officia non iusto at ut minim et enim dignissimos temporibus labore",
+      "project2": "Laboriosam vero voluptates quo excepteur ex",
+      "project3": "Irure dolorum molestias quis rerum in quia dolore aliquam non et voluptas eum necessitatibus enim ullamco",
+      "activity": "",
+      "pay": "Nihil totam deserunt",
+      "customeTemplate": null,
+      "active_assignment": {
+        "id": 1,
+        "project_division": "Occaecat itaque et velit corrupti cupiditate quis",
+        "positionname": "Michael Townsend",
+        "desired_keywords": "Et quibusdam voluptatem sed itaque est reprehend",
+        "target_start_date": "2022-10-10",
+        "est_completion_date": "2022-10-10",
+        "assigneeid": 34,
+        "actual_start_date": "2022-10-10",
+        "active": 84,
+        "actual_completion_date": "2022-10-10",
+        "assigner": "Ea aspernatur ipsum ut blanditiis nisi eos tempor eu temporibus aut vel rerum dolor voluptas nihil est",
+        "date_added": "2022-10-10",
+        "comments": "Quis ut quas ad reiciendis reiciendis et expedita omnis asperiores sed",
+        "statusid": 90
+      },
+      "fk_ra_company": {
+        "id": 1,
+        "name": "Halfsquare"
+      },
+      "fk_ra_project": {
+        "id": 2,
+        "name": "Django app"
+      },
+      "fk_ra_position": {
+        "id": 2,
+        "name": "Senior"
+      },
+      "plateformOrReferral": null,
+      "status": {
+        "id": 6,
+        "name": "Interested-Pending Timing"
+      },
+      "priority": {
+        "id": 4,
+        "name": "D"
+      }
+    },
+    {
+      "candidate_id": 86,
+      "first_name": "Abbot",
+      "last_name": "David",
+      "phone": "+1 (296) 618-9616",
+      "email": "Allikent93@hotmail.com",
+      "city": "Deserunt et est commodi quia ipsum dolor placeat",
+      "state": "Eum doloribus deleniti omnis a voluptas",
+      "country": "Ut elit in incididunt minus dolor amet quae",
+      "history": "Quo voluptas numquam esse quas minima",
+      "active": true,
+      "adder": 69,
+      "date_added": "2022-11-03",
+      "skill_keywords": "Ut ad duis unde labo",
+      "candidateFileName": null,
+      "candidateFileContents": " \nALLISON KENT -VANDEHEY  \n \n503-396-7405  \nAllikent93@hotmail.com  \nPROFILE  \nI am a creative thinker with a strong work mentality, I am motivated, highly organized, and detail oriented. \nFriendly, personable, and a valued team member.  I am s earching for a company with executives driven to help \ntheir employees succeed and improve.  \nEXPERIENCE  \nWAITRESS, HOULTON BAKERY; ST HELENS, OR — 2007 –2008  \nWhile serving customers at the St. Helens Houlton Bakery I acquired skills such as multitasking , verbal and \nwritten communication, attention to detail, recommendations, maintaining proper accountability for orders and \nfunds while keeping up a professional appearance.  \n \nSTABLE WORKER, SILVER OAKS FARM; ST. HELENS, OR — 2008 –2012 . \nMaintain 25 horse barn. Feeding, doctoring, exercising , cleaning stalls, for all horses at scheduled times.  \n \nMERCHANDISER, COLUMBIA DISTRIBUTING; PORTLAND, OR — 2012 –2013.   \nDistributing beverages to stores. As a Columbia Distributing Merchandiser, I stocked, rotated and merchandised \nproducts so they were ready to sell. I also worked with the sales team to provide exceptional customer service to \nassigned accounts.  \n \nEXECUTIVE ASSISTANT, COLUMBIA DISTRIBUTING; PORTLAND, OR — 2013 -2020.    \nI provide d administrative support to the Executive Team, including answering phones, maintaining files, \nfaxing, generating reports, and meeting preparations. Coordinate travel arrangements including air, car and \nhotel reservations. Prepare, edit, copy and distribute presentations in Word, Excel, and PowerPoint. Facilitate, \narrange , and attend relevant functions and if necessary,  take minutes or notes. Prepare and run pre -existing sales \nand financial reports. Effectively support correspondence with suppliers, customers, and staff via email, letters \nand/or phone/voicemail.  Maintained a high level of confidentiality.  \n \nPARTS MANAGER , PELLHAM CUTTING ; ST. HELENS, OR — 2020 -2021 . \nManage parts operations within the company to provide the highest level of investment through parts sales, \ninventory control, and expense control. Receive d, store d, and issue d spare  replacement parts, equipment, and \nexpendable items used in maintenance shop. Takes  inventory of parts and equipment and maintains inventory \nrecords.  \n \nLENDING OPERATIONS OFFICE ASSISTANT , ONPOINT COMMUNITY CREDIT UNION  (Temp)  \n; PORTLAND , OR — CURRENT  \n Responsible for processing vehicle titles using respective state/agency guidelines , in a timely and accurate \nmanner to assure a high level of customer satisfaction while satisfying Onpoint’s policies. Open and accurately \nrecord incoming titles daily according  to established procedures. Troubleshooting and problem resolution \nspecific to titles. Match sold titles to invoices. Performs other duties as assigned or requested to assure optimum \nservice levels . \n EDUCATION  \nHighschool Diploma -Scappoose, OR  \n \nSKILLS  \nOutstanding troubleshooting, organizational and problem -solving skills. Great multi -tasking and a strong \nattention to detail in data records with excellent customer service. I am well versed in all aspects of Microsoft \nOffice  and extensively use  ADP. I am an Oregon Notary with skills in legal documentation. Communication is \nmy greatest strength.  \n \nREFERENCES  \nKristy Larson -Teacher Otto Petersen Elementary  \n 503-410-4927  \nPaul Meade -CFO Columbia Distributing 503-351-5973  \nNancy Coverdale -IT Manager  Columbia Distributing  503-358-5424  \nLindsi Taylor - Director of Communications Columbia Distributing 360 -487-  \nLori Larson - Stable Owner 503 -366-3467   \n \n \n \n33716 Berg Rd, Warren, OR 97053 allikent93@hotmail.com  \n ",
+      "candidateFileNameOriginal": "https://recruiterstorageacc.blob.core.windows.net/demo/files/Allison_Kent-Vandehey_Resume_wHTlgAL.pdf",
+      "candidateFileNamePDF": "files/Allison_Kent-Vandehey_Resume_wHTlgAL.pdf",
+      "fileUploadDate": "2022-11-03",
+      "candidateFileNameOriginalFull": "Cody Hinton",
+      "fileUploadUser": "comming soon",
+      "archive": 42,
+      "skill_keywords_full": "Ducimus neque labor",
+      "year": 1971,
+      "ww": 16,
+      "positionOrPerson": null,
+      "refferedBy": "Distinctio Non laborum Deserunt anim incididunt animi culpa dolor sed dolor molestias ut",
+      "specialitySkillSet": "Dolorem qui quia ut ab in",
+      "semi": "Molestiae omnis minus est aliqua Quia ut",
+      "intel": "Cumque esse eu tempora in non saepe mollitia ex in quia laborum recusandae Aspernatur magni obcaecati dolore nisi",
+      "project1": "Sint eum ea sint ab omnis nemo necessitatibus sed voluptatum dignissimos",
+      "project2": "Ipsa adipisci libero fugiat voluptate non quasi facilis adipisci labore quasi mollitia quia iure fuga Consequat Doloribus nisi",
+      "project3": "Totam perferendis quo autem esse voluptate et aliquip quos molestiae ut aut et ab amet voluptates eum",
+      "activity": "Do eius consequuntur",
+      "pay": "Quis aut iusto nihil",
+      "customeTemplate": null,
+      "active_assignment": {
+        "id": 1,
+        "project_division": "Occaecat itaque et velit corrupti cupiditate quis",
+        "positionname": "Michael Townsend",
+        "desired_keywords": "Et quibusdam voluptatem sed itaque est reprehend",
+        "target_start_date": "2022-10-10",
+        "est_completion_date": "2022-10-10",
+        "assigneeid": 34,
+        "actual_start_date": "2022-10-10",
+        "active": 84,
+        "actual_completion_date": "2022-10-10",
+        "assigner": "Ea aspernatur ipsum ut blanditiis nisi eos tempor eu temporibus aut vel rerum dolor voluptas nihil est",
+        "date_added": "2022-10-10",
+        "comments": "Quis ut quas ad reiciendis reiciendis et expedita omnis asperiores sed",
+        "statusid": 90
+      },
+      "fk_ra_company": {
+        "id": 1,
+        "name": "Halfsquare"
+      },
+      "fk_ra_project": {
+        "id": 2,
+        "name": "Django app"
+      },
+      "fk_ra_position": {
+        "id": 2,
+        "name": "Senior"
+      },
+      "plateformOrReferral": null,
+      "status": {
+        "id": 1,
+        "name": "New Resume"
+      },
+      "priority": {
+        "id": 6,
+        "name": "F"
+      }
+    },
+    {
+      "candidate_id": 87,
+      "first_name": "Karly",
+      "last_name": "Gomez",
+      "phone": "+1 (195) 843-1671",
+      "email": "starleenburton@msn.com",
+      "city": "Nisi est exercitationem in et vel ut officia quide",
+      "state": "Exercitation voluptas est error laborum",
+      "country": "Sint deserunt sed sit est eum fugit enim non par",
+      "history": "Officia esse dolores necessitatibus laborum Dolor quod consectetur irure quia tempora enim nulla minus cupidatat non velit commodi aliquip",
+      "active": false,
+      "adder": 89,
+      "date_added": "2022-11-03",
+      "skill_keywords": "Qui vel expedita ex",
+      "candidateFileName": null,
+      "candidateFileContents": "STARLEEN BURTON  ________________________________ _________________   \n1560 W. Capri Ave, Mesa, AZ 85202   (480) 577-0436   starleenburton@msn.com  \n \nOBJECTIVE  ________________________________ ________________________________ ____   \nA challenging position with a dynamic and growing company where I can use my current expertise and provide the \nopportunity to develop other proficiencies and make a meaningful contribution.  \n \nPERFORMANCE PROFILE  ________________________________ _________________________   \n Twenty -five years of successful experience in administrative support for division managers, \nowners, project managers, office managers, field managers  and construction managers .  \n Support with recognized strengths in account maintenance, problem -solving, trouble -\nshooting, sales staff suppo rt, and planning/implementing proactive procedures . \n Proven track record of accurately completing research, reporting, information management, \nand business -development efforts.  \n Team player, with the ability to train, motivate, and supervise employees.  \n Adept at developing and maintaining detailed administrative and procedural processes that \nreduce redundancy, improve accuracy and efficiency, and achieve organizational objectives . \n Highly focused and result -oriented in supporting complex, deadline -driven operations; able \nto identify goals and priorities and resolve issues in initial stages . \n \nKEY SKILLS AND AREAS OF EXPERTISE  ________________________________ _____________   \n Excellent Organizational Skills  Project Management  Marketing Development  Public \nSpeaking  Fundraising Development  Policies & Procedures  Management  Strategic \nPlanning  Training & Development  Research  Troubleshooting  Methods & Procedures \n Proofreading  Problem Solving  Management Seminar Planning & Development  \nStrong Client Relations Skills  Leadership  Creativity  Initiative  Dedication  \nDependability  Commitment  Advising  Listening/Clarifying  Analyzing  \nCommunicating  Flexibility  Interpersonal Skills  Coaching  Supervising  Dictation  \nMedical Terminology.  \n \nPROFESSIONAL PROFILE  ________________________________ _________________________   \nLVL II Technician & Backup Shift 7 lead, Kelly Services  November 2019 to Present  \nKelly Services OCG  \nPerform work in the fab of a fortune 500 company (INTEL) as part of the VSG team. As part of \nthe KS VSG team, I oversee and ensure all the PMs have everything needed to perform the job \nsuccessfully. I also perform a PMs, assist with PMs, the training and d evelopment of all the level \ntwos, ensuring the ordering and returning of parts used during a PM, making sure all shark cages \nare properly stocked, uncrate pumps, perform top offs, DI filter changes, cannister changes, \nstocking all smart cabinets, taking re adings and updating the share drive where needed.   \nBasically, making sure the PMs go smoothly so the techs can complete their work in a timely \nmanner so the Fab can get back to production.  I’m COHE certified, respiratory certified,  Work \nplace organization,  preventative maintenance activity preparation, disassembling components, \ninstallation of components and assemblies which includes lifting and moving of parts and part \nkits, ordering and returning parts, monitoring tool box inventory, participate in wiping  of parts \nand components during tool PM’s in addition to maintaining high standards with respect to \nsafety, quality and output. Proper disposal of hazard waste materials proper use of PPE gear. \nDisassemble of parts and repair to be put back into stock.  \n \nOffice Manager and Bookkeeper  May 2003 to November 2019  \nElliott’s Auto Electric  \nManagement Responsibilities included supervising technicians, hiring office staff, managing \nbenefit programs, all bank activities, monitoring petty cash, payroll functions, acco unts payable \nand receivable, ordering office supplies and equipment.  \n Project and Marketing Coordinator  January 2005 to December 2006  \nLofy Group Wealth Management  \nLofy and Associates, P.C.  \nHalcyon Financial Alliance, P.C.  \nServed as a Project and Marketing Coordinator also assisting the President and Vice President, \nutilize organizational skills by providing input to improve individual and overall department \norganization, coordinate travel schedules for departmental personnel (hotel, air travel, \ntransportation, etc.), prepare expense reports for all billable/non -billable department travel on a \ntimely basis, coordinate meetings, prepare agenda, reserve and prepare conference rooms for \nmeetings, prepare/compose routine correspondence as requested, pre pare new business kits \nwhich includes, binding designated copies and fine -tuning PowerPoint presentations to be \nenclosed in client specific kits, arrange and implement, as directed, conferences and committee \nmeetings, assist with recruiting and interviewin g, organize, assemble and maintain New Client  \nWelcome Packets, assist in drafting and organizing Employee Handbook, assist in drafting legal \nagreements, Notarized legal documents, witnessed trust signings, organize and prioritize e -mails \ncorrespondence, d aily mail, and phone messages, plan, plan, schedule and facilitate business \nfunctions, manage confidential correspondence, responsible for initiating and publishing the \nFreedom Reigns quarterly newsletter, distribution of the Weekly Commentary via -email, w eb \npage design.  \n \nEDUCATION  ________________________________ ________________________________ ____   \nIntelli High School  \n \nRio Salado Community College  \n Distance Learning  \n \nParadise Valley Community College  \n Marketing  \n Accounting and Bookkeeping  \n Small Business Operations  \n Project Management Planning  \n \nUniversity of Phoenix  \n Accountancy  \n \nVOLUNTEER  ________________________________ ________________________________ ___  \nOffice Administrator              January 1998 to December 200 4 \nBearup for Sheriff Campaign  \nThomas R. Bearup  \n \nReferences available upon request  ",
+      "candidateFileNameOriginal": "https://recruiterstorageacc.blob.core.windows.net/demo/files/Starleen_Burton_Resume_N21yPrq.pdf",
+      "candidateFileNamePDF": "files/Starleen_Burton_Resume_N21yPrq.pdf",
+      "fileUploadDate": "2022-11-03",
+      "candidateFileNameOriginalFull": "Wynter Moses",
+      "fileUploadUser": "comming soon",
+      "archive": 89,
+      "skill_keywords_full": "Technician Track",
+      "year": 1978,
+      "ww": 1,
+      "positionOrPerson": null,
+      "refferedBy": "Eu exercitation et quis non consectetur rem ad dolore",
+      "specialitySkillSet": "Ipsum adipisci error quaerat dolore beatae error aut facilis tempore quisquam velit aliqua Dolor",
+      "semi": "Vel sunt nulla eveniet sequi rerum quisquam aut rerum nisi explicabo Est dicta",
+      "intel": "Rerum nostrum quidem quibusdam hic quis adipisci consequuntur nostrum dolore quia qui do alias aliquam",
+      "project1": "Impedit fugiat proident exercitation nemo harum et praesentium rem eaque enim quis suscipit qui facilis ab",
+      "project2": "Culpa ea dicta veniam placeat enim ad ut officia et ab placeat adipisicing irure atque sed dolor numquam",
+      "project3": "Aliquam quis fugiat mollitia reprehenderit illo commodo odit",
+      "activity": "Voluptate incidunt",
+      "pay": "Nesciunt soluta qui",
+      "customeTemplate": null,
+      "active_assignment": {
+        "id": 1,
+        "project_division": "Occaecat itaque et velit corrupti cupiditate quis",
+        "positionname": "Michael Townsend",
+        "desired_keywords": "Et quibusdam voluptatem sed itaque est reprehend",
+        "target_start_date": "2022-10-10",
+        "est_completion_date": "2022-10-10",
+        "assigneeid": 34,
+        "actual_start_date": "2022-10-10",
+        "active": 84,
+        "actual_completion_date": "2022-10-10",
+        "assigner": "Ea aspernatur ipsum ut blanditiis nisi eos tempor eu temporibus aut vel rerum dolor voluptas nihil est",
+        "date_added": "2022-10-10",
+        "comments": "Quis ut quas ad reiciendis reiciendis et expedita omnis asperiores sed",
+        "statusid": 90
+      },
+      "fk_ra_company": {
+        "id": 1,
+        "name": "Halfsquare"
+      },
+      "fk_ra_project": {
+        "id": 2,
+        "name": "Django app"
+      },
+      "fk_ra_position": {
+        "id": 1,
+        "name": "developer"
+      },
+      "plateformOrReferral": null,
+      "status": {
+        "id": 2,
+        "name": "Initial Contact"
+      },
+      "priority": {
+        "id": 5,
+        "name": "E"
+      }
+    },
+    {
+      "candidate_id": 93,
+      "first_name": "test",
+      "last_name": "upload",
+      "phone": null,
+      "email": "test@gmail.com",
+      "city": null,
+      "state": null,
+      "country": null,
+      "history": null,
+      "active": false,
+      "adder": null,
+      "date_added": "2022-11-08",
+      "skill_keywords": "",
+      "candidateFileName": null,
+      "candidateFileContents": "Recruiter system updates\n1)\nMain menu formatting\n2)\nMain menu items\na)\nPlease make the main menu items a single level and with the following menu\nitems\ni)\nCandidates (This is the home screen…shows the above with formatting\nchanges)\nii)\nAdd new candidate (Open new form ready to create a candidate.\niii)\nProjects (This would edit a list of projects in the system.)  Should have the\nsame layout and behaviors of candidate…but edit the Projects data.  See\ninitial list below.\niv)\nStatus - This would edit a list of status in the project.  See initial list below\nto load into table.\nv)\nPlatform/Referral - This would edit a list of platform/referral spots.  See\ninitial list below.\nvi)\nSkill Level/Referral - This would edit a list of skill levels and referrals.  See\nlist below.\nvii)\nPriority - This would edit a list of priorities.  See list below.\n3)\nCandidate Edit Page Behaviors\na)\nWhen you click save…stay on page.\nb)\nChange widths of columns\nc)\nReduce font size\nd)\nAdd nav button/link to list\n4)\nRemove a lot of the test data.  Do leave about 4 or 5 records in the system.\n5)\nProject List\na)\nIntel OR\nb)\nIntel AZ\nc)\nd)\nA&E\ne)\nIntel NM\nf)\nIntel OR\ng)\nAM Life Science\nh)\nWolfspeed\ni)\nMicron VA\nj)\nAMCRB\nk)\nMicron Boise\nl)\nIntel AZ (CADE)\nm)\nLife Science\nn)\nIntel Ireland\no)\nMomentive\np)\nIntel AZ\nq)\nUtah\nr)\nIntel NM\ns)\nIntel CA\nt)\nTex Ins\nu)\nMPM\nv)\nSAS\nw)\nSAS\nx)\nMicron Boise\ny)\nz)\nCREE\naa)\nBoise\nbb)\nAMCRB Boise\ncc)\nIreland\ndd)\nAZ\nee)\nIntel OR\nff)\nNeed Resume\ngg)\nLehi\nhh)\nAM Life Science\nii)\nMicron VA\njj)\nHitachi\nkk)\nAMCRB\nll)\nHendricks NC\nmm)\nHendricks\nnn)\nCTCI\noo)\nNC\npp)\nCREE NY\nqq)\nIntel\nrr)\nTesla\nss)\nIntel Israel\ntt)\n6)\nStatus List\na)\nNew Resume\nb)\nInitial Contact\nc)\nInterested-Pending Placement\nd)\nInterested-Pending Timing\ne)\nOLRF/NADR (Placed)\nf)\nReengage\ng)\nArchived\n7)\nSkill Level/Division\na)\nAdmin\nb)\nAMCRB\nc)\nCC\nd)\nDesigner/Drafter\ne)\nDoc Control\nf)\nEngineer\ng)\nEntry Tech\nh)\nEIT\ni)\nFSE\nj)\nLS\nk)\nProf Eng\nl)\nPhD\nm)\nPM\nn)\nQA\no)\nScientist\np)\nSchedulersq)\nProcurement\nr)\nSpec Tech\n8)\nPriority\na)\nA\nb)\nB\nc)\nC\nd)\nD\ne)\nE\nf)\nF",
+      "candidateFileNameOriginal": "https://recruiterstorageacc.blob.core.windows.net/demo/files/Recruiter_v0.9.1_efN69tT.pdf",
+      "candidateFileNamePDF": "files/Recruiter_v0.9.1_efN69tT.pdf",
+      "fileUploadDate": "2022-11-08",
+      "candidateFileNameOriginalFull": null,
+      "fileUploadUser": "comming soon",
+      "archive": null,
+      "skill_keywords_full": null,
+      "year": null,
+      "ww": null,
+      "positionOrPerson": null,
+      "refferedBy": null,
+      "specialitySkillSet": null,
+      "semi": null,
+      "intel": null,
+      "project1": null,
+      "project2": null,
+      "project3": null,
+      "activity": "",
+      "pay": "",
+      "customeTemplate": null,
+      "active_assignment": null,
+      "fk_ra_company": null,
+      "fk_ra_project": null,
+      "fk_ra_position": null,
+      "plateformOrReferral": null,
+      "status": null,
+      "priority": null
+    },
+    {
+      "candidate_id": 94,
+      "first_name": "test",
+      "last_name": "upload 2",
+      "phone": null,
+      "email": null,
+      "city": null,
+      "state": null,
+      "country": null,
+      "history": null,
+      "active": false,
+      "adder": null,
+      "date_added": "2022-11-09",
+      "skill_keywords": "",
+      "candidateFileName": null,
+      "candidateFileContents": "CONSTRUCTION COORDINATOR 2 \n(A.G.)  \nSUMMARY  \nDriven individual and Recent College Grad new to the semiconductor industry and eager to gain more experience, knowledge, and responsibility ; \nhaving displayed ability to pick things up quickly and continue to work on executing at a high level. Possessing a “ team -first” mindset and will do \nwhatever it takes to support the team and partners to complete projects in a safe, and timely manner.  Extensive e xperience in team building, \nleadership, and management and apply these skills on every project or task . Strong communicator, conveying complex technical ideas with clarity \nto promote project collaborations. Works well under pressure, often in difficult and d emanding circumstances.   \n \nEXPERIENCE  \nAM Technical Solutions  |  Hillsboro, OR                            2021 – Present          \nGeneral Coordinator - Space Management and Logistics  \n• Coordinate and create plans weekly based off project priority and hit milestones to stay on track with deadlines across various \nprojects.  \n• Support various groups on campus with logistical needs and space management to minimize impacts to construction and factory w ork.  \n• Communicate daily between the customer, general contracto rs, vendors, and trade partners to ensure all stakeholders align on project \nrequirements, updates, and deadlines.  \n• Schedule field walks and meetings with stakeholders to discuss questions and concerns, and design plans to ensure project suc cess.  \n• Attend me etings with the customer, general contractors, and trade partners to discuss project updates, logistical support, and campus \nimpacts.  \n• Analyze construction blueprints, project packages, and dock schedules to create plan of action with trade partners.   \n• Use various software programs for data entry and use outlook and excel as tools for daily success.  \n \nMilgard Windows & Doors  |  Tualatin, OR                         2021 \nTemp Coordinator and Production Lead Back Up Trainee  \n• Communicate with 4 different staffi ng agencies daily overseeing the hires of temporary workers in 3 different departments \n(Production, shipping, and receiving).  \n• Coordinate orientation and training days, schedule interviews for our recruiter, analyze potential candidates and look over r esum es on \na weekly basis.  \n• Communicate with HR reps and our recruiter to go over weekly order summaries for open positions.  \n• Communicate weekly with supervisors and leads to coordinate workers positions on various lines.  \n• As a production lead backup trainee, I oversee daily tasks of 2 -5 individuals in our department and make sure we achieve hourly and \ndaily output goals.  \n• Train new employees to increase the number of people with sufficient cross -training for various positions.  \n• Cross -trained in 7 of 7 positions in our department and help trouble shoot machines and co -workers at various positions to maintain 1 -\npiece flow and reduce bottlenecks along the production line.  \n•  Communicate with leads and supervisors to improve daily output and efficiency.  \n• Communicate wi th receiving to order material if inventory is low.  \n \nAshland Organics LLC  |  Ashland, OR                   2019 – 2020  \nGeneral Manager of Operations  \n• Oversaw day -to-day operations and planned accordingly to maintain daily output to complete projects befor e deadline.  \n• Communicated with upper management daily to discuss plans and improve operations to become more efficient.  \n• Coordinated and planned projects to add infrastructure and repair and maintain building structures, fences, irrigation and pu mps, and \nother infrastructure.  \n• Prepped water tanks with nutrients and monitored pH levels, conductivity, and temperature while mak ing adjustments if needed.  \n• Used farm equipment and machinery to till fields, dig holes, move nutrients, soil, hay, etc.  \n• Coordinated harvest dates and delegated tasks with additional temp workers to help with production demand.  \n• Recorded dry and wet weight s, plant ID tags, and date of harvest to input into our metric system.  \n• Helped design and market company and product brands for the owner’s store and farm.  \n \n \n \n \n \n \n \n \n CONSTRUCTION COORDINATOR 2 \n(A.G.)  \nSouthern ORegon Research Extension Center  |  Central Point, OR                 2018 –2019  \nViticulture lab technician - internship  \n• Installed and maintained irrigation lines, emitters, and valves at 4 vineyards.  \n• Worked on 4 different projects for: the effects of water stress on crop yield and fruit quality, the effects of water stress on plant \nphysiology and function, the effects of using twice the amount of supplemental nutrients and water on crop yield and tracked th e \nspread of Red Blotch Disease.  \n• Used various analytical instruments to collect field measurements for data collection. (E.g., Phot osynthetically active radiation, water \npotential, stomatal conductance, CO2 exchange and fluorescence).  \n• Collected, analyzed, and reported on field data for brix, pH, phenolic compounds, total dissolved solids, shoot elongation \nmeasurements, cluster counts  and weights.  \n• Made buffers and helped extract phenolic compounds from seeds/skins using a B üchi Rotavapor Dynamic Pro System.  \n• Used MS software to input and analyze results from various experiment to determine if there was a correlation from the data a nd our \nexpected outcome.  \n• Helped prep samples, clean glassware, restock and organize inventory, and other odd jobs around the lab.  \n \nEDUCATION /CERTIFICATIONS  \nSOUTHERN OREGON UNIVERSITY   |  ASHLAND , OR \nBachelor of Science in Biology w/ a minor in Chemistry  \n \nKEY SKILLS  \nPeople Management  \nCustomer Orientation  \nContinuous Process Improvement  \nTechnical Support  \nConflict Resolution  \nDocumentation and Reporting  \nComplex Problem Solving  \nProductivity Improvement  \nTime management and prioritizing tasks  \nProblem solving in fast -paced environments  \nStrong communication and personal skills  \nLeader by example with character and work ethic  \nSufficient in Microsoft office, power point, excel, and outlook  \nTeam-first Mindset  ",
+      "candidateFileNameOriginal": "https://recruiterstorageacc.blob.core.windows.net/demo/files/Garrett_Greenway_101922_Profile.docx",
+      "candidateFileNamePDF": "files/Garrett_Greenway_101922_Profile.pdf",
+      "fileUploadDate": "2022-11-09",
+      "candidateFileNameOriginalFull": null,
+      "fileUploadUser": "comming soon",
+      "archive": null,
+      "skill_keywords_full": "Technician Track Design Excel",
+      "year": null,
+      "ww": null,
+      "positionOrPerson": null,
+      "refferedBy": null,
+      "specialitySkillSet": null,
+      "semi": null,
+      "intel": null,
+      "project1": null,
+      "project2": null,
+      "project3": null,
+      "activity": "",
+      "pay": "",
+      "customeTemplate": null,
+      "active_assignment": null,
+      "fk_ra_company": null,
+      "fk_ra_project": null,
+      "fk_ra_position": null,
+      "plateformOrReferral": null,
+      "status": null,
+      "priority": null
+    },
+    {
+      "candidate_id": 95,
+      "first_name": "test",
+      "last_name": "upload 3",
+      "phone": "",
+      "email": "",
+      "city": null,
+      "state": null,
+      "country": null,
+      "history": null,
+      "active": false,
+      "adder": null,
+      "date_added": "2022-11-09",
+      "skill_keywords": "",
+      "candidateFileName": null,
+      "candidateFileContents": "<p><strong>CONSTRUCTION COORDINATOR 2 (A.G.)</strong> <br />SUMMARY <br />&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style=\"background-color: #f1c40f;\"> Driven individual and Recent</span> College Grad new to the semiconductor industry and eager to gain more experience, knowledge, and responsibility ; having displayed ability to pick things up quickly and continue to work on executing at a high level. Possessing a &ldquo; team -first&rdquo; mindset and will do whatever it takes to support the team and partners to complete projects in a safe, and timely manner. Extensive e xperience in team building, leadership, and management and apply these skills on every project or task . Strong communicator, conveying complex technical ideas with clarity to promote project collaborations. Works well under pressure, often in difficult and d emanding circumstances. EXPERIENCE AM Technical Solutions | Hillsboro, OR 2021 &ndash; Present General Coordinator - Space Management and Logistics &bull; Coordinate and create plans weekly based off project priority and hit milestones to stay on track with deadlines across various projects. &bull; Support various groups on campus with logistical needs and space management to minimize impacts to construction and factory w ork. &bull; Communicate daily between the customer, general contracto rs, vendors, and trade partners to ensure all stakeholders align on project requirements, updates, and deadlines. &bull; Schedule field walks and meetings with stakeholders to discuss questions and concerns, and design plans to ensure project suc cess. &bull; Attend me etings with the customer, general contractors, and trade partners to discuss project updates, logistical support, and campus impacts. &bull; Analyze construction blueprints, project packages, and dock schedules to create plan of action with trade partners. &bull; Use various software programs for data entry and use outlook and excel as tools for daily success. Milgard Windows &amp; Doors | Tualatin, OR 2021 Temp Coordinator and Production Lead Back Up Trainee &bull; Communicate with 4 different staffi ng agencies daily overseeing the hires of temporary workers in 3 different departments (Production, shipping, and receiving). &bull; Coordinate orientation and training days, schedule interviews for our recruiter, analyze potential candidates and look over r esum es on a weekly basis. &bull; Communicate with HR reps and our recruiter to go over weekly order summaries for open positions. &bull; Communicate weekly with supervisors and leads to coordinate workers positions on various lines. &bull; As a production lead backup trainee, I oversee daily tasks of 2 -5 individuals in our department and make sure we achieve hourly and daily output goals. &bull; Train new employees to increase the number of people with sufficient cross -training for various positions. &bull; Cross -trained in 7 of 7 positions in our department and help trouble shoot machines and co -workers at various positions to maintain 1 - piece flow and reduce bottlenecks along the production line. &bull; Communicate with leads and supervisors to improve daily output and efficiency. &bull; Communicate wi th receiving to order material if inventory is low. Ashland Organics LLC | Ashland, OR 2019 &ndash; 2020 General Manager of Operations &bull; Oversaw day -to-day operations and planned accordingly to maintain daily output to complete projects befor e deadline. &bull; Communicated with upper management daily to discuss plans and improve operations to become more efficient. &bull; Coordinated and planned projects to add infrastructure and repair and maintain building structures, fences, irrigation and pu mps, and other infrastructure. &bull; Prepped water tanks with nutrients and monitored pH levels, conductivity, and temperature while mak ing adjustments if needed. &bull; Used farm equipment and machinery to till fields, dig holes, move nutrients, soil, hay, etc. &bull; Coordinated harvest dates and delegated tasks with additional temp workers to help with production demand. &bull; Recorded dry and wet weight s, plant ID tags, and date of harvest to input into our metric system. &bull; Helped design and market company and product brands for the owner&rsquo;s store and farm. CONSTRUCTION COORDINATOR 2 (A.G.) Southern ORegon Research Extension Center | Central Point, OR 2018 &ndash;2019 Viticulture lab technician - internship &bull; Installed and maintained irrigation lines, emitters, and valves at 4 vineyards. &bull; Worked on 4 different projects for: the effects of water stress on crop yield and fruit quality, the effects of water stress on plant physiology and function, the effects of using twice the amount of supplemental nutrients and water on crop yield and tracked th e spread of Red Blotch Disease. &bull; Used various analytical instruments to collect field measurements for data collection. (E.g., Phot osynthetically active radiation, water potential, stomatal conductance, CO2 exchange and fluorescence). &bull; Collected, analyzed, and reported on field data for brix, pH, phenolic compounds, total dissolved solids, shoot elongation measurements, cluster counts and weights. &bull; Made buffers and helped extract phenolic compounds from seeds/skins using a B üchi Rotavapor Dynamic Pro System. &bull; Used MS software to input and analyze results from various experiment to determine if there was a correlation from the data a nd our expected outcome. &bull; Helped prep samples, clean glassware, restock and organize inventory, and other odd jobs around the lab. EDUCATION /CERTIFICATIONS SOUTHERN OREGON UNIVERSITY | ASHLAND , OR Bachelor of Science in Biology w/ a minor in Chemistry KEY SKILLS People Management Customer Orientation Continuous Process Improvement Technical Support Conflict Resolution Documentation and Reporting Complex Problem Solving Productivity Improvement Time management and prioritizing tasks Problem solving in fast -paced environments Strong communication and personal skills Leader by example with character and work ethic Sufficient in Microsoft office, power point, excel, and outlook Team-first Mindset</p>",
+      "candidateFileNameOriginal": "https://recruiterstorageacc.blob.core.windows.net/demo/files/Garrett_Greenway_101922_Profile_J4qetFh.pdf",
+      "candidateFileNamePDF": "files/Garrett_Greenway_101922_Profile_J4qetFh.pdf",
+      "fileUploadDate": "2022-11-09",
+      "candidateFileNameOriginalFull": null,
+      "fileUploadUser": "comming soon",
+      "archive": null,
+      "skill_keywords_full": "Technician Track Design Excel",
+      "year": null,
+      "ww": null,
+      "positionOrPerson": "",
+      "refferedBy": "",
+      "specialitySkillSet": "",
+      "semi": "",
+      "intel": "",
+      "project1": "",
+      "project2": "",
+      "project3": "",
+      "activity": "",
+      "pay": "",
+      "customeTemplate": "",
+      "active_assignment": null,
+      "fk_ra_company": null,
+      "fk_ra_project": null,
+      "fk_ra_position": null,
+      "plateformOrReferral": null,
+      "status": {
+        "id": 1,
+        "name": "New Resume"
+      },
+      "priority": {
+        "id": 3,
+        "name": "C"
+      }
+    }
+  ]
+   for (let i = 1; i < data.length; i++) {
+      
+      console.log("status",data[i].status)  
+      data[i].status = data[i].status.name
+      console.log("status",data[i].status) 
+    }
 
+
+  console.log("data",data)  
 </script>
 </body>
 </html>

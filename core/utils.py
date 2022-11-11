@@ -63,7 +63,6 @@ def read_file(filename):
 
 
 
-
 html_start = '''<html lang="en">
                 <head>
                     <meta charset="UTF-8" />
