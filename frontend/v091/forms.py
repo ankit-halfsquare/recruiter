@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django import forms
 from core.models import CandidateTable,CandidateResumeTemplates
 
-from easy_select2 import select2_modelform_meta,select2_modelform,apply_select2
+# from easy_select2 import select2_modelform_meta,select2_modelform,apply_select2
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import (
@@ -32,7 +32,6 @@ class TemplateForm(ModelForm):
         model = CandidateResumeTemplates
         fields = '__all__'
         
-
 
 
        

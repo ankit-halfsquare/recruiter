@@ -1,33 +1,15 @@
 {% extends "v-0.9.1/base/base.html"%} {% load static %} {% block head %}
-<script type="text/javascript" src="{% static 'codebase/webix.js' %}"></script>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'codebase/webix.css' %}"
-/>
-
 {% endblock %} {% block content %}
 
 <div class="page-wrapper">
-  <!-- Container fluid  -->
   <div class="container-fluid">
-    <!-- Start Page Content -->
-    {% comment %} <div class="pagetitle mb-3 align-items-center justify-content-between">
-      <h3 class="mb-0">Priority</h3>
-      <a
-        href="javascript:void(0)"
-        class="btn btn-primary btn-sm waves-effect"
-        onclick="add_priority()"
-      >
-        Add New Priority</a
-      >
-    </div> {% endcomment %}
-
+    <div class="pagetitle mb-3 align-items-center justify-content-between">
+      <h3 class="mb-0">Plateform/Referral</h3>
+      <button type="button" class="btn btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+          Add Plateform/Referral
+      </button>
+    </div>
     <script type="text/javascript" charset="utf-8">
-      function add_priority() {
-       
-      }
-      // Webix Prep
       var url = " {% url 'v-0.9.1/platform-R-referral-ListCreateAPI-View' %}";
       var name = "PlateForm/Referaral"
       {% include "v-0.9.1/frontend/webix.html" %} 
@@ -35,5 +17,5 @@
     <div id="webix_datatable"></div>
   </div>
 </div>
-
+{% include "v-0.9.1/frontend/model.html" %} 
 {% endblock %}

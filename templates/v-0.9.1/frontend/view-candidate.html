@@ -1,5 +1,13 @@
 {% extends "v-0.9.1/base/base.html"%} {% load static %} {% block css %} {% endblock %}
-{% load crispy_forms_tags %} {% block content %}
+{% load crispy_forms_tags %} 
+
+ {% block head %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+
+{% endblock %}
+
+{% block content %}
 <div class="page-wrapper">
   <div id="toast">
     <div id="img"></div>
@@ -58,7 +66,7 @@
                     <div class="col-md-4 edit_btn" onclick="edit_resume()">
                         <a class="editcandidate"
                           ><i class="isax isax-edit"></i>
-                          <span>Edit Resume</span>
+                          <span>Edit Template</span>
                         </a>
                     </div>
                    
@@ -313,9 +321,25 @@
 {% endblock %} 
 {% block script %}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 <script>
   $(document).ready(function () {
     cleanForm();
+
+    $('.selectmultiple').select2({
+          width: 'resolve'
+      });
+      $('.select2-w-100').parent().find('span')
+          .removeClass('select2-container')
+          .css("width", "100%")
+          .css("flex-grow", "1")
+          .css("box-sizing", "border-box")
+          .css("display", "inline-block")
+          .css("margin", "0")
+          .css("position", "relative")
+          .css("vertical-align", "middle")
+   
+    
   });
 
   function launch_toast() {

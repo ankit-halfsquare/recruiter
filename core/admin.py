@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import *
-from easy_select2 import select2_modelform
+# from easy_select2 import select2_modelform
 # Register your models here.
 
 
@@ -10,10 +10,10 @@ class AssignmentAdmin(admin.ModelAdmin):
     list_display = ('project_division', 'positionname', 'desired_keywords','target_start_date','est_completion_date','assigneeid','actual_start_date','active','actual_completion_date','assigner','date_added','comments','statusid')
 
 
-CandidateTableForm = select2_modelform(CandidateTable, attrs={'width': '250px'})
+# CandidateTableForm = select2_modelform(CandidateTable, attrs={'width': '250px'})
 
 class CandidateTableAdmin(admin.ModelAdmin):
-    form = CandidateTableForm
+    # form = CandidateTableForm
     readonly_fields=('fileUploadUser','candidateFileName','candidateFileNamePDF','date_added','fileUploadDate')
     list_display = ('skill_keywords_found','first_name','last_name','city','state','country','phone','email','active_assignment','candidateFileNameOriginal','fileUploadDate','date_added',)
     list_display_links = ('first_name','last_name','skill_keywords_found',)

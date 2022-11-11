@@ -11,6 +11,7 @@
     </div>
     <script type="text/javascript" charset="utf-8">
       // Webix Prep
+      var url = " {% url 'v-0.9.1/view-candidate' pk='123456' %}";
       var url2 = " {% url 'v-0.9.1/candidate-View' %}";
 
       webix.ready(function () {
@@ -227,7 +228,7 @@
               hidden: 0,
             },
             {
-              id: "status",
+              id: "",
               header: {
                 text: "Status",
                 autoheight: true,
@@ -385,10 +386,11 @@
           },
           onClick: {
             viewbtn: function (e, id, trg) {
-              console.log("Click");
               data = this.getItem(id);
-              console.log("data", data);
-              webix.send(`v-0.9.1/candidate/${data.candidate_id}`, {}, "get");
+              console.log("url",url)
+              Url = url.replace("123456", data.candidate_id);
+              console.log("Url",Url)
+              webix.send(Url, {}, "get");
             },
           },
           /*on: {

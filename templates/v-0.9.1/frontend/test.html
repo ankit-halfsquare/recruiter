@@ -1,33 +1,60 @@
-{% extends "v-0.9.1/base/base.html"%} {% load static %} {% block css %} 
-{% endblock %} {% load crispy_forms_tags %} {% block content %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 
-<div class="page-wrapper">
-  <div class="container-fluid">
- <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-      Add 
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          
-          <div class="modal-body">
-             <form>
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button">Save</button>
-                </div>
-              </div>
-             </form>
-          </div>
-         
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col" class="w-50">#</th>
+            <th scope="col" class="w-50">Trade Zones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <div class="col-md-12 mt-2 view-form-font">
+              {{ form.skillLevel|as_crispy_field }}
+            </div>
+            </td>
+            
+        </tr>
+        </tbody>
+    </table>
 </div>
 
-{% endblock %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+
+
+<script>
+  $(document).ready(function () {
+  $('.selectmultiple').select2({
+          width: 'resolve'
+      });
+      $('.select2-w-100').parent().find('span')
+          .removeClass('select2-container')
+          .css("width", "100%")
+          .css("flex-grow", "1")
+          .css("box-sizing", "border-box")
+          .css("display", "inline-block")
+          .css("margin", "0")
+          .css("position", "relative")
+          .css("vertical-align", "middle")
+  });
+
+</script>
+</body>
+</html>
+
+
+

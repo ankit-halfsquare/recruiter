@@ -46,7 +46,7 @@
                     </div>
                   </div>
                   <div class="col-sm-6 right-side">
-                    <h5 class="mb-2">Create Custom Resume</h5>
+                    <h5 class="mb-2">Template</h5>
 
                     <div id="test" class="col-md-12 mt-2 view-form-font">
                       <form
@@ -55,7 +55,11 @@
                         action=""
                         enctype="multipart/form-data"
                       >
-                        {% csrf_token %} {{ form.media }} {{ form.template }}
+                        {% csrf_token %} {{ form.media }} 
+                        <div class = "resize" >
+                          {{ form.template }}
+                        </div>
+                        
                       </form>
                     </div>
                   </div>
@@ -73,11 +77,28 @@
 
 
 <script>
-  $(document).ready(function () {});
+  $(document).ready(function () {
+    
 
- 
-  function test() {
-    var html = document.getElementById("id_template").value;
-  }
+    try {
+      async function test() 
+      {
+        await new Promise(resolve => setTimeout(resolve, 500));
+        node = document.getElementsByClassName('resize')
+        node[0].lastElementChild.setAttribute("style","height:calc(100vh - 300px)");
+        console.log("resize Done")
+      }
+      test()
+
+    } catch (error) {
+      console.error("Ankiterror",error);
+      test()
+   
+    }
+
+    
+    
+  });
+  
 </script>
 {% endblock %}

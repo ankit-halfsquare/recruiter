@@ -17,14 +17,15 @@ from core.models import (
 )
 from .serializers import ( 
     CandidateTableSerializer,AssignmentSerializer,CompanySerializer,ProjectSerializer,PositionSerializer,
-    KeywordSerializer,StatusSerializer,SkillLevelSerializer,PrioritySerializer,PlatformOrReferralSerializer
+    KeywordSerializer,StatusSerializer,SkillLevelSerializer,PrioritySerializer,PlatformOrReferralSerializer,CandidateTableSerializer2
+    
 )
 
 
 
 class CandidateUpdateAPIView(generics.UpdateAPIView):
     queryset = CandidateTable.objects.all()
-    serializer_class = CandidateTableSerializer
+    serializer_class = CandidateTableSerializer2
     lookup_feild = 'pk'
 
     # def perform_update(self, serializer): # optional if need any modification before

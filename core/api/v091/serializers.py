@@ -5,12 +5,27 @@ from core.models import (
 ) 
 
 
+class SkillLevelSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField()
+    class Meta:
+        model = CandidateSkillLevel
+        fields = '__all__'
+
+
 class CandidateTableSerializer(serializers.ModelSerializer):
+    # skillLevel = SkillLevelSerializer(many=True)
+
     class Meta:
         model = CandidateTable
         depth = 1
-        exclude = ('active_assignment','skillLevel')
+        exclude = ("skillLevel",)
 
+
+class CandidateTableSerializer2(serializers.ModelSerializer):
+    class Meta:
+        model = CandidateTable
+        depth = 0
+        exclude = ()
 
 class AssignmentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -48,10 +63,7 @@ class StatusSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class SkillLevelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CandidateSkillLevel
-        fields = '__all__'
+
 
 
 class PrioritySerializer(serializers.ModelSerializer):
