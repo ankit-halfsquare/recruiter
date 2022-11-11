@@ -81,24 +81,20 @@
     
 
     try {
-      async function test() 
+      async function test(i) 
       {
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, i));
         node = document.getElementsByClassName('resize')
         node[0].lastElementChild.setAttribute("style","height:calc(100vh - 300px)");
-        console.log("resize Done")
         
       }
-      test()
-      test()
-      test()
-      test()
-      test()
-      test()
+      for (let i = 1; i < 300; i++) {
+        test(i*100)
+      }
 
     } catch (error) {
       console.error("Ankiterror",error);
-      test()
+      test(1000)
    
     }
 
