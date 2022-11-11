@@ -380,6 +380,10 @@
           url: function () {
             return webix.promise(function (res) {
               setTimeout(function () {
+                console.log("url",url)
+                console.log("url2",url2)
+                console.log("res",res)
+                console.log("webix.ajax",webix.ajax)
                 res(webix.ajax(url2));
               }, 1000);
             });
