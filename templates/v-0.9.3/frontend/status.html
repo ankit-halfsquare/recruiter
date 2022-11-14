@@ -1,0 +1,24 @@
+{% extends "v-0.9.3/base/base.html"%} {% load static %} {% block head %}
+{% endblock %} {% block content %}
+
+<div class="page-wrapper">
+  <div class="container-fluid">
+    <div class="pagetitle mb-3 align-items-center justify-content-between">
+      <h3 class="mb-0">Status</h3>
+      <button type="button" class="btn btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+        Add Staus
+      </button>
+    </div>
+    <script type="text/javascript" charset="utf-8">
+      var url = " {% url 'v-0.9.3/status-listCreateAPI-View' %}";
+      var name = "Status"
+      {% include "v-0.9.3/frontend/webix.html" %} 
+    </script>
+    <div id="webix_datatable"></div>
+  </div>
+</div>
+
+{% include "v-0.9.3/frontend/model.html" %} 
+
+{% endblock %}
+

@@ -159,7 +159,7 @@ class CandidateTable(models.Model):
     fileUploadDate = models.DateField(blank=True, null=True)
     candidateFileNameOriginalFull = models.CharField(max_length=255, null=True, blank=True)
     fileUploadUser = models.CharField(max_length=255, null=True, blank=True)
-    archive = models.IntegerField(null=True, blank=True)
+    # archive = models.IntegerField(null=True, blank=True)
     skill_keywords_full = models.TextField(blank=True, null=True)
 
     year = models.IntegerField(blank=True,null=True)
@@ -178,8 +178,12 @@ class CandidateTable(models.Model):
     skillLevel = models.ManyToManyField(CandidateSkillLevel,blank=True,null=True)
     activity = models.TextField(blank=True,null=True)
     pay = models.TextField(blank=True,null=True)
-
+    
+    #V-0.9.1
     customeTemplate = HTMLField(blank=True, null=True)
+
+    #V-0.9.3
+    archive = models.BooleanField(default=True)
 
     # def __str__(self):
     #     return self.first_name

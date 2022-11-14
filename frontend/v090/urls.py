@@ -16,6 +16,7 @@ urlpatterns = [
     path('v-0.9.0/keyword', views.keyword, name='v-0.9.0/keyword'),
     path('v-0.9.0/test', views.test, name='v-0.9.0/test'),
     path('v-0.9.0/accounts/login/', views.CustomeLoginView.as_view(), name='v-0.9.0/login'),
+    path('accounts/login/', views.CustomeLoginView.as_view(), name='login'),
 
 
     path('v-0.9.0/search', views.searchCandidate, name='v-0.9.0/search-candidate'),
@@ -24,6 +25,7 @@ urlpatterns = [
 
 
     path('v-0.9.0/logout', views.logout, name='v-0.9.0/request-logout'),
+    path('logout', views.logout, name='request-logout'),
 
     
 ]

@@ -1,0 +1,412 @@
+{% extends "v-0.9.3/base/base.html"%} {% load static %} {% block css %} {% endblock %}
+{% load crispy_forms_tags %} 
+
+ {% block head %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+
+{% endblock %}
+
+{% block content %}
+<div class="page-wrapper">
+  <div id="toast">
+    <div id="img"></div>
+    <div id="desc">Data updated Succefully</div>
+  </div>
+  <!-- Container fluid  -->
+  <div class="container-fluid">
+    <!-- Start Page Content -->
+    <div class="pagetitle mb-3 align-items-center justify-content-between">
+      <h3 class="mb-0">
+        <i class="bi bi-arrow-left-circle-fill" onClick="viewBack()">
+        <span></span>
+        </i>
+      </h3> 
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="listview-with-details">
+          <div class="candidatedetails-rightside candidat-main-wrapper">
+            <div class="detailsheader">
+              <div class="candidate-info">
+                <h4>
+                  {{candidate.first_name|title}} {{candidate.last_name|title}}
+                </h4>
+
+                <div class="d-flex">
+                  <p class="mb-0">
+                    <i class="isax isax-setting"></i>
+                    <span> {{candidate.skill_keywords_full}}</span>
+                  </p>
+                  <p class="mb-0">
+                    <i class="fa fa-map-marker-alt"></i>
+                    <span>{{candidate.city}}</span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="candidate-header-action"
+                onclick="updateCandidate({{candidate.candidate_id}})"
+              >
+                <a class="editcandidate"
+                  ><i class="isax isax-save-2"></i>
+                  <span>Save Changes</span>
+                </a>
+              </div>
+            </div>
+            <form method="" id="myForm" action="" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="candidate-descriptions">
+                <div class="row">
+                  <div class="col-sm-6 left-side">
+                  <div class="row">
+                    <div class="col-md-8">
+                    <h5 class="mb-2">Candidate Information</h5>
+                    </div>
+                    <div class="col-md-4 edit_btn" onclick="edit_resume()">
+                        <a class="editcandidate"
+                          ><i class="isax isax-edit"></i>
+                          <span>Edit Template</span>
+                        </a>
+                    </div>
+                   
+              </div>
+                    
+                    <div class="cardinfo">
+                      <div class="row">
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">First Name</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="first_name"
+                              class="form-control view-form-font"
+                              id="first_name"
+                              value="{{candidate.first_name}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">Last Name</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="last_name"
+                              class="form-control view-form-font"
+                              id="last_name"
+                              value="{{candidate.last_name}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">Phone</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="phone"
+                              class="form-control view-form-font"
+                              id="phone"
+                              value="{{candidate.phone}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">E-Mail</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="email"
+                              class="form-control view-form-font"
+                              id="email"
+                              value="{{candidate.email}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">Year</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="year"
+                              class="form-control view-form-font"
+                              id="year"
+                              value="{{candidate.year}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">WW</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="ww"
+                              class="form-control view-form-font"
+                              id="ww"
+                              value="{{candidate.ww}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">Platform/Referral</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="plateformOrReferral"
+                              class="form-control view-form-font"
+                              id="plateformOrReferral"
+                              value="{{candidate.plateformOrReferral}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">Position/Person</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="positionOrPerson"
+                              class="form-control view-form-font"
+                              id="positionOrPerson"
+                              value="{{candidate.positionOrPerson}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">Who referred you?</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="refferedBy"
+                              class="form-control view-form-font"
+                              id="refferedBy"
+                              value="{{candidate.refferedBy}}"
+                            />
+                          </span>
+                        </div>
+
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel"
+                            >Specialty Skill Set</label
+                          >
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="specialitySkillSet"
+                              class="form-control view-form-font"
+                              id="specialitySkillSet"
+                              value="{{candidate.specialitySkillSet}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">Semi</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="semi"
+                              class="form-control view-form-font"
+                              id="semi"
+                              value="{{candidate.semi}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">intel</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="intel"
+                              class="form-control view-form-font"
+                              id="intel"
+                              value="{{candidate.intel}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">Project #1</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="project1"
+                              class="form-control view-form-font"
+                              id="project1"
+                              value="{{candidate.project1}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">Project #2</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="project2"
+                              class="form-control view-form-font"
+                              id="project2"
+                              value="{{candidate.project2}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          <label class="cad-infolabel">Project #3</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="project3"
+                              class="form-control view-form-font"
+                              id="project3"
+                              value="{{candidate.project3}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                          {{ form.status|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 mt-2 view-form-font">
+                          {{ form.priority|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 mt-2 view-form-font">
+                          {{ form.skillLevel|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 mt-2 view-form-font">
+                          <label class="cad-infolabel">$$$</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="pay"
+                              class="form-control view-form-font"
+                              id="pay"
+                              value="{{candidate.pay}}"
+                            />
+                          </span>
+                        </div>
+                        <div class="col-md-12 mt-4 ml-2 view-form-font">
+                          {{ form.archive|as_crispy_field }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="candidate-resume mt-4">
+                      <h5 class="mb-2">Activity</h5>
+                      <div class="resume-conntents">
+                        <span class="c-detsls">
+                          <textarea
+                            name="activity"
+                            class="form-control view-form-font"
+                            id="activity"
+                            rows="15"
+                            value="{{candidate.activity}}"
+                          ></textarea>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 right-side">
+                    <h5 class="mb-2">Candidate Resume</h5>
+                    <div id="resume">
+                      <iframe
+                        src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/{{candidate.candidateFileNamePDF}} &amp;embedded=true"
+                        frameborder="0"
+                        webkitallowfullscreen=""
+                        mozallowfullscreen=""
+                        allowfullscreen=""
+                        style="width: 100%; height: 100%"
+                      >
+                      </iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 
+{% block script %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+    cleanForm();
+
+    $('.selectmultiple').select2({
+          width: 'resolve'
+      });
+      $('.select2-w-100').parent().find('span')
+          .removeClass('select2-container')
+          .css("width", "100%")
+          .css("flex-grow", "1")
+          .css("box-sizing", "border-box")
+          .css("display", "inline-block")
+          .css("margin", "0")
+          .css("position", "relative")
+          .css("vertical-align", "middle")
+   
+    
+  });
+
+  function launch_toast() {
+    var x = document.getElementById("toast");
+    x.className = "show";
+    setTimeout(function () {
+      x.className = x.className.replace("show", "");
+    }, 5000);
+  }
+
+  function cleanForm() {
+    $(".alert").alert();
+    var form = document.getElementById("myForm");
+    var serializedData = $(form).serialize();
+    arr = serializedData.split("&");
+    for (i in arr) {
+      if (arr[i].includes("None")) {
+        fieldId = arr[i].replace("=None", "");
+        document.getElementById(fieldId).value = "";
+      }
+    }
+  }
+
+  function updateCandidate(pk) {
+    var form = document.getElementById("myForm");
+    var serializedData = $(form).serialize();
+
+    console.log("serializedData", serializedData);
+    var method = "PUT";
+    var Url = "{% url 'v-0.9.3/candidate-updateAPI-view' pk=1234 %}";
+    Url = Url.replace("1234", pk);
+
+    console.log("Url", Url);
+    var crf_token = $('[name="csrfmiddlewaretoken"]').attr("value");
+
+    console.log("crf_token", crf_token);
+
+    $.ajax({
+      method: method,
+      url: Url,
+      data: serializedData,
+      headers: { "X-CSRFToken": crf_token },
+    })
+      .done(function (msg) {
+        launch_toast();
+        console.log("msg", msg);
+      })
+      .fail(function (error) {
+        console.log("error", error.responseJSON);
+      });
+  }
+
+  function viewBack() {
+    var Redirect = "{% url 'v-0.9.3/candidates'  %}";
+    window.location.href = Redirect;
+  }
+
+  function edit_resume() {
+    Url1 = "{% url 'v-0.9.3/template'  %}";
+    Url2 = `?id={{candidate.candidate_id}}&resume={{candidate.candidateFileNamePDF}}` 
+    Redirect = Url1+Url2
+    window.location.href = Redirect;
+    console.log("edit_resume working",url)
+
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,106 @@
+{% extends "v-0.9.3/base/base.html"%} 
+{% load static %} 
+{% block css %} 
+{% endblock %} 
+{% load crispy_forms_tags %} 
+{% block content %}
+<div class="page-wrapper">
+  <div id="toast">
+    <div id="img"></div>
+    <div id="desc">Data updated Succefully</div>
+  </div>
+  <!-- Container fluid  -->
+  <div class="container-fluid">
+    <!-- Start Page Content -->
+    <div
+      class="pagetitle mb-3 align-items-center justify-content-between"
+    ></div>
+    <div class="row">
+      <div class="col-12">
+        <div class="listview-with-details">
+          <div class="candidatedetails-rightside candidat-main-wrapper">
+            <div class="detailsheader">
+              <div class="candidate-header-action" onclick="">
+                <a class="editcandidate"
+                  ><i class="isax isax-save-2"></i>
+                  <span>Save</span>
+                </a>
+              </div>
+            </div>
+            <form method="" id="myForm" action="" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="candidate-descriptions">
+                <div class="row">
+                  <div class="col-sm-6 left-side">
+                    <h5 class="mb-2">Candidate Resume</h5>
+                    <div id="resume">
+                      <iframe
+                        src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/{{resume}} &amp;embedded=true"
+                        frameborder="0"
+                        webkitallowfullscreen=""
+                        mozallowfullscreen=""
+                        allowfullscreen=""
+                        style="width: 100%; height: 100%"
+                      >
+                      </iframe>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 right-side">
+                    <h5 class="mb-2">Template</h5>
+
+                    <div id="test" class="col-md-12 mt-2 view-form-font pl-0">
+                      <form
+                        method="post"
+                        id="myForm"
+                        action=""
+                        enctype="multipart/form-data"
+                      >
+                        {% csrf_token %} {{ form.media }} 
+                        <div class = "resize" >
+                          {{ form.template }}
+                        </div>
+                        
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block script %}
+
+
+<script>
+  $(document).ready(function () {
+    
+
+    try {
+      async function test(i) 
+      {
+        await new Promise(resolve => setTimeout(resolve, i));
+        node = document.getElementsByClassName('resize')
+        node[0].lastElementChild.setAttribute("style","height:calc(100vh - 300px)");
+        
+      }
+      for (let i = 1; i < 300; i++) {
+        test(i*100)
+      }
+
+    } catch (error) {
+      console.error("error",error);
+      test(1000)
+   
+    }
+
+    
+    
+  });
+  
+</script>
+{% endblock %}

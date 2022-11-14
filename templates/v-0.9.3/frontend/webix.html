@@ -1,0 +1,40 @@
+webix.ready(function () {
+        gridA = webix.ui({
+          id: "",
+          container: "webix_datatable",
+          select: "row",
+          view: "datatable",
+          columns: [
+            {
+              id: "name",
+              header: {
+                text: name,
+              },
+              sort: "string",
+              width: 200,
+              hidden: 0,
+            },
+          ],
+          minHeight: 700,
+
+          on: {
+            onBeforeLoad: function () {
+              this.showOverlay(` <div class="loader"></div><br><span class="load_text">Loading Data...</span>`);
+            },
+            onAfterLoad: function () {
+              this.sort("name", "asc");
+              this.markSorting("name", "asc");
+              if (!this.count()) this.showOverlay("Sorry, there is no data");
+              else this.hideOverlay();
+            },
+          },
+          url: function () {
+            return webix.promise(function (res) {
+              setTimeout(function () {
+                res(webix.ajax(url));
+              }, 1000);
+            });
+          },
+        });
+}); 
+

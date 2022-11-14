@@ -1,0 +1,94 @@
+{% load static%}
+
+
+    {% comment %} <div id="main-wrapper"> {% endcomment %}
+       
+        <!-- Topbar header -->
+       
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- Logo -->
+                <div class="navbar-header" style="background-color: #f8f9fa; display: flex;justify-content: center;position: relative;">
+                    <a class="navbar-brand" href="#">
+                        <!-- Logo icon -->
+                        <b><img src={% static 'assets/images/logo.png' %} alt="homepage" class="light-logo" /></b>
+                        <!-- Logo text -->
+                        <span><img src= {% static 'assets/images/logo-text.png' %} class="text-logo" alt="homepage" /></span> 
+                    </a>
+                    <br><span style="font-size:10px;position: absolute;padding-top: 22px;">v0.9.3</span>
+                </div>
+                <!-- End Logo -->
+                <div class="navbar-collapse">
+                    <!-- toggle and nav items -->
+                    <ul class="navbar-nav mr-auto mt-md-0 align-items-center">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        
+                    </ul>
+                   
+                    <!-- User profile and search -->
+                   
+                    <ul class="navbar-nav my-lg-0">
+                      
+                        <!-- Profile -->
+                        <li class="nav-item dropdown usersettings">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src={% static "assets/images/user.png" %}  alt="user" class="profile-pic" />
+                                <i class="ti-menu"></i></a>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right scale-up">
+                                <ul class="dropdown-user">
+                                    <li>
+                                        <div class="dw-user-box">
+                                            <div class="u-img"><img src={% static "assets/images/user.png" %}  alt="user"></div>
+                                            <div class="u-text">
+                                                <h4>{{  request.user.first_name|title }} {{  request.user.last_name|title }}</h4>
+                                                <p class="text-muted">{{  request.user.email }}</p><a href="profile.html" class="btn btn-rounded btn-primary btn-sm">View Profile</a></div>
+                                        </div>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
+                                    <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="{% url 'logout' %}"><i class="fa fa-power-off"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </nav>
+        </header>
+       
+        <!-- End Topbar header -->
+       
+       
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+       
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                                <li><a class="waves-effect waves-dark" href="{% url 'candidates' %}"><i class="isax isax-user"></i> <span class="hide-menu">Candidates</span></a></li>
+                                <li><a class="waves-effect waves-dark" href="{% url 'v-0.9.3/add-candidate' %}"   href="javascript:void(0)"><i class="isax isax-add-circle"></i> Add New Candidate</a></li>
+                                <li><a class="waves-effect waves-dark" href="{% url 'candidates' %}?archive=True"   href="javascript:void(0)"><i class="bi bi-archive"></i> Archive</a></li>
+                                <li><a class="waves-effect waves-dark"  href="{% url 'v-0.9.3/project' %}" href="javascript:void(0)"><i class="isax isax-task"></i>
+                                <span class="hide-menu">Projects</span></a></li>
+                                 <li><a class="waves-effect waves-dark"  href="{% url 'v-0.9.3/status' %}" href="javascript:void(0)"><i class="bi bi-bar-chart"></i>
+                                <span class="hide-menu">Status</span></a></li>
+                                <li><a class="waves-effect waves-dark"  href="{% url 'v-0.9.3/platform-referral' %}"  href="javascript:void(0)"><i class="bi bi-person-plus-fill"></i>
+                                <span class="hide-menu">Platform/Referral</span></a></li> 
+                                <li><a class="waves-effect waves-dark" href="{% url 'v-0.9.3/skill-level' %}"  href="javascript:void(0)"><i class="bi bi-stack"></i>
+                                <span class="hide-menu">Skill Level</span></a></li>
+                                <li><a class="waves-effect waves-dark"  href="{% url 'v-0.9.3/priority' %}"  href="javascript:void(0)"><i class="bi bi-card-list"></i>
+                                <span class="hide-menu">Priority</span></a></li>  
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
