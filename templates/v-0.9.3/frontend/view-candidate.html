@@ -23,7 +23,7 @@
         </i>
       </h3> 
     </div>
-    <div class="row">
+       <div class="row">
       <div class="col-12">
         <div class="listview-with-details">
           <div class="candidatedetails-rightside candidat-main-wrapper">
@@ -59,204 +59,68 @@
               <div class="candidate-descriptions">
                 <div class="row">
                   <div class="col-sm-6 left-side">
-                  <div class="row">
-                    <div class="col-md-8">
-                    <h5 class="mb-2">Candidate Information</h5>
-                    </div>
-                    <div class="col-md-4 edit_btn" onclick="edit_resume()">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h5 class="mb-2">Candidate Information</h5>
+                      </div>
+                      <div class="col-md-4 edit_btn" onclick="edit_resume()">
                         <a class="editcandidate"
                           ><i class="isax isax-edit"></i>
-                          <span>Edit Template</span>
+                          <span>Edit Resume</span>
                         </a>
+                      </div>
                     </div>
-                   
-              </div>
-                    
+
                     <div class="cardinfo">
                       <div class="row">
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">First Name</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="first_name"
-                              class="form-control view-form-font"
-                              id="first_name"
-                              value="{{candidate.first_name}}"
-                            />
-                          </span>
+                        <div class="col-md-12   view-form-font">
+                          {{ form.first_name|as_crispy_field }}
                         </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">Last Name</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="last_name"
-                              class="form-control view-form-font"
-                              id="last_name"
-                              value="{{candidate.last_name}}"
-                            />
-                          </span>
+                        <div class="col-md-12   view-form-font">
+                          {{ form.last_name|as_crispy_field }}
                         </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">Phone</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="phone"
-                              class="form-control view-form-font"
-                              id="phone"
-                              value="{{candidate.phone}}"
-                            />
-                          </span>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.phone|as_crispy_field }}
                         </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">E-Mail</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="email"
-                              class="form-control view-form-font"
-                              id="email"
-                              value="{{candidate.email}}"
-                            />
-                          </span>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.email|as_crispy_field }}
                         </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">Year</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="year"
-                              class="form-control view-form-font"
-                              id="year"
-                              value="{{candidate.year}}"
-                            />
-                          </span>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.year|as_crispy_field }}
                         </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">WW</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="ww"
-                              class="form-control view-form-font"
-                              id="ww"
-                              value="{{candidate.ww}}"
-                            />
-                          </span>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.ww|as_crispy_field }}
                         </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">Platform/Referral</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="plateformOrReferral"
-                              class="form-control view-form-font"
-                              id="plateformOrReferral"
-                              value="{{candidate.plateformOrReferral}}"
-                            />
-                          </span>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.plateformOrReferral|as_crispy_field }}
                         </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">Position/Person</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="positionOrPerson"
-                              class="form-control view-form-font"
-                              id="positionOrPerson"
-                              value="{{candidate.positionOrPerson}}"
-                            />
-                          </span>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.positionOrPerson|as_crispy_field }}
                         </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">Who referred you?</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="refferedBy"
-                              class="form-control view-form-font"
-                              id="refferedBy"
-                              value="{{candidate.refferedBy}}"
-                            />
-                          </span>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.refferedBy|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.specialitySkillSet|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.semi|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.intel|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.project1|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.project2|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.project3|as_crispy_field }}
                         </div>
 
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel"
-                            >Specialty Skill Set</label
-                          >
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="specialitySkillSet"
-                              class="form-control view-form-font"
-                              id="specialitySkillSet"
-                              value="{{candidate.specialitySkillSet}}"
-                            />
-                          </span>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">Semi</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="semi"
-                              class="form-control view-form-font"
-                              id="semi"
-                              value="{{candidate.semi}}"
-                            />
-                          </span>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">intel</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="intel"
-                              class="form-control view-form-font"
-                              id="intel"
-                              value="{{candidate.intel}}"
-                            />
-                          </span>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">Project #1</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="project1"
-                              class="form-control view-form-font"
-                              id="project1"
-                              value="{{candidate.project1}}"
-                            />
-                          </span>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">Project #2</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="project2"
-                              class="form-control view-form-font"
-                              id="project2"
-                              value="{{candidate.project2}}"
-                            />
-                          </span>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                          <label class="cad-infolabel">Project #3</label>
-                          <span class="c-detsls">
-                            <input
-                              type="text"
-                              name="project3"
-                              class="form-control view-form-font"
-                              id="project3"
-                              value="{{candidate.project3}}"
-                            />
-                          </span>
-                        </div>
+                       
+                        
                         <div class="col-md-12 mt-2">
                           {{ form.status|as_crispy_field }}
                         </div>
@@ -278,7 +142,7 @@
                             />
                           </span>
                         </div>
-                        <div class="col-md-12 mt-4 ml-2 view-form-font">
+                         <div class="col-md-12 mt-4 ml-2 view-form-font">
                           {{ form.archive|as_crispy_field }}
                         </div>
                       </div>
@@ -297,6 +161,7 @@
                         </span>
                       </div>
                     </div>
+                     
                   </div>
                   <div class="col-sm-6 right-side">
                     <h5 class="mb-2">Candidate Resume</h5>
