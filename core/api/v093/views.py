@@ -128,11 +128,12 @@ class PlatformOrReferralListCreateAPIView(generics.ListCreateAPIView):
 
 class CreateCustomeResume(APIView):
     def post(self, request,pk=None, *args, **kwarg):
-        id = request.POST['id']
-        html = request.POST['test']
-        filename = request.POST['filename']
-        convert_html_to_pdf(html, filename)
-        return Response({ "data":"data"})
+        pass
+        # id = request.POST['id']
+        # html = request.POST['test']
+        # filename = request.POST['filename']
+        # convert_html_to_pdf(html, filename)
+        # return Response({ "data":"data"})
 
         
 

@@ -20,7 +20,7 @@
         <div class="listview-with-details">
           <div class="candidatedetails-rightside candidat-main-wrapper">
             <div class="detailsheader">
-              <div class="candidate-header-action" onclick="">
+              <div class="candidate-header-action" onclick="createTemplate()">
                 <a class="editcandidate"
                   ><i class="isax isax-save-2"></i>
                   <span>Save</span>
@@ -78,8 +78,6 @@
 
 <script>
   $(document).ready(function () {
-    
-
     try {
       async function test(i) 
       {
@@ -91,16 +89,46 @@
       for (let i = 1; i < 300; i++) {
         test(i*100)
       }
-
     } catch (error) {
       console.error("error",error);
       test(1000)
    
-    }
-
-    
-    
+    }   
   });
+
+
+  function createTemplate() 
+        {
+          var form = document.getElementById("myForm");
+          var serializedData = $(form).serialize();
+
+          console.log("serializedData", serializedData);
+          var method = "POST";
+          var Url = "{% url 'v-0.9.3/candidate-updateAPI-view' pk=1234 %}";
+          
+
+          console.log("Url", Url);
+          var crf_token = $('[name="csrfmiddlewaretoken"]').attr("value");
+
+          console.log("crf_token", crf_token);
+          var html = document.getElementById("id_template").value;
+
+          console.log("html", html);
+
+          /*$.ajax({
+            method: method,
+            url: Url,
+            data: serializedData,
+            headers: { "X-CSRFToken": crf_token },
+          })
+            .done(function (msg) {
+              launch_toast();
+              console.log("msg", msg);
+            })
+            .fail(function (error) {
+              console.log("error", error.responseJSON);
+            });*/
+        }
   
 </script>
 {% endblock %}

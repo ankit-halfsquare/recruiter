@@ -229,13 +229,17 @@ def template(request):
     if request.method == 'POST':
         print("post",request.POST)
 
-    pk = 1
-    template = CandidateResumeTemplates.objects.get(pk=pk)
-    form = TemplateForm(instance=template)
+    pk = request.GET['id']
+    candidateObj = CandidateTable.objects.get(pk=pk)
+    
+    if candidateObj.template:
+        form = CandidateTableForm(instance=candidateObj)
+    else:
+        template = CandidateResumeTemplates.objects.get(pk=1)
+        form = TemplateForm(instance=template)
     context = {
-        "candidate":template,
         "form":form,
-        "id":request.GET['id'], 
+        "id":pk, 
         "resume":request.GET['resume']
     } 
     return render(request,"v-0.9.3/frontend/template.html",context)

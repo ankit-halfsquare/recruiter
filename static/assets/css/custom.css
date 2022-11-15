@@ -648,17 +648,16 @@ body .daterangepicker td.end-date {
   visibility: hidden;
   max-width: 50px;
   height: 50px;
-  /*margin-left: -125px;*/
   margin: auto;
-  background-color: #333;
-  color: #fff;
+  background-color: #52f152d4;
+  color: #000;
   text-align: center;
-  border-radius: 2px;
+  border-radius: 10px;
 
   position: fixed;
   z-index: 1;
-  left: 100;right:0;
-  top: 30%;
+  left: 0;right:0;
+
   font-size: 17px;
   white-space: nowrap;
 }
@@ -673,14 +672,14 @@ height: 50px;
   
   box-sizing: border-box;
 
+border-radius: 10px;
   
-  background-color: #111;
+  background-color: green;
   color: #fff;
 }
 #toast #desc{
 
-  
-  color: #fff;
+  color: #000;
  
   padding: 16px;
   
@@ -695,13 +694,13 @@ white-space: nowrap;
 }
 
 @-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;} 
-  to {bottom: 30px; opacity: 1;}
+  from {right: 0; opacity: 0;} 
+  to {right: 30px; opacity: 1;}
 }
 
 @keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+  from {right: 0; opacity: 0;}
+  to {right: 30px; opacity: 1;}
 }
 
 @-webkit-keyframes expand {
@@ -733,13 +732,13 @@ white-space: nowrap;
 }
 
 @-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;} 
-  to {bottom: 60px; opacity: 0;}
+  from {right: 30px; opacity: 1;} 
+  to {right: 60px; opacity: 0;}
 }
 
 @keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 60px; opacity: 0;}
+  from {right: 30px; opacity: 1;}
+  to {right: 60px; opacity: 0;}
 }
 
 

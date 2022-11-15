@@ -180,7 +180,7 @@ class CandidateTable(models.Model):
     pay = models.TextField(blank=True,null=True)
     
     #V-0.9.1
-    customeTemplate = HTMLField(blank=True, null=True)
+    template = HTMLField(blank=True, null=True)
 
     #V-0.9.3
     archive = models.BooleanField(default=True)
