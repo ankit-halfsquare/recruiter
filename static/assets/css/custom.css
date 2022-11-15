@@ -649,7 +649,7 @@ body .daterangepicker td.end-date {
   max-width: 50px;
   height: 50px;
   margin: auto;
-  background-color: #52f152d4;
+ 
   color: #000;
   text-align: center;
   border-radius: 10px;
@@ -660,22 +660,23 @@ body .daterangepicker td.end-date {
 
   font-size: 17px;
   white-space: nowrap;
+
+  margin-top: 8px;
+  background-color: #8b908bd4;
+
 }
 #toast #img{
 width: 50px;
 height: 50px;
   
   float: left;
-  
   padding-top: 16px;
   padding-bottom: 16px;
-  
   box-sizing: border-box;
-
-border-radius: 10px;
-  
-  background-color: green;
+  border-radius: 10px;
   color: #fff;
+  padding-top: 11px;
+  background-color: rgb(104, 107, 104);
 }
 #toast #desc{
 

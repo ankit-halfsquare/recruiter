@@ -12,6 +12,12 @@
   <!-- Container fluid  -->
   <div class="container-fluid">
     <!-- Start Page Content -->
+      <div>
+        <a  href="{% url 'v-0.9.3/view-candidate' id %}">
+        <i class="bi bi-arrow-left-circle-fill"></i>
+        </a>
+      </div>
+      
     <div
       class="pagetitle mb-3 align-items-center justify-content-between"
     ></div>
@@ -94,40 +100,45 @@
       test(1000)
    
     }   
-  });
+  }); 
+        function redirect(){
+          Url1 = "{% url 'v-0.9.3/candidate'  %}";
+          Url2 = `?archive=True` 
+          Redirect = Url1+Url2
+          window.location.href = Redirect;
+        }
 
-
-  function createTemplate() 
+        function createTemplate() 
         {
-          var form = document.getElementById("myForm");
-          var serializedData = $(form).serialize();
-
-          console.log("serializedData", serializedData);
-          var method = "POST";
-          var Url = "{% url 'v-0.9.3/candidate-updateAPI-view' pk=1234 %}";
-          
-
-          console.log("Url", Url);
+          var Url = "{% url 'v-0.9.3/create-custome-resume-api-view' %}";
           var crf_token = $('[name="csrfmiddlewaretoken"]').attr("value");
-
-          console.log("crf_token", crf_token);
-          var html = document.getElementById("id_template").value;
-
-          console.log("html", html);
-
-          /*$.ajax({
-            method: method,
+          var id = `{{id}}`
+          var filename = `{{resume}}`
+          filename =filename.replace("files/","")
+          filename = 'files/'+id+'_'+filename
+          var myContent = tinymce.activeEditor.getContent();
+         
+          console.log("myContent",myContent);
+          data = {
+            "html":myContent,
+            "id":id,
+            "filename":filename
+          }
+          console.log("data",data)
+          
+          $.ajax({
+            method: "POST",
             url: Url,
-            data: serializedData,
+            data: data,
             headers: { "X-CSRFToken": crf_token },
           })
             .done(function (msg) {
-              launch_toast();
               console.log("msg", msg);
+              redirect()
             })
             .fail(function (error) {
               console.log("error", error.responseJSON);
-            });*/
+            });
         }
   
 </script>

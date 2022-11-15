@@ -16,6 +16,15 @@ container_name = os.getenv('AZURE_CONTAINER')
 
 blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
+
+
+def deleteFile(filename):
+    blob_client = blob_service_client.get_blob_client(container=container_name, blob=filename)
+    try:
+        blob_client.delete_blob()
+    except Exception as e:
+        pass
+
 def uploadFile(filename):
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=filename)
     with open(filename, "rb") as data:

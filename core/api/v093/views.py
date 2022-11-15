@@ -9,7 +9,7 @@ from functools import reduce
 from operator import or_,and_
 from django.db.models import Q
 
-from core.utils import html_start,html_end,convert_html_to_pdf
+from core.utils import convert_html_to_pdf,uploadFile,deleteFile
 
 from core.models import ( 
     CandidateTable,Assignment,Company,Project,Position,Keyword,CandidateStatus,CandidateSkillLevel,
@@ -128,12 +128,14 @@ class PlatformOrReferralListCreateAPIView(generics.ListCreateAPIView):
 
 class CreateCustomeResume(APIView):
     def post(self, request,pk=None, *args, **kwarg):
-        pass
-        # id = request.POST['id']
-        # html = request.POST['test']
-        # filename = request.POST['filename']
-        # convert_html_to_pdf(html, filename)
-        # return Response({ "data":"data"})
+        id = request.POST['id']
+        html = request.POST['html']
+        filename = request.POST['filename']
+        CandidateTable.objects.filter(pk=id).update(template=html)
+        convert_html_to_pdf(html, filename)
+        deleteFile(filename)
+        uploadFile(filename)
+        return Response({ "data":"data"})
 
         
 
