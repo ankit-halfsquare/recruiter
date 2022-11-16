@@ -392,6 +392,7 @@
           data: tableData(),
           on: {
             onBeforeRender: function () {
+              
               this.showOverlay(`<div class="webix_loader"></div><br><span class="load_text">Loading Data...</span>`);
             },
             onAfterLoad: function () {

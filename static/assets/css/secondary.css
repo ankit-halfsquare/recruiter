@@ -15,6 +15,7 @@
     border-right-color:rgba(173, 146, 146, 0.3);
     -webkit-animation: webix_loader 1s ease-in-out infinite;
     animation: webix_loader 1s ease-in-out infinite;
+    visibility: visible;
  }
  @keyframes webix_loader {
     from {transform: rotate(0deg);}
@@ -33,6 +34,7 @@
  .load_text{
   padding-top: 8%;
   position: absolute;
+  visibility: visible;
  }
 
 
@@ -46,8 +48,8 @@
    border-bottom-color: rgba(173, 146, 146, 0.3);
    border-left-color: rgba(246, 36, 89, 1);
    border-right-color: rgba(173, 146, 146, 0.3);
-   width: 100px;
-   height: 100px;
+   width: 50px;
+   height: 50px;
    -webkit-animation: spin 2s linear infinite;
    animation: spin 2s linear infinite;
    position: fixed;
@@ -69,3 +71,8 @@
      0% { transform: rotate(0deg); }
      100% { transform: rotate(360deg); }
    } 
+
+   .note{
+      background-color: #df060661;
+      font-size: 12px;
+   }
