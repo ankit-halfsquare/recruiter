@@ -271,11 +271,18 @@
   }
 
   function edit_resume() {
+
+    elem = document.getElementById("loader")
+    elem.style.visibility = "visible"
+
     Url1 = "{% url 'v-0.9.3/template'  %}";
     Url2 = `?id={{candidate.candidate_id}}&resume={{candidate.candidateFileNamePDF}}` 
     Redirect = Url1+Url2
     window.location.href = Redirect;
     console.log("edit_resume working",url)
+
+
+
 
   }
 </script>

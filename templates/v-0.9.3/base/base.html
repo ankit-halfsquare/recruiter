@@ -55,6 +55,11 @@
     {% endblock %}
     {% if request.user.is_authenticated %}
         <div id="main-wrapper">
+            <!-- Loader  -->
+            
+                <div class="loader" id="loader"></div>
+            
+            <!-- end Loader  -->
           {% include "v-0.9.3/base/navbar-sidebar.html" %}
           {% block content %}
           {% endblock %}
@@ -63,10 +68,6 @@
     <!-- End Wrapper -->
    
     <!-- All Jquery -->
-    {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
- {% endcomment %}
-
     <script src={% static "assets/plugins/jquery/jquery.min.js" %}></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src={% static "assets/plugins/popper/popper.min.js" %}></script>

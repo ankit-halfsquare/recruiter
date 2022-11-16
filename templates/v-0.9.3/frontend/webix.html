@@ -19,7 +19,7 @@ webix.ready(function () {
 
           on: {
             onBeforeLoad: function () {
-              this.showOverlay(` <div class="loader"></div><br><span class="load_text">Loading Data...</span>`);
+              this.showOverlay(`<div class="webix_loader"></div><br><span class="load_text">Loading Data...</span>`);
             },
             onAfterLoad: function () {
               this.sort("name", "asc");

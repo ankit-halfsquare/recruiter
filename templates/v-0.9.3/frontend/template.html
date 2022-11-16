@@ -12,26 +12,29 @@
   <!-- Container fluid  -->
   <div class="container-fluid">
     <!-- Start Page Content -->
-      <div>
-        <a  href="{% url 'v-0.9.3/view-candidate' id %}">
-        <i class="bi bi-arrow-left-circle-fill"></i>
-        </a>
-      </div>
-      
-    <div
-      class="pagetitle mb-3 align-items-center justify-content-between"
-    ></div>
+       
+    <div class="pagetitle mb-3 align-items-center justify-content-between" ></div>
     <div class="row">
       <div class="col-12">
         <div class="listview-with-details">
           <div class="candidatedetails-rightside candidat-main-wrapper">
             <div class="detailsheader">
+
+              <div class="pagetitle mb-3 align-items-center justify-content-between">
+                <h3 class="mb-0">
+                  <i class="bi bi-arrow-left-circle-fill" onClick="viewBack()">
+                  <span></span>
+                  </i>
+                </h3> 
+              </div> 
+
               <div class="candidate-header-action" onclick="createTemplate()">
                 <a class="editcandidate"
                   ><i class="isax isax-save-2"></i>
                   <span>Save</span>
                 </a>
               </div>
+              
             </div>
             <form method="" id="myForm" action="" enctype="multipart/form-data">
               {% csrf_token %}
@@ -140,6 +143,11 @@
               console.log("error", error.responseJSON);
             });
         }
+
+    function viewBack() {
+    var Redirect = "{% url 'v-0.9.3/view-candidate' id  %}";
+    window.location.href = Redirect;
+    }
   
 </script>
 {% endblock %}
