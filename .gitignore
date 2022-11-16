@@ -11,6 +11,12 @@ db.sqlite3
 db.sqlite3-journal
 media
 test.py
+*.pdf
+*.doc
+*.docx
+*.txt
+__pycache__
+
 
 
 .DS_Store
