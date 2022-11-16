@@ -8,8 +8,8 @@ urlpatterns = [
     path('v-0.9.3/candidate/<int:pk>', views.viewCandidate, name='v-0.9.3/edit-candidate'),  
     path('v-0.9.3/candidate/<int:pk>', views.viewCandidate, name='v-0.9.3/view-candidate'),  
     path('v-0.9.3/add-candidate', views.addCandidate, name='v-0.9.3/add-candidate'),
-    path('v-0.9.3/assignment', views.assignment, name='v-0.9.3/assignment'),
-    path('v-0.9.3/company', views.company, name='v-0.9.3/company'),
+
+
     path('v-0.9.3/project', views.project, name='v-0.9.3/project'),
     path('v-0.9.3/position', views.position, name='v-0.9.3/position'),
     path('v-0.9.3/keyword', views.keyword, name='v-0.9.3/keyword'),
