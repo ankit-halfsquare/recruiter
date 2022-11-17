@@ -46,7 +46,9 @@
               <div class="candidate-descriptions">
                 <div class="row">
                   <div class="col-sm-6 left-side">
-                    <h5 class="mb-2">Candidate Resume</h5><p class="note">Note: To copy text select that text with mouse right click then paste into editor(ctrl+v).</br>ctrl+c shortcuts are not working in pdf preview to copy text from pdf preview.</p>
+                    <h5 class="mb-2">Candidate Resume</h5>
+                    <a id="note" style="color:red;"  href="#" data-content="To copy text select that text with mouse right click then paste into editor(ctrl+v). Ctrl+c shortcuts are not working in pdf preview to copy text from pdf preview." rel="popover" data-placement="bottom" data-original-title="Note" data-trigger="hover">Note</a>
+                    {% comment %} <p class="note" id="note_con">Note: To copy text select that text with mouse right click then paste into editor(ctrl+v).</p><p></br>ctrl+c shortcuts are not working in pdf preview to copy text from pdf preview.</p> {% endcomment %}
                     <div id="resume">
                       <iframe
                         src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/{{resume}} &amp;embedded=true"
@@ -86,12 +88,16 @@
     </div>
   </div>
 </div>
-
+<script>
+  
+</script>
 {% endblock %} {% block script %}
 
 
 <script>
   $(document).ready(function () {
+    $('#note').popover();
+    
     try {
       async function test(i) 
       {
@@ -149,7 +155,15 @@
               console.log("error", error.responseJSON);
             });
         }
+        
 
+        {% comment %} $('#popover1').dxPopover({
+          target: '#link1',
+          showEvent: 'mouseenter',
+          hideEvent: 'mouseleave',
+          position: 'top',
+          width: 300,
+        }); {% endcomment %}
     function viewBack() {
     var Redirect = "{% url 'v-0.9.3/view-candidate' id  %}";
     window.location.href = Redirect;
