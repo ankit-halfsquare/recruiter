@@ -431,6 +431,13 @@
             },
           },*/
         });
+         gridA.attachEvent("onAfterFilter", function(){
+          this.hideOverlay()
+        })
+        
+        gridA.attachEvent("onAfterSort", function(){
+          this.hideOverlay()
+      });
       });
 
    
