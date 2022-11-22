@@ -8,11 +8,7 @@ urlpatterns = [
     path('v-0.9.3/candidate/<int:pk>', views.viewCandidate, name='v-0.9.3/edit-candidate'),  
     path('v-0.9.3/candidate/<int:pk>', views.viewCandidate, name='v-0.9.3/view-candidate'),  
     path('v-0.9.3/add-candidate', views.addCandidate, name='v-0.9.3/add-candidate'),
-
-
     path('v-0.9.3/project', views.project, name='v-0.9.3/project'),
-    path('v-0.9.3/position', views.position, name='v-0.9.3/position'),
-    path('v-0.9.3/keyword', views.keyword, name='v-0.9.3/keyword'),
     path('v-0.9.3/test', views.test, name='v-0.9.3/test'),
     path('v-0.9.3/accounts/login/', views.CustomeLoginView.as_view(), name='v-0.9.3/login'),
     path('accounts/login/', views.CustomeLoginView.as_view(), name='login'),

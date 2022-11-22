@@ -82,7 +82,7 @@ def candidate(request,pk=None):
 
     skills = queryprms.get('skills',"")
     city = queryprms.get('city',"")
-    exclude = queryprms.get('exclude',"") 
+    exclude = queryprms.get('exclude',"")
 
     if queryprms.get('search'):
         searchname = queryprms.get('search')
@@ -132,12 +132,10 @@ def addUpdateCandidate(request,pk=None):
             obj = CandidateTable.objects.get(pk=pk)
             candidateForm = CandidateTableForm(obj,data=request.POST)
             if candidateForm.is_valid():
-                
                 candidateForm.save()   
         else:
             candidateForm = CandidateTableForm(request.POST, request.FILES)
-            if candidateForm.is_valid():
-                
+            if candidateForm.is_valid():  
                 candidateForm.save() 
         
         return redirect('home')
@@ -159,46 +157,12 @@ def addUpdateCandidate(request,pk=None):
 def test(request):
     form = CandidateTableForm()
     context = {"form":form}
-   
     return render(request,"v-0.9.3/frontend/test.html",context)
-
-
-@login_required(login_url='/accounts/login/')
-def assignment(request):
-    return render(request,"v-0.9.3/frontend/assignment.html")
-
-
-
-@login_required(login_url='/accounts/login/')
-def company(request):
-    Companies = Company.objects.all()
-    context = {
-        "company":Companies
-    }
-    return render(request,"v-0.9.3/frontend/company.html",context)
 
 
 @login_required(login_url='/accounts/login/')
 def project(request):
     return render(request,"v-0.9.3/frontend/project.html")
-
-
-
-@login_required(login_url='/accounts/login/')
-def position(request):
-    return render(request,"v-0.9.3/frontend/position.html")
-
-
-@login_required(login_url='/accounts/login/')
-def keyword(request):
-    Keywords = Keyword.objects.all()
-    context = {
-        "keyword":Keywords
-    }
-    return render(request,"v-0.9.3/frontend/keywords.html",context)
-
-
-
 
 
 ##v-0.9.3 views
@@ -225,9 +189,6 @@ def platformOrReferral(request):
 
 @login_required(login_url='/accounts/login/')
 def template(request): 
-    if request.method == 'POST':
-        print("post",request.POST)
-
     pk = request.GET['id']
     candidateObj = CandidateTable.objects.get(pk=pk)
     

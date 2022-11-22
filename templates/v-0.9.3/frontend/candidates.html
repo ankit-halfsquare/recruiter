@@ -391,6 +391,10 @@
           ],
           data: tableData(),
           on: {
+            onItemClick(){
+            this.hideOverlay();
+            return ;
+           },
             onBeforeRender: function () {
               
               this.showOverlay(`<div class="webix_loader"></div><br><span class="load_text">Loading Data...</span>`);

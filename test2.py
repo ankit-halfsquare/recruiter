@@ -1,8 +1,16 @@
+import pdftotree
 
-from core.utils import convert_html_to_pdf,deleteFile
+
+pdftotree.parse("DAMINI BDE.pdf", html_path=None, model_type=None, model_path=None, visualize=False)
 
 
-deleteFile('files/108_DAMINI_BDE_1_1_teVC4UP.pdf')
+
+
+
+# from core.utils import convert_html_to_pdf,deleteFile
+
+
+# deleteFile('files/108_DAMINI_BDE_1_1_teVC4UP.pdf')
 
 
 
