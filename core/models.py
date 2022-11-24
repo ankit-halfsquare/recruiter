@@ -207,10 +207,8 @@ class CandidateTable(models.Model):
                 filename = convertAndDownloadFile(filename)
                 uploadFile(filename)
                 
-
             text,textlst = read_file(filename)
             
-
             try: 
                 line = text.strip()
                 emails = re.findall("[0-9a-zA-z]+@[0-9a-zA-z]+\.[0-9a-zA-z]+", line)
