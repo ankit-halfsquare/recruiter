@@ -1,6 +1,6 @@
 webix.ready(function () {
         gridA = webix.ui({
-          id: "",
+          id: "tableId",
           container: "webix_datatable",
           select: "row",
           view: "datatable",
@@ -14,11 +14,11 @@ webix.ready(function () {
               width: 200,
               hidden: 0,
             },
-            { id:"trash", header:"Delete", template:"{common.trashIcon()}"}  
+            { id:name, header:"Delete", template:"{common.trashIcon()}"}  
           ],
           onClick:{
-            "wxi-trash":function(event, id, node){
-              {% comment %} console.log("dddd", this.remove(id)) {% endcomment %}
+            "wxi-trash":function(event, id, node){       
+             
               webix.modalbox({
                 title:"Warning",
                 buttons:["Yes", "No"],
@@ -30,7 +30,8 @@ webix.ready(function () {
                       console.log("SFKhj",id )
                       destroyUrl = destroyUrl.replace("123456", id);
                       var crf_token = $('[name="csrfmiddlewaretoken"]').attr("value");
-                      webix.ajax().headers({"X-CSRFToken": crf_token}).del(destroyUrl,{}).then(function(data){  
+                       webix.ajax().headers({"X-CSRFToken": crf_token}).del(destroyUrl,{}).then(function(data){  
+                        $$("tableId").remove($$("tableId").getSelectedId());
                         type = "success"
                         webix.message({ text: "Deleted sccessfully ", type:type, expire:0});
                       }); 
