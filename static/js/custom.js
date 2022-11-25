@@ -14,7 +14,7 @@ function add() {
     })
       .done(function (msg) {
         console.log("msg", msg);
-        launch_toast();
+        //launch_toast();
         window.location.href = window.location.href;
       })
       .fail(function (error) {
