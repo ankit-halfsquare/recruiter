@@ -21,4 +21,7 @@ urlpatterns = [
     path("platform-referral-list/", views.PlatformOrReferralListCreateAPIView.as_view(), name = "v-0.9.3/platform-R-referral-ListCreateAPI-View"),
     path("create-custome-resume/", views.CreateCustomeResume.as_view(), name = "v-0.9.3/create-custome-resume-api-view"),
 
+    #destroy urls
+    path("project-destroy/<int:pk>/", views.ProjectRetrieveUpdateDestroyView.as_view(), name = "v-0.9.3/project-destroy"),
+
 ]

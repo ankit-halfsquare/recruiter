@@ -139,4 +139,12 @@ class CreateCustomeResume(APIView):
         return Response({ "data":"data"})
 
         
+##v-0.9.3 views
+class ProjectRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    lookup_feild = 'pk'
 
+    def destroy(self, request, *args, **kwargs):
+        print("destroy")
+        return super().destroy(self, request, *args, **kwargs)

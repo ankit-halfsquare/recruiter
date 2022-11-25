@@ -14,7 +14,43 @@ webix.ready(function () {
               width: 200,
               hidden: 0,
             },
+            { id:"trash", header:"Delete", template:"{common.trashIcon()}"}  
           ],
+          onClick:{
+            "wxi-trash":function(event, id, node){
+              {% comment %} console.log("dddd", this.remove(id)) {% endcomment %}
+              webix.modalbox({
+                title:"Warning",
+                buttons:["Yes", "No"],
+                width:300,
+                text:"Are you sure?"
+              }).then(function(result){
+                    var type = ""
+                    if(result == 0){ 
+                      console.log("SFKhj",id )
+
+
+                      destroyUrl = destroyUrl.replace("123456", id);
+
+                      console.log("destroyUrl",destroyUrl )
+
+
+                      webix.ajax().del(destroyUrl).then(function(data){
+                        console.log(data.text());
+                      });
+                  
+
+
+                      {% comment %} remove(id) {% endcomment %}
+                      type = "success"
+                      webix.message({ text: "Deleted sccessfully ", type:type, expire:0});
+                    }
+                    else if(result==1) 
+                      return;
+              });
+              {% comment %} this.remove(id) {% endcomment %}
+            }
+          },
           minHeight: 800,
 
           on: {
