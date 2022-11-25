@@ -1,391 +1,283 @@
-{% extends "v-0.9.3/base/base.html"%} {% load static %} {% block head %}
-<script type="text/javascript" src="{% static 'codebase/webix.js' %}"></script>
+{% extends "v-0.9.3/base/base.html"%} {% load static %} {% block css %} {% endblock %}
+{% load crispy_forms_tags %} 
 
-<script>
-      const tableData = async () => {
-        var params = window.location.search;
-        var url = `{% url 'v-0.9.3/candidate-listCreateAPI-View' %}${params}`; 
-        console.log("url",url)
-        const response = await fetch(url, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        var data = await response.json();
-        console.log("data",data)
-        //data = data.data
-        for (let i = 0; i < data.length; i++) {
-          data[i].plateformOrReferral?.name
-            ?data[i].plateformOrReferral=data[i].plateformOrReferral.name
-            :data[i].plateformOrReferral=""
-          data[i].status?.name
-            ? (data[i].status = data[i].status.name)
-            : (data[i].status = "");
-          data[i].priority?.name
-            ? (data[i].priority = data[i].priority.name)
-            : (data[i].priority = "");
-            
-        }
-        return data;
-      };
+ {% block head %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 
-</script>
+{% endblock %}
 
-
-{% endblock %} {% block content %}
-
+{% block content %}
 <div class="page-wrapper">
+  <div id="toast">
+    <div id="img">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+  </svg>
+    </div>
+    <div id="desc">Data updated Successfully</div>
+  </div>
   <!-- Container fluid  -->
   <div class="container-fluid">
     <!-- Start Page Content -->
-    <div class="pagetitle">
-      <h3>Candidates</h3>
+    <div class="pagetitle mb-3 align-items-center justify-content-between">
+      <h3 class="mb-0">
+        <i class="bi bi-arrow-left-circle-fill" style="cursor: pointer;" onClick="viewBack()">
+        <span></span>
+        </i>
+      </h3> 
     </div>
-    <script type="text/javascript" charset="utf-8">
-      // Webix Prep
-      var url = " {% url 'v-0.9.3/view-candidate' pk='123456' %}";
-      var url2 = "{% url 'v-0.9.3/candidate-listCreateAPI-View' %}";
+       <div class="row">
+      <div class="col-12">
+        <div class="listview-with-details">
+          <div class="candidatedetails-rightside candidat-main-wrapper">
+            <div class="detailsheader">
+              <div class="candidate-info">
+                <h4>
+                  {{candidate.first_name|title}} {{candidate.last_name|title}}
+                </h4>
 
-    webix.ready(function () {
-        gridA = webix.ui({
-          id: "qbcudpyz",
-          container: "webix_datatable",
-          select: "row",
-          view: "datatable",
-          minHeight: 800,
-          leftSplit: 4,
-          columns: [
-            {
-              header: "Action",
-              template:
-                "<div class='link'> <a class='viewbtn' type='button'>View</a> </div>",
-              width: 50,
-            },
-            {
-              id: "year",
-              header: {
-                text: "Year",
-                autoheight: true,
-                content: "excelFilter",
-                mode: "number",
-              },
-              sort: "string",
-              width: 80,
-            },
-            {
-              id: "ww",
-              header: {
-                text: "WW",
-                autoheight: true,
-                content: "excelFilter",
-                mode: "number",
-              },
-              sort: "string",
-              width: 80,
-            },
-            {
-              id: "first_name",
-              header: {
-                text: "First Name",
-                autoheight: true,
-                content: "excelFilter",
-                mode: "text",
-              },
-              sort: "string",
-              width: 113,
-            },
-            {
-              id: "last_name",
-              header: {
-                text: "Last Name",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 113,
-            },
-            {
-              id: "plateformOrReferral",
-              header: {
-                text: "plateform/Referral",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 157,
-            },
-            {
-              id: "positionOrPerson",
-              header: {
-                text: "Position/Person",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 142,
-            },
-            {
-              id: "refferedBy",
-              header: {
-                text: "Reffered By",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 113,
-            },
-            {
-              id: "skillLevel",
-              header: {
-                text: "Skill Level",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 110,
-            },
-            {
-              id: "specialitySkillSet",
-              header: {
-                text: "Speciality Skill Set",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 155,
-            },
-            {
-              id: "semi",
-              header: {
-                text: "Semi",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "intel",
-              header: {
-                text: "Intel",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "project1",
-              header: {
-                text: "Project 1",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "project2",
-              header: {
-                text: "Project 2",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "project3",
-              header: {
-                text: "Project 3",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "status",
-              header: {
-                text: "Status",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "priority",
-              header: {
-                text: "Priority",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "activity",
-              header: {
-                text: "Activity",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "pay",
-              header: {
-                text: "$$$$$$$$",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "skill_keywords_full",
-              header: {
-                text: "Skills",
-                autoheight: true,
-                css: "multiline",
-                content: "excelFilter",
-                mode: "number",
-              },
-              sort: "string",
-              width: 150,
-            },
-            {
-              id: "phone",
-              header: {
-                text: "Phone",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "Email",
-              header: {
-                text: "Email",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "city",
-              header: {
-                text: "City",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-            {
-              id: "state",
-              header: {
-                text: "State",
-                autoheight: true,
-                content: "excelFilter",
-                css: "multiline",
-                mode: "text",
-              },
-              sort: "string",
-              width: 100,
-            },
-          ],
-          data: tableData(),
-          on: {            
-           onItemClick(){
-            this.hideOverlay();
-            return ;
-           },
-           onBeforeRender: function () {  
-             this.showOverlay(`<div class="webix_loader"></div><br><span class="load_text">Loading Data...</span>`);
-           },
-           onAfterLoad: function () {
-             if (!this.count()) this.showOverlay("Sorry, there is no data");
-             else this.hideOverlay();
-           },
-          },
-          /*url: function () {
-            return webix.promise(function (res) {
-              setTimeout(function () {
-                console.log("url",url)
-                console.log("url2",url2)
-                console.log("res",res)
-                console.log("webix.ajax",webix.ajax)
-                res(webix.ajax(url2));
-              }, 1000);
-            });
-          },*/
-          onClick: {
-            viewbtn: function (e, id, trg) {
-              elem = document.getElementById("loader")
-              elem.style.visibility = "visible"
-              data = this.getItem(id);
-              console.log("url",url)
-              Url = url.replace("123456", data.candidate_id);
-              console.log("Url",Url)
-              webix.send(Url, {}, "get");
-            },
-          },
-        });
-        gridA.attachEvent("onAfterFilter", function(){
-          this.hideOverlay()
-        })
-        
-        gridA.attachEvent("onAfterSort", function(){
-          this.hideOverlay()
-        });
-    });
+                <div class="d-flex">
+                  <p class="mb-0">
+                    <i class="isax isax-setting"></i>
+                    <span> {{candidate.skill_keywords_full}}</span>
+                  </p>
+                  <p class="mb-0">
+                    <i class="fa fa-map-marker-alt"></i>
+                    <span>{{candidate.city}}</span>
+                  </p>
+                </div>
+              </div>
+              <div
+                class="candidate-header-action"
+                onclick="updateCandidate({{candidate.candidate_id}})"
+              >
+                <a class="editcandidate"
+                  ><i class="isax isax-save-2"></i>
+                  <span>Save Changes</span>
+                </a>
+              </div>
+            </div>
+            <form method="" id="myForm" action="" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="candidate-descriptions">
+                <div class="row">
+                  <div class="col-sm-6 left-side">
+                    <div class="row">
+                      <div class="col-md-8">
+                        <h5 class="mb-2">Candidate Information</h5>
+                      </div>
+                      <div class="col-md-4 edit_btn" onclick="edit_resume()">
+                        <a class="editcandidate"
+                          ><i class="isax isax-edit"></i>
+                          <span>Edit Resume</span>
+                        </a>
+                      </div>
+                    </div>
 
-   
-    </script>
-    <div id="webix_datatable"></div>
+                    <div class="cardinfo">
+                      <div class="row">
+                        <div class="col-md-12   view-form-font">
+                          {{ form.first_name|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12   view-form-font">
+                          {{ form.last_name|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.phone|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.email|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.year|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.ww|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.plateformOrReferral|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.positionOrPerson|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.refferedBy|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.specialitySkillSet|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.semi|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.intel|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.project1|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.project2|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 pb-0  view-form-font">
+                          {{ form.project3|as_crispy_field }}
+                        </div>
+
+                       
+                        
+                        <div class="col-md-12 mt-2">
+                          {{ form.status|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 mt-2 view-form-font">
+                          {{ form.priority|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 mt-2 view-form-font">
+                          {{ form.skillLevel|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 mt-2 view-form-font">
+                          <label class="cad-infolabel">$$$</label>
+                          <span class="c-detsls">
+                            <input
+                              type="text"
+                              name="pay"
+                              class="form-control view-form-font"
+                              id="pay"
+                              value="{{candidate.pay}}"
+                            />
+                          </span>
+                        </div>
+                         <div class="col-md-12 mt-4 ml-2 view-form-font">
+                          {{ form.archive|as_crispy_field }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="candidate-resume mt-4">
+                      <h5 class="mb-2">Activity</h5>
+                      <div class="resume-conntents">
+                        <span class="c-detsls">
+                          <textarea
+                            name="activity"
+                            class="form-control view-form-font"
+                            id="activity"
+                            rows="15"
+                            value="{{candidate.activity}}"
+                          ></textarea>
+                        </span>
+                      </div>
+                    </div>
+                     
+                  </div>
+                  <div class="col-sm-6 right-side">
+                    <h5 class="mb-2">Candidate Resume</h5>
+                    <div id="resume">
+                      <iframe
+                        src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/{{candidate.candidateFileNamePDF}} &amp;embedded=true"
+                        frameborder="0"
+                        webkitallowfullscreen=""
+                        mozallowfullscreen=""
+                        allowfullscreen=""
+                        style="width: 100%; height: 100%"
+                      >
+                      </iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+{% endblock %} 
+{% block script %}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+<script>
+  $(document).ready(function () {
+    cleanForm();
+
+    $('.selectmultiple').select2({
+          width: 'resolve'
+      });
+      $('.select2-w-100').parent().find('span')
+          .removeClass('select2-container')
+          .css("width", "100%")
+          .css("flex-grow", "1")
+          .css("box-sizing", "border-box")
+          .css("display", "inline-block")
+          .css("margin", "0")
+          .css("position", "relative")
+          .css("vertical-align", "middle")
+   
+    
+  });
+
+ 
+
+  function cleanForm() {
+    $(".alert").alert();
+    var form = document.getElementById("myForm");
+    var serializedData = $(form).serialize();
+    arr = serializedData.split("&");
+    for (i in arr) {
+      if (arr[i].includes("None")) {
+        fieldId = arr[i].replace("=None", "");
+        document.getElementById(fieldId).value = "";
+      }
+    }
+  }
+
+  function updateCandidate(pk) {
+    var form = document.getElementById("myForm");
+    var serializedData = $(form).serialize();
+
+    console.log("serializedData", serializedData);
+    var method = "PUT";
+    var Url = "{% url 'v-0.9.3/candidate-updateAPI-view' pk=1234 %}";
+    Url = Url.replace("1234", pk);
+
+    console.log("Url", Url);
+    var crf_token = $('[name="csrfmiddlewaretoken"]').attr("value");
+
+    console.log("crf_token", crf_token);
+
+    $.ajax({
+      method: method,
+      url: Url,
+      data: serializedData,
+      headers: { "X-CSRFToken": crf_token },
+    })
+      .done(function (msg) {
+        launch_toast();
+        console.log("msg", msg);
+      })
+      .fail(function (error) {
+        console.log("error", error.responseJSON);
+      });
+  }
+
+  function viewBack() {
+    var Redirect = "{% url 'v-0.9.3/candidates'  %}";
+    window.location.href = Redirect;
+  }
+
+  function edit_resume() {
+
+    elem = document.getElementById("loader")
+    elem.style.visibility = "visible"
+
+    Url1 = "{% url 'v-0.9.3/template'  %}";
+    Url2 = `?id={{candidate.candidate_id}}&resume={{candidate.candidateFileNamePDF}}` 
+    Redirect = Url1+Url2
+    window.location.href = Redirect;
+    console.log("edit_resume working",url)
+
+
+
+
+  }
+</script>
 {% endblock %}

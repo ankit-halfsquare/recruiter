@@ -111,17 +111,20 @@ def candidate(request,pk=None):
         "powerSearch":powerSearch,
         "dummy":"summy"
     }
-    return render(request,"v-0.9.3/frontend/candidates.html",context)
+    return render(request,"v-0.9.3/frontend/test.html",context)
 
 
 @login_required(login_url='/accounts/login/')
 def viewCandidate(request,pk):
+    print("viewCandidate")
     candidate = CandidateTable.objects.get(pk=pk)
+    print("candidate",candidate)
     form = CandidateTableForm(instance=candidate)
     context = {
         "candidate":candidate,
         "form":form
     }
+    print("return")
     return render(request,"v-0.9.3/frontend/view-candidate.html",context)
 
 

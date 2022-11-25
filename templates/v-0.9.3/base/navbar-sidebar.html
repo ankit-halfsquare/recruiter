@@ -30,14 +30,18 @@
                         <!-- Profile -->
                         <li class="nav-item dropdown usersettings">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src={% static "assets/images/user.png" %}  alt="user" class="profile-pic" />
+                                {% comment %} <img src={% static "assets/images/user.png" %}  alt="user" class="profile-pic" /> {% endcomment %}
+                                <img src="https://pbs.twimg.com/profile_images/1050031488274698240/SU7UZGNY_400x400.jpg"  alt="user" class="profile-pic" />
                                 <i class="ti-menu"></i></a>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
                                     <li>
                                         <div class="dw-user-box">
-                                            <div class="u-img"><img src={% static "assets/images/user.png" %}  alt="user"></div>
+
+                                            {% comment %} <div class="u-img"><img src={% static "assets/images/user.png" %}  alt="user"></div> {% endcomment %}
+                                            <div class="u-img"><img src="https://pbs.twimg.com/profile_images/1050031488274698240/SU7UZGNY_400x400.jpg"  alt="user"></div>
+                                            
                                             <div class="u-text">
                                                 <h4>{{  request.user.first_name|title }} {{  request.user.last_name|title }}</h4>
                                                 <p class="text-muted">{{  request.user.email }}</p><a href="profile.html" class="btn btn-rounded btn-primary btn-sm">View Profile</a></div>

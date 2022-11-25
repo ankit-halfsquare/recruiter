@@ -16,12 +16,16 @@
         console.log("data",data)
         //data = data.data
         for (let i = 0; i < data.length; i++) {
-           data[i].status?.name
-          ? (data[i].status = data[i].status.name)
-          : (data[i].status = "");
+          data[i].plateformOrReferral?.name
+            ?data[i].plateformOrReferral=data[i].plateformOrReferral.name
+            :data[i].plateformOrReferral=""
+          data[i].status?.name
+            ? (data[i].status = data[i].status.name)
+            : (data[i].status = "");
           data[i].priority?.name
             ? (data[i].priority = data[i].priority.name)
             : (data[i].priority = "");
+            
         }
         return data;
       };
@@ -43,16 +47,14 @@
       var url = " {% url 'v-0.9.3/view-candidate' pk='123456' %}";
       var url2 = "{% url 'v-0.9.3/candidate-listCreateAPI-View' %}";
 
-      webix.ready(function () {
+    webix.ready(function () {
         gridA = webix.ui({
           id: "qbcudpyz",
           container: "webix_datatable",
           select: "row",
           view: "datatable",
-         
           minHeight: 800,
           leftSplit: 4,
-          rightSplit: 0,
           columns: [
             {
               header: "Action",
@@ -65,42 +67,33 @@
               header: {
                 text: "Year",
                 autoheight: true,
-                //css: "multiline",
                 content: "excelFilter",
                 mode: "number",
               },
-              cssFormat: "",
               sort: "string",
-              width: 60,
-              hidden: 0,
+              width: 80,
             },
             {
               id: "ww",
               header: {
                 text: "WW",
                 autoheight: true,
-                //css: "multiline",
                 content: "excelFilter",
                 mode: "number",
               },
-              cssFormat: "",
               sort: "string",
-              width: 60,
-              hidden: 0,
+              width: 80,
             },
             {
               id: "first_name",
               header: {
                 text: "First Name",
                 autoheight: true,
-                //css: "multiline",
                 content: "excelFilter",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
-              width: 100,
-              hidden: 0,
+              width: 113,
             },
             {
               id: "last_name",
@@ -111,10 +104,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
-              width: 100,
-              hidden: 0,
+              width: 113,
             },
             {
               id: "plateformOrReferral",
@@ -125,10 +116,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 157,
-              hidden: 0,
             },
             {
               id: "positionOrPerson",
@@ -139,10 +128,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 142,
-              hidden: 0,
             },
             {
               id: "refferedBy",
@@ -153,10 +140,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
-              width: 110,
-              hidden: 0,
+              width: 113,
             },
             {
               id: "skillLevel",
@@ -167,10 +152,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
-              width: 100,
-              hidden: 0,
+              width: 110,
             },
             {
               id: "specialitySkillSet",
@@ -181,10 +164,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
-              width: 100,
-              hidden: 0,
+              width: 155,
             },
             {
               id: "semi",
@@ -195,10 +176,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
             {
               id: "intel",
@@ -209,10 +188,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
             {
               id: "project1",
@@ -223,10 +200,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
             {
               id: "project2",
@@ -237,10 +212,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
             {
               id: "project3",
@@ -251,10 +224,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
             {
               id: "status",
@@ -265,10 +236,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
             {
               id: "priority",
@@ -279,17 +248,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
-              template: function (obj) {
-                if (obj.status?.name) {
-                  return obj.priority.name;
-                } else {
-                  return " ";
-                }
-              },
             },
             {
               id: "activity",
@@ -300,10 +260,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
             {
               id: "pay",
@@ -314,10 +272,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
             {
               id: "skill_keywords_full",
@@ -330,7 +286,6 @@
               },
               sort: "string",
               width: 150,
-              hidden: 0,
             },
             {
               id: "phone",
@@ -341,10 +296,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
             {
               id: "Email",
@@ -355,10 +308,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
             {
               id: "city",
@@ -369,10 +320,8 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
             {
               id: "state",
@@ -383,26 +332,23 @@
                 css: "multiline",
                 mode: "text",
               },
-              cssFormat: "",
               sort: "string",
               width: 100,
-              hidden: 0,
             },
           ],
           data: tableData(),
-          on: {
-            onItemClick(){
+          on: {            
+           onItemClick(){
             this.hideOverlay();
             return ;
            },
-            onBeforeRender: function () {
-              
-              this.showOverlay(`<div class="webix_loader"></div><br><span class="load_text">Loading Data...</span>`);
-            },
-            onAfterLoad: function () {
-              if (!this.count()) this.showOverlay("Sorry, there is no data");
-              else this.hideOverlay();
-            },
+           onBeforeRender: function () {  
+             this.showOverlay(`<div class="webix_loader"></div><br><span class="load_text">Loading Data...</span>`);
+           },
+           onAfterLoad: function () {
+             if (!this.count()) this.showOverlay("Sorry, there is no data");
+             else this.hideOverlay();
+           },
           },
           /*url: function () {
             return webix.promise(function (res) {
@@ -417,6 +363,8 @@
           },*/
           onClick: {
             viewbtn: function (e, id, trg) {
+              elem = document.getElementById("loader")
+              elem.style.visibility = "visible"
               data = this.getItem(id);
               console.log("url",url)
               Url = url.replace("123456", data.candidate_id);
@@ -424,21 +372,15 @@
               webix.send(Url, {}, "get");
             },
           },
-          /*on: {
-            onItemDblClick: function () {
-              var row_id = gridA.getSelectedId(true, true);
-              act_upon_function(row_id);
-            },
-          },*/
         });
-         gridA.attachEvent("onAfterFilter", function(){
+        gridA.attachEvent("onAfterFilter", function(){
           this.hideOverlay()
         })
         
         gridA.attachEvent("onAfterSort", function(){
           this.hideOverlay()
-      });
-      });
+        });
+    });
 
    
     </script>

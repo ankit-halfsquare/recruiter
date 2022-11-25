@@ -66,6 +66,7 @@ class PositionListCreateAPIView(generics.ListCreateAPIView):
 
 
 class CandidateRetrieveAPIView(generics.RetrieveAPIView):
+    print("CandidateRetrieveAPIView")
     queryset = CandidateTable.objects.all()
     serializer_class = CandidateTableSerializer
     lookup_feild = 'candidate_id'
