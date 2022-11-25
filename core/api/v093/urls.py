@@ -21,7 +21,12 @@ urlpatterns = [
     path("platform-referral-list/", views.PlatformOrReferralListCreateAPIView.as_view(), name = "v-0.9.3/platform-R-referral-ListCreateAPI-View"),
     path("create-custome-resume/", views.CreateCustomeResume.as_view(), name = "v-0.9.3/create-custome-resume-api-view"),
 
-    #destroy urls
+    #destroy urls v-0.9.3
     path("project-destroy/<int:pk>/", views.ProjectRetrieveUpdateDestroyView.as_view(), name = "v-0.9.3/project-destroy"),
+    path("status-destroy/<int:pk>/", views.StatusRetrieveUpdateDestroyView.as_view(), name = "v-0.9.3/status-destroy"),
+    path("platform-referral-destroy/<int:pk>/", views.PlatformOrReferralRetrieveUpdateDestroyView.as_view(), name = "v-0.9.3/platform-referral-destroy"),
+    path("skill-level-destroy/<int:pk>/", views.SkillLevelRetrieveUpdateDestroyView.as_view(), name = "v-0.9.3/skill-level-destroy"),
+    path("priority-destroy/<int:pk>/", views.PrioritycaRetrieveUpdateDestroyView.as_view(), name = "v-0.9.3/priority-destroy"),
+
 
 ]

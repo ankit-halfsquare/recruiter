@@ -28,27 +28,17 @@ webix.ready(function () {
                     var type = ""
                     if(result == 0){ 
                       console.log("SFKhj",id )
-
-
                       destroyUrl = destroyUrl.replace("123456", id);
-
-                      console.log("destroyUrl",destroyUrl )
-
-
-                      webix.ajax().del(destroyUrl).then(function(data){
-                        console.log(data.text());
-                      });
-                  
-
-
-                      {% comment %} remove(id) {% endcomment %}
-                      type = "success"
-                      webix.message({ text: "Deleted sccessfully ", type:type, expire:0});
+                      var crf_token = $('[name="csrfmiddlewaretoken"]').attr("value");
+                      webix.ajax().headers({"X-CSRFToken": crf_token}).del(destroyUrl,{}).then(function(data){  
+                        type = "success"
+                        webix.message({ text: "Deleted sccessfully ", type:type, expire:0});
+                      }); 
                     }
                     else if(result==1) 
                       return;
               });
-              {% comment %} this.remove(id) {% endcomment %}
+              
             }
           },
           minHeight: 800,

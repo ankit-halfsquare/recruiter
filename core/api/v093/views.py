@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
+
 from functools import reduce
 from operator import or_,and_
 from django.db.models import Q
@@ -138,7 +139,9 @@ class CreateCustomeResume(APIView):
         uploadFile(filename)
         return Response({ "data":"data"})
 
-        
+
+
+
 ##v-0.9.3 views
 class ProjectRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Project.objects.all()
@@ -146,5 +149,52 @@ class ProjectRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     lookup_feild = 'pk'
 
     def destroy(self, request, *args, **kwargs):
-        print("destroy")
+        # print("ProjectRetrieveUpdateDestroyView")
         return super().destroy(self, request, *args, **kwargs)
+
+
+
+class StatusRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = CandidateStatus.objects.all()
+    serializer_class = StatusSerializer
+    lookup_feild = 'pk'
+
+    def destroy(self, request, *args, **kwargs):
+        # print("ProjectRetrieveUpdateDestroyView")
+        return super().destroy(self, request, *args, **kwargs)
+
+
+
+class PlatformOrReferralRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = PlatformOrReferral.objects.all()
+    serializer_class = PlatformOrReferralSerializer
+    lookup_feild = 'pk'
+
+    def destroy(self, request, *args, **kwargs):
+        # print("ProjectRetrieveUpdateDestroyView")
+        return super().destroy(self, request, *args, **kwargs)
+
+
+class SkillLevelRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = CandidateSkillLevel.objects.all()
+    serializer_class = SkillLevelSerializer
+    lookup_feild = 'pk'
+
+    def destroy(self, request, *args, **kwargs):
+        # print("ProjectRetrieveUpdateDestroyView")
+        return super().destroy(self, request, *args, **kwargs)
+
+
+
+class PrioritycaRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = CandidatePriority.objects.all()
+    serializer_class = PrioritySerializer
+    lookup_feild = 'pk'
+
+    def destroy(self, request, *args, **kwargs):
+        # print("ProjectRetrieveUpdateDestroyView")
+        return super().destroy(self, request, *args, **kwargs)
+
+
+
+    
