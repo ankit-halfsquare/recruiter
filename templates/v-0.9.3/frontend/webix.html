@@ -18,12 +18,15 @@ webix.ready(function () {
           ],
           onClick:{
             "wxi-trash":function(event, id, node){       
-             
+             $$("tableId").select(id)
+              var obj=$$("tableId").getSelectedItem()       
+           
+              if(obj){    
               webix.modalbox({
                 title:"Warning",
                 buttons:["Yes", "No"],
                 width:300,
-                text:"Are you sure?"
+                text:`"Are you sure you want to delete" ${ obj.name}?`
               }).then(function(result){
                     var type = ""
                     if(result == 0){ 
@@ -38,7 +41,8 @@ webix.ready(function () {
                     }
                     else if(result==1) 
                       return;
-              });
+                });
+              }
               
             }
           },
