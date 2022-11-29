@@ -93,11 +93,16 @@ class CandidateListCreateAPIView(generics.ListCreateAPIView):
 
 class CandidateView(APIView):
     def get(self, request,pk=None, *args, **kwarg):
-        Candidates = CandidateTable.objects.all()
+        
+        archive = self.request.query_params.get('archive')
+        if archive == "True":
+            print("archive=>1",archive)
+            Candidates = CandidateTable.objects.filter(Q(archive = archive))
+        else:
+            print("archive=>2",archive)
+            Candidates = CandidateTable.objects.filter(Q(archive = False))
         serializer = CandidateTableSerializer2(Candidates, many =True)
         return Response({ "data":serializer.data})
-       
-
 
 
 ##v-0.9.1 views

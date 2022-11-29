@@ -19,8 +19,10 @@ from .cloudConvert import convertAndDownloadFile,downloadFile
 
 class CandidateResumeTemplates(models.Model):
     template = HTMLField(blank=True, null=True)
+
     class Meta:
         verbose_name_plural = "templates"
+        db_table = 'main_templates'
 
 
 
@@ -31,6 +33,9 @@ class PowerSearch(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        db_table = 'main_power_search'
+
 
 class Keyword(models.Model):
     keyword_id = models.AutoField(primary_key=True)
@@ -40,15 +45,14 @@ class Keyword(models.Model):
         return self.text
 
     class Meta:
-        managed = False
-        db_table = 'keyword'
+        db_table = 'main_keyword'
 
 
 class Company(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
-        db_table = 'company'
+        db_table = 'main_company'
         verbose_name_plural = "companies"
 
     def __str__(self):
@@ -59,7 +63,7 @@ class Project(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
-        db_table = 'project'
+        db_table = 'main_project'
 
     def __str__(self):
         return self.name
@@ -69,7 +73,7 @@ class Position(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
-        db_table = 'position'
+        db_table = 'main_position'
 
     def __str__(self):
         return self.name
@@ -94,14 +98,14 @@ class Assignment(models.Model):
         return self.positionname
 
     class Meta:
-        #managed = False
-        db_table = 'assignment'
+        db_table = 'main_assignment'
 
 
 class CandidateStatus(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     class Meta:
         verbose_name_plural = "status"
+        db_table = 'main_status'
 
     def __str__(self):
         return self.name
@@ -110,6 +114,7 @@ class CandidatePriority(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     class Meta:
         verbose_name_plural = "priority"
+        db_table = 'main_priority'
         
     def __str__(self):
         return self.name
@@ -119,6 +124,7 @@ class CandidateSkillLevel(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     class Meta:
         verbose_name_plural = "SkillLevel"
+        db_table = 'main_skill_level'
 
     def __str__(self):
         return self.name
@@ -128,6 +134,7 @@ class PlatformOrReferral(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     class Meta:
         verbose_name_plural = "PlatformOrReferral"
+        db_table = 'main_platform_or_referral'
 
     def __str__(self):
         return self.name
@@ -197,7 +204,7 @@ class CandidateTable(models.Model):
 
     class Meta:
         #managed = False
-        db_table = 'candidate_tbl'
+        db_table = 'main_candidate_tbl'
         verbose_name_plural = "candidates"
 
 

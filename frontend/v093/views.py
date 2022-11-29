@@ -51,12 +51,7 @@ def addCandidate(request):
 
 @login_required(login_url='/accounts/login/')
 def candidates(request):
-    # obj = CandidateTable.objects.all()
-    # serializer = CandidateTableSerializer(obj)
-   
-    # context = {"Data":serializer.data}
-    context={"test":"ankit"}
-    return render(request,"v-0.9.3/frontend/candidates.html",context)
+    return render(request,"v-0.9.3/frontend/candidates.html")
 
 
 

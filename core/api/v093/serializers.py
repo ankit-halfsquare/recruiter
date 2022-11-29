@@ -25,8 +25,8 @@ class CandidateTableSerializer2(serializers.ModelSerializer):
     plateformOrReferral = serializers.ReadOnlyField(source='plateformOrReferral.name')
     class Meta:
         model = CandidateTable
-        depth = 0
-        fields = ('status','priority','plateformOrReferral','year','ww','first_name','last_name','plateformOrReferral','positionOrPerson','refferedBy','skillLevel','specialitySkillSet','semi','intel','project1','project2','project3','activity','pay','skill_keywords_full','phone','email','city','state',)
+        depth = 1
+        fields = ('candidate_id','status','priority','plateformOrReferral','year','ww','first_name','last_name','plateformOrReferral','positionOrPerson','refferedBy','skillLevel','specialitySkillSet','semi','intel','project1','project2','project3','activity','pay','skill_keywords_full','phone','email','city','state',)
 
 class AssignmentSerializer(serializers.ModelSerializer):
     class Meta:
