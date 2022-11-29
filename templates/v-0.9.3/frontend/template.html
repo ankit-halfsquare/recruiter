@@ -120,7 +120,8 @@
           Url1 = "{% url 'v-0.9.3/candidate'  %}";
           Url2 = `?archive=True` 
           Redirect = Url1+Url2
-          window.location.href = Redirect;
+          console.log("Redirect",Redirect)
+         window.location.href = Redirect;
         }
 
         function createTemplate() 

@@ -18,7 +18,7 @@ from core.models import (
 )
 from .serializers import ( 
     CandidateTableSerializer,AssignmentSerializer,CompanySerializer,ProjectSerializer,PositionSerializer,
-    KeywordSerializer,StatusSerializer,SkillLevelSerializer,PrioritySerializer,PlatformOrReferralSerializer,CandidateTableSerializer2
+    KeywordSerializer,StatusSerializer,SkillLevelSerializer,PrioritySerializer,PlatformOrReferralSerializer,CandidateTableSerializer2,CandidateTableSerializer3
     
 )
 
@@ -101,8 +101,11 @@ class CandidateView(APIView):
         else:
             print("archive=>2",archive)
             Candidates = CandidateTable.objects.filter(Q(archive = False))
-        serializer = CandidateTableSerializer2(Candidates, many =True)
-        return Response({ "data":serializer.data})
+        serializer = CandidateTableSerializer3(Candidates, many =True)
+
+        data = serializer.data
+        print("data",data)
+        return Response({ "data":data})
 
 
 ##v-0.9.1 views
