@@ -118,7 +118,7 @@ class CandidatePriority(models.Model):
 class CandidateSkillLevel(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     class Meta:
-        verbose_name_plural = "Skill Level"
+        verbose_name_plural = "SkillLevel"
 
     def __str__(self):
         return self.name
@@ -127,7 +127,7 @@ class CandidateSkillLevel(models.Model):
 class PlatformOrReferral(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     class Meta:
-        verbose_name_plural = "Platform/Referral"
+        verbose_name_plural = "PlatformOrReferral"
 
     def __str__(self):
         return self.name
@@ -135,6 +135,26 @@ class PlatformOrReferral(models.Model):
 
 class CandidateTable(models.Model):
     candidate_id = models.AutoField(primary_key=True)
+    candidateFileNameOriginal = models.FileField(upload_to='files/', blank=True, null=True)
+
+    #V-0.9.1
+    template = HTMLField(blank=True, null=True)
+
+    #V-0.9.3
+    #DateField
+    fileUploadDate = models.DateField(blank=True, null=True)
+
+    #BooleanField
+    archive = models.BooleanField(default=True)
+    date_added = models.DateField(auto_now_add=True, blank=True, null=True)
+    active = models.BooleanField(default=True)
+
+    #IntegerField
+    year = models.IntegerField(blank=True,null=True)
+    ww = models.IntegerField(blank=True,null=True)
+    adder = models.IntegerField(blank=True, null=True)
+
+    #CharField
     first_name = models.CharField(max_length=50, blank=True, null=True)
     last_name = models.CharField(max_length=50, blank=True, null=True)
     phone = models.CharField(max_length=50, blank=True, null=True)
@@ -143,28 +163,6 @@ class CandidateTable(models.Model):
     state = models.CharField(max_length=50, blank=True, null=True)
     country = models.CharField(max_length=50, blank=True, null=True)
     history = models.CharField(max_length=500, blank=True, null=True)
-    active = models.BooleanField(default=True)
-    active_assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE , blank=True, null=True )
-    adder = models.IntegerField(blank=True, null=True)
-    date_added = models.DateField(auto_now_add=True, blank=True, null=True)
-    fk_ra_company = models.ForeignKey(Company, on_delete=models.CASCADE, blank=True, null=True)
-    fk_ra_project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
-    fk_ra_position = models.ForeignKey(Position, on_delete=models.CASCADE, blank=True, null=True)
-    skill_keywords = models.TextField(blank=True, null=True)
-    candidateFileName = models.CharField(max_length=255, blank=True, null=True)
-    candidateFileContents = models.TextField(blank=True, null=True)
-    # candidateFileContents = HTMLField(blank=True, null=True)
-    candidateFileNameOriginal = models.FileField(upload_to='files/', blank=True, null=True)
-    candidateFileNamePDF = models.CharField(max_length=255, null=True, blank=True)
-    fileUploadDate = models.DateField(blank=True, null=True)
-    candidateFileNameOriginalFull = models.CharField(max_length=255, null=True, blank=True)
-    fileUploadUser = models.CharField(max_length=255, null=True, blank=True)
-    # archive = models.IntegerField(null=True, blank=True)
-    skill_keywords_full = models.TextField(blank=True, null=True)
-
-    year = models.IntegerField(blank=True,null=True)
-    ww = models.IntegerField(blank=True,null=True)
-    plateformOrReferral = models.ForeignKey(PlatformOrReferral, on_delete=models.CASCADE , blank=True, null=True )
     positionOrPerson = models.CharField(max_length=255,blank=True,null=True)
     refferedBy = models.CharField(max_length=255,blank=True,null=True)
     specialitySkillSet = models.CharField(max_length=255,blank=True,null=True)
@@ -173,20 +171,29 @@ class CandidateTable(models.Model):
     project1 = models.CharField(max_length=255,blank=True,null=True)
     project2 = models.CharField(max_length=255,blank=True,null=True)
     project3 = models.CharField(max_length=255,blank=True,null=True)
-    status = models.ForeignKey(CandidateStatus,on_delete=models.CASCADE,blank=True,null=True)
-    priority = models.ForeignKey(CandidatePriority,on_delete=models.CASCADE,blank=True,null=True)
-    skillLevel = models.ManyToManyField(CandidateSkillLevel,blank=True,null=True)
+    fileUploadUser = models.CharField(max_length=255, null=True, blank=True)
+    candidateFileName = models.CharField(max_length=255, blank=True, null=True)
+    candidateFileNamePDF = models.CharField(max_length=255, null=True, blank=True)
+    candidateFileNameOriginalFull = models.CharField(max_length=255, null=True, blank=True)
+
+    #TextField
     activity = models.TextField(blank=True,null=True)
     pay = models.TextField(blank=True,null=True)
-    
-    #V-0.9.1
-    template = HTMLField(blank=True, null=True)
+    skill_keywords = models.TextField(blank=True, null=True)
+    skill_keywords_full = models.TextField(blank=True, null=True)
+    candidateFileContents = models.TextField(blank=True, null=True)
 
-    #V-0.9.3
-    archive = models.BooleanField(default=True)
+    #ForeignKey
+    status = models.ForeignKey(CandidateStatus,on_delete=models.CASCADE,blank=True,null=True)
+    priority = models.ForeignKey(CandidatePriority,on_delete=models.CASCADE,blank=True,null=True)
+    plateformOrReferral = models.ForeignKey(PlatformOrReferral, on_delete=models.CASCADE , blank=True, null=True)
+    fk_ra_company = models.ForeignKey(Company, on_delete=models.CASCADE, blank=True, null=True)
+    fk_ra_project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=True, null=True)
+    fk_ra_position = models.ForeignKey(Position, on_delete=models.CASCADE, blank=True, null=True)
+    active_assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE , blank=True, null=True)
 
-    # def __str__(self):
-    #     return self.first_name
+    #ManyToManyField
+    skillLevel = models.ManyToManyField(CandidateSkillLevel,blank=True,null=True)
 
     class Meta:
         #managed = False

@@ -93,10 +93,8 @@ class CandidateListCreateAPIView(generics.ListCreateAPIView):
 
 class CandidateView(APIView):
     def get(self, request,pk=None, *args, **kwarg):
-        print("CandidateView=====>")
         Candidates = CandidateTable.objects.all()
-        serializer = CandidateTableSerializer(Candidates, many =True)
-
+        serializer = CandidateTableSerializer2(Candidates, many =True)
         return Response({ "data":serializer.data})
        
 

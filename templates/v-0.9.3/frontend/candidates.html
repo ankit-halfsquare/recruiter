@@ -1,38 +1,6 @@
 {% extends "v-0.9.3/base/base.html"%} {% load static %} {% block head %}
 <script type="text/javascript" src="{% static 'codebase/webix.js' %}"></script>
 
-<script>
-      const tableData = async () => {
-        var params = window.location.search;
-        var url = `{% url 'v-0.9.3/candidate-listCreateAPI-View' %}${params}`; 
-        console.log("url",url)
-        const response = await fetch(url, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        var data = await response.json();
-        console.log("data",data)
-        //data = data.data
-        for (let i = 0; i < data.length; i++) {
-          data[i].plateformOrReferral?.name
-            ?data[i].plateformOrReferral=data[i].plateformOrReferral.name
-            :data[i].plateformOrReferral=""
-          data[i].status?.name
-            ? (data[i].status = data[i].status.name)
-            : (data[i].status = "");
-          data[i].priority?.name
-            ? (data[i].priority = data[i].priority.name)
-            : (data[i].priority = "");
-            
-        }
-        return data;
-      };
-
-</script>
-
-
 {% endblock %} {% block content %}
 
 <div class="page-wrapper">
@@ -45,7 +13,7 @@
     <script type="text/javascript" charset="utf-8">
       // Webix Prep
       var url = " {% url 'v-0.9.3/view-candidate' pk='123456' %}";
-      var url2 = "{% url 'v-0.9.3/candidate-listCreateAPI-View' %}";
+      var url2 = "{% url 'v-0.9.3/candidate-View' %}";
 
     webix.ready(function () {
         gridA = webix.ui({
@@ -110,7 +78,7 @@
             {
               id: "plateformOrReferral",
               header: {
-                text: "plateform/Referral",
+                text: "Platform/Referral",
                 autoheight: true,
                 content: "excelFilter",
                 css: "multiline",
@@ -134,7 +102,7 @@
             {
               id: "refferedBy",
               header: {
-                text: "Reffered By",
+                text: "Referred By",
                 autoheight: true,
                 content: "excelFilter",
                 css: "multiline",
@@ -266,7 +234,7 @@
             {
               id: "pay",
               header: {
-                text: "$$$$$$$$",
+                text: "$$$",
                 autoheight: true,
                 content: "excelFilter",
                 css: "multiline",
@@ -300,7 +268,7 @@
               width: 100,
             },
             {
-              id: "Email",
+              id: "email",
               header: {
                 text: "Email",
                 autoheight: true,
@@ -336,13 +304,10 @@
               width: 100,
             },
           ],
-          data: tableData(),
+         
           on: {            
-           onItemClick(){
-            this.hideOverlay();
-            return ;
-           },
-           onBeforeRender: function () {  
+          
+           onBeforeLoad: function () {  
              this.showOverlay(`<div class="webix_loader"></div><br><span class="load_text">Loading Data...</span>`);
            },
            onAfterLoad: function () {
@@ -350,17 +315,13 @@
              else this.hideOverlay();
            },
           },
-          /*url: function () {
+          url: function () {
             return webix.promise(function (res) {
               setTimeout(function () {
-                console.log("url",url)
-                console.log("url2",url2)
-                console.log("res",res)
-                console.log("webix.ajax",webix.ajax)
                 res(webix.ajax(url2));
               }, 1000);
             });
-          },*/
+          },
           onClick: {
             viewbtn: function (e, id, trg) {
               elem = document.getElementById("loader")
@@ -373,13 +334,7 @@
             },
           },
         });
-        gridA.attachEvent("onAfterFilter", function(){
-          this.hideOverlay()
-        })
-        
-        gridA.attachEvent("onAfterSort", function(){
-          this.hideOverlay()
-        });
+       
     });
 
    
