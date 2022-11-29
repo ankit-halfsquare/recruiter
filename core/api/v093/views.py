@@ -9,6 +9,7 @@ from rest_framework.decorators import api_view
 from functools import reduce
 from operator import or_,and_
 from django.db.models import Q
+from django.forms.models import model_to_dict
 
 from core.utils import convert_html_to_pdf,uploadFile,deleteFile
 
@@ -101,10 +102,11 @@ class CandidateView(APIView):
         else:
             print("archive=>2",archive)
             Candidates = CandidateTable.objects.filter(Q(archive = False))
-        serializer = CandidateTableSerializer3(Candidates, many =True)
 
+
+        serializer = CandidateTableSerializer3(Candidates, many =True)
+      
         data = serializer.data
-        print("data",data)
         return Response({ "data":data})
 
 

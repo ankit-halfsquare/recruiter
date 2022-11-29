@@ -6,10 +6,9 @@ from core.models import (
 
 
 class SkillLevelSerializer(serializers.ModelSerializer):
-    id = serializers.IntegerField()
     class Meta:
         model = CandidateSkillLevel
-        fields = '__all__'
+        fields = ('name',)
 
 
 class CandidateTableSerializer(serializers.ModelSerializer):
@@ -26,6 +25,7 @@ class CandidateTableSerializer2(serializers.ModelSerializer):
         exclude = ()
 
 class CandidateTableSerializer3(serializers.ModelSerializer):
+    skillLevel = SkillLevelSerializer(many=True, read_only=True)
     status = serializers.ReadOnlyField(source='status.name')
     priority = serializers.ReadOnlyField(source='priority.name')
     plateformOrReferral = serializers.ReadOnlyField(source='plateformOrReferral.name')
@@ -33,6 +33,7 @@ class CandidateTableSerializer3(serializers.ModelSerializer):
         model = CandidateTable
         depth = 1
         fields = ('candidate_id','status','priority','plateformOrReferral','year','ww','first_name','last_name','plateformOrReferral','positionOrPerson','refferedBy','skillLevel','specialitySkillSet','semi','intel','project1','project2','project3','activity','pay','skill_keywords_full','phone','email','city','state',)
+
 
 class AssignmentSerializer(serializers.ModelSerializer):
     class Meta:

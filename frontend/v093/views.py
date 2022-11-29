@@ -41,10 +41,11 @@ class CustomeLoginView(LogoutRequiredMixin,LoginView):
 def addCandidate(request):
     if request.method == "POST":
         # print("post",request.POST)
-        # print("FILES",request.FILES)
         candidateForm = CandidateTableForm(request.POST, request.FILES)
         if candidateForm.is_valid(): 
             candidate = candidateForm.save()
+            candidate.archive = 1
+            candidate.save()
             return HttpResponseRedirect(reverse('v-0.9.3/edit-candidate',args=(candidate.candidate_id,)))
 
     return render(request,"v-0.9.3/frontend/add-candidate.html")

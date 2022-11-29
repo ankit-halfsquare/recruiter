@@ -121,7 +121,7 @@ class CandidatePriority(models.Model):
 
 
 class CandidateSkillLevel(models.Model):
-    name = models.CharField(max_length=255, blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True)
     class Meta:
         verbose_name_plural = "SkillLevel"
         db_table = 'main_skill_level'
@@ -152,7 +152,7 @@ class CandidateTable(models.Model):
     fileUploadDate = models.DateField(blank=True, null=True)
 
     #BooleanField
-    archive = models.BooleanField(default=True)
+    archive = models.BooleanField(default=False)
     date_added = models.DateField(auto_now_add=True, blank=True, null=True)
     active = models.BooleanField(default=True)
 
