@@ -44,5 +44,5 @@ def convertAndDownloadFile(filename):
 
 
 def downloadFile(fileName):
-    URL = f"https://recruiterstorageacc.blob.core.windows.net/demo/{fileName}"
+    URL = f"https://recruterstorageacc.blob.core.windows.net/resumes/{fileName}"
     cloudconvert.download(filename=fileName, url=URL)
