@@ -19,13 +19,18 @@ blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
 
 def deleteFile(filename):
+    print("delete==>")
+    print("container_name==>",container_name)
+    print("filename==>",filename)
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=filename)
     try:
         blob_client.delete_blob()
     except Exception as e:
-        pass
+        print("error==>",e)
 
 def uploadFile(filename):
+    print("upload==>",container_name)
+    print("filename==>",filename)
     blob_client = blob_service_client.get_blob_client(container=container_name, blob=filename)
     with open(filename, "rb") as data:
         blob_client.upload_blob(data)

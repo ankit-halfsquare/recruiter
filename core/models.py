@@ -200,7 +200,7 @@ class CandidateTable(models.Model):
     active_assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE , blank=True, null=True)
 
     #ManyToManyField
-    skillLevel = models.ManyToManyField(CandidateSkillLevel,blank=True,null=True)
+    skillLevel = models.ManyToManyField(CandidateSkillLevel,blank=True,null=True,related_name='skillLevel')
 
     class Meta:
         #managed = False

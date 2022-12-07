@@ -68,7 +68,7 @@ class PositionListCreateAPIView(generics.ListCreateAPIView):
 
 
 class CandidateRetrieveAPIView(generics.RetrieveAPIView):
-    print("CandidateRetrieveAPIView")
+    # print("CandidateRetrieveAPIView")
     queryset = CandidateTable.objects.all()
     serializer_class = CandidateTableSerializer
     lookup_feild = 'candidate_id'
@@ -92,6 +92,14 @@ class CandidateListCreateAPIView(generics.ListCreateAPIView):
         
 
 
+from django.core.serializers.python import Serializer
+
+class MySerialiser(Serializer):
+    def end_object( self, obj ):
+        self._current['id'] = obj._get_pk_val()
+        self.objects.append( self._current )
+
+
 class CandidateView(APIView):
     def get(self, request,pk=None, *args, **kwarg):
         
@@ -107,6 +115,18 @@ class CandidateView(APIView):
         serializer = CandidateTableSerializer3(Candidates, many =True)
       
         data = serializer.data
+
+    
+        for d in data:
+            skills = d['skillLevel']
+            string = ''
+            for skill in skills:
+                for key in skill:
+                    string += skill[key]
+                    string += ','
+
+            d['skillLevel'] = string
+
         return Response({ "data":data})
 
 
