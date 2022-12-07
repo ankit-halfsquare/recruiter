@@ -83,5 +83,7 @@
       font-size:10px;
       position: absolute;
       padding-top: 22px;
+      overflow: hidden;
+      height: 100%;
    }
    
