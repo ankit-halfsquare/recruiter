@@ -124,8 +124,6 @@
                           {{ form.project3|as_crispy_field }}
                         </div>
 
-                       
-                        
                         <div class="col-md-12 mt-2">
                           {{ form.status|as_crispy_field }}
                         </div>
@@ -172,7 +170,7 @@
                     <h5 class="mb-2">Candidate Resume</h5>
                     <div id="resume">
                       <iframe
-                        src="http://docs.google.com/gview?url=https://recruiterstorageacc.blob.core.windows.net/demo/{{candidate.candidateFileNamePDF}} &amp;embedded=true"
+                        src="http://docs.google.com/gview?url=https://recruterstorageacc.blob.core.windows.net/resumes/{{candidate.candidateFileNamePDF}} &amp;embedded=true"
                         frameborder="0"
                         webkitallowfullscreen=""
                         mozallowfullscreen=""
@@ -215,8 +213,6 @@
           .css("margin", "0")
           .css("position", "relative")
           .css("vertical-align", "middle")
-   
-    
   });
 
  
@@ -235,6 +231,9 @@
   }
 
   function updateCandidate(pk) {
+    elem = document.getElementById("loader")
+    elem.style.visibility = "visible"
+
     var form = document.getElementById("myForm");
     var serializedData = $(form).serialize();
 
@@ -255,6 +254,8 @@
       headers: { "X-CSRFToken": crf_token },
     })
       .done(function (msg) {
+        elem = document.getElementById("loader")
+        elem.style.visibility = "hidden"
         launch_toast();
         console.log("msg", msg);
       })
@@ -278,9 +279,6 @@
     Redirect = Url1+Url2
     window.location.href = Redirect;
     console.log("edit_resume working",url)
-
-
-
 
   }
 </script>

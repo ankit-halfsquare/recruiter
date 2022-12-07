@@ -1,7 +1,9 @@
-import pdftotree
 
 
-pdftotree.parse("DAMINI BDE.pdf", html_path=None, model_type=None, model_path=None, visualize=False)
+# import pdftotree
+
+
+# pdftotree.parse("DAMINI BDE.pdf", html_path=None, model_type=None, model_path=None, visualize=False)
 
 
 

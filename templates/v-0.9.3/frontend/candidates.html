@@ -35,342 +35,333 @@
     webix.ready(function () {
         webix.ui({
           container: "webix_datatable",
-          rows:[
+
+          rows: [
+          {
+            select: "row",
+            view: "datatable",
+            minHeight: 800,
+            leftSplit: 4,
+            pager:"pager",
+            columns: [
               {
-                id: "qbcudpyz",
-                select: "row",
-                view: "datatable",
-                minHeight: 800,
-                leftSplit: 4,
-                pager:"pager",
-                columns: [
-                  {
-                    header: "Action",
-                    template:
-                      "<div class='link'> <a class='viewbtn' type='button'>View</a> </div>",
-                    width: 50,
-                  },
-                  {
-                    id: "year",
-                    header: {
-                      text: "Year",
-                      autoheight: true,
-                      content: "excelFilter",
-                      mode: "number",
-                    },
-                    sort: "string",
-                    width: 80,
-                  },
-                  {
-                    id: "ww",
-                    header: {
-                      text: "WW",
-                      autoheight: true,
-                      content: "excelFilter",
-                      mode: "number",
-                    },
-                    sort: "string",
-                    width: 80,
-                  },
-                  {
-                    id: "first_name",
-                    header: {
-                      text: "First Name",
-                      autoheight: true,
-                      content: "excelFilter",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 113,
-                  },
-                  {
-                    id: "last_name",
-                    header: {
-                      text: "Last Name",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 113,
-                  },
-                  {
-                    id: "plateformOrReferral",
-                    header: {
-                      text: "Platform/Referral",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 157,
-                  },
-                  {
-                    id: "positionOrPerson",
-                    header: {
-                      text: "Position/Person",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 142,
-                  },
-                  {
-                    id: "refferedBy",
-                    header: {
-                      text: "Referred By",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 113,
-                  },
-                  {
-                    id: "skillLevel",
-                    header:
-                    {
-                      text: "Skill Level",   
-                     // content:"excelFilter",options:options
-                    },
-                      //content: "excelFilter",
-                      //css: "multiline",
-                      //mode: "text",
-                      //css: { 'word-wrap': 'break-word' },
-                   // options:options,
-                    sort: "string",
-                    width: 110,
-                    height: 110,
-                    template:function(obj){
-                      arrskillLevel=obj.skillLevel
-                    return arrskillLevel.map((i)=>i.name).join(" ,")
-                    }
-                  },
-                  {
-                    id: "specialitySkillSet",
-                    header: {
-                      text: "Speciality Skill Set",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 155,
-                  },
-                  {
-                    id: "semi",
-                    header: {
-                      text: "Semi",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "intel",
-                    header: {
-                      text: "Intel",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "project1",
-                    header: {
-                      text: "Project 1",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "project2",
-                    header: {
-                      text: "Project 2",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "project3",
-                    header: {
-                      text: "Project 3",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "status",
-                    header: {
-                      text: "Status",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "priority",
-                    header: {
-                      text: "Priority",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "activity",
-                    header: {
-                      text: "Activity",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "pay",
-                    header: {
-                      text: "$$$",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "skill_keywords_full",
-                    header: {
-                      text: "Skills",
-                      autoheight: true,
-                      css: "multiline",
-                      content: "excelFilter",
-                      mode: "number",
-                    },
-                    sort: "string",
-                    width: 150,
-                  },
-                  {
-                    id: "phone",
-                    header: {
-                      text: "Phone",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "email",
-                    header: {
-                      text: "Email",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "city",
-                    header: {
-                      text: "City",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                  {
-                    id: "state",
-                    header: {
-                      text: "State",
-                      autoheight: true,
-                      content: "excelFilter",
-                      css: "multiline",
-                      mode: "text",
-                    },
-                    sort: "string",
-                    width: 100,
-                  },
-                ],
-              
-                on: {            
-                onBeforeLoad: function () {  
-                  this.showOverlay(`<div class="webix_loader"></div><br><span class="load_text">Loading Data...</span>`);
-                },
-                onAfterLoad: function () {
-                  if (!this.count()) this.showOverlay("Sorry, there is no data");
-                  else this.hideOverlay();
-                },
-                },
-                url: function () {
-                  return webix.promise(function (res) {
-                    setTimeout(function () {
-                      res(webix.ajax(url2));
-                    }, 1000);
-                  });
-                },
-                onClick: {
-                  viewbtn: function (e, id, trg) {
-                    elem = document.getElementById("loader")
-                    elem.style.visibility = "visible"
-                    data = this.getItem(id);
-                    Url = url.replace("123456", data.candidate_id);
-                    console.log("Url",Url)
-                    webix.send(Url, {}, "get");
-                  },
-                },
+                header: "Action",
+                template:
+                  "<div class='link'> <a class='viewbtn' type='button'>View</a> </div>",
+                width: 50,
               },
               {
-                id:"pager",
-                view:"pager",
-                template:"{common.first()} {common.prev()} {common.pages()} {common.next()} {common.last()}",
-                size:20,
-                group:5
+                id: "year",
+                header: {
+                  text: "Year",
+                  autoheight: true,
+                  content: "excelFilter",
+                  mode: "number",
+                },
+                sort: "string",
+                width: 80,
               },
-            ]
+              {
+                id: "ww",
+                header: {
+                  text: "WW",
+                  autoheight: true,
+                  content: "excelFilter",
+                  mode: "number",
+                },
+                sort: "string",
+                width: 80,
+              },
+              {
+                id: "first_name",
+                header: {
+                  text: "First Name",
+                  autoheight: true,
+                  content: "excelFilter",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 113,
+              },
+              {
+                id: "last_name",
+                header: {
+                  text: "Last Name",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 113,
+              },
+              {
+                id: "plateformOrReferral",
+                header: {
+                  text: "Platform/Referral",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 157,
+              },
+              {
+                id: "positionOrPerson",
+                header: {
+                  text: "Position/Person",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 142,
+              },
+              {
+                id: "refferedBy",
+                header: {
+                  text: "Referred By",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 113,
+              },
+              {
+                id: "skillLevel",
+                header: {
+                  text: "Skill Level",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 110,
+                adjust:'data'
+              },
+              {
+                id: "specialitySkillSet",
+                header: {
+                  text: "Speciality Skill Set",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 155,
+              },
+              {
+                id: "semi",
+                header: {
+                  text: "Semi",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "intel",
+                header: {
+                  text: "Intel",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "project1",
+                header: {
+                  text: "Project 1",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "project2",
+                header: {
+                  text: "Project 2",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "project3",
+                header: {
+                  text: "Project 3",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "status",
+                header: {
+                  text: "Status",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "priority",
+                header: {
+                  text: "Priority",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "activity",
+                header: {
+                  text: "Activity",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "pay",
+                header: {
+                  text: "$$$",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "skill_keywords_full",
+                header: {
+                  text: "Skills",
+                  autoheight: true,
+                  css: "multiline",
+                  content: "excelFilter",
+                  mode: "number",
+                },
+                sort: "string",
+                width: 150,
+              },
+              {
+                id: "phone",
+                header: {
+                  text: "Phone",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "email",
+                header: {
+                  text: "Email",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "city",
+                header: {
+                  text: "City",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+              {
+                id: "state",
+                header: {
+                  text: "State",
+                  autoheight: true,
+                  content: "excelFilter",
+                  css: "multiline",
+                  mode: "text",
+                },
+                sort: "string",
+                width: 100,
+              },
+            ],
+          
+            on: {            
             
-            
-        
+            onBeforeLoad: function () {  
+              this.showOverlay(`<div class="webix_loader"></div><br><span class="load_text">Loading Data...</span>`);
+            },
+            onAfterLoad: function () {
+              if (!this.count()) this.showOverlay("Sorry, there is no data");
+              else this.hideOverlay();
+            },
+            },
+            url: function () {
+              return webix.promise(function (res) {
+                setTimeout(function () {
+                  res(webix.ajax(url2));
+                }, 1000);
+              });
+            },
+            onClick: {
+              viewbtn: function (e, id, trg) {
+                elem = document.getElementById("loader")
+                elem.style.visibility = "visible"
+                data = this.getItem(id);
+                Url = url.replace("123456", data.candidate_id);
+                console.log("Url",Url)
+                webix.send(Url, {}, "get");
+              },
+            },
+          },
+            {
+              id:"pager",
+              view:"pager",
+              template:"{common.first()} {common.prev()} {common.pages()} {common.next()} {common.last()}",
+              size:20,
+              group:5
+            },
+          ]
         });
        
        

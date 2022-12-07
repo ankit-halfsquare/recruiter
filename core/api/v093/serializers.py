@@ -8,7 +8,8 @@ from core.models import (
 class SkillLevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = CandidateSkillLevel
-        fields = ('name',)
+        # fields = ('name',)
+        exclude = ('id',)
 
 
 class CandidateTableSerializer(serializers.ModelSerializer):
@@ -29,6 +30,9 @@ class CandidateTableSerializer3(serializers.ModelSerializer):
     status = serializers.ReadOnlyField(source='status.name')
     priority = serializers.ReadOnlyField(source='priority.name')
     plateformOrReferral = serializers.ReadOnlyField(source='plateformOrReferral.name')
+    # skillLevel = serializers.PrimaryKeyRelatedField(queryset=CandidateSkillLevel.objects.all(), many=True)
+    
+    print('skillLevel==>',skillLevel)
     class Meta:
         model = CandidateTable
         depth = 1
