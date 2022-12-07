@@ -78,3 +78,10 @@
       background-color: #df060661;
       font-size: 12px;
    }
+
+   .version-name {
+      font-size:10px;
+      position: absolute;
+      padding-top: 22px;
+   }
+   
