@@ -1,1 +1,25 @@
-test
+webix.ui({
+    id: "modal",
+  view: "window", modal:true,
+  container: 'form-container',
+  head: "Add New Item",
+  close:"true",
+  body: {
+    view: "form",
+    elements: [
+      { view: "text", label: 'Name', name: "name" },
+      { view: "button", value: "Close" },
+      { view: "button", value: "Add" }
+    ],
+    elementsConfig: {
+      labelPosition: "top",
+    }
+  }
+  })
+  
+  webix.ui({
+    rows : [
+      {view : 'button',value:"Add New",click: function(){$$(modal).show()} }
+    ]
+  });
+

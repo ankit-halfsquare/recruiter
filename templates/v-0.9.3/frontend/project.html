@@ -5,7 +5,14 @@
   <div class="container-fluid">    
     <div class="pagetitle mb-3 align-items-center justify-content-between">
       <h3 class="mb-0">Project</h3>
-      <button type="button" class="btn btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+      <script type="text/javascript">
+
+       {% include "v-0.9.3/frontend/model.html" %} 
+       function modal_popup(){$$("window").show()} 
+       
+    
+    </script>
+      <button type="button" class="btn btn btn-outline-success btn-sm"  onclick="modal_popup()">
         Add Project
       </button>
        {% csrf_token %}
@@ -25,8 +32,6 @@
 
 
 
-<!-- Modal -->
-{% include "v-0.9.3/frontend/model.html" %} 
 
 {% endblock %}
 
