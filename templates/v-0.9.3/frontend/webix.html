@@ -31,9 +31,10 @@ webix.ready(function () {
                     var type = ""
                     if(result == 0){ 
                       console.log("SFKhj",id )
-                      destroyUrl = destroyUrl.replace("123456", id);
+                      deleteUrl = destroyUrl
+                      deleteUrl = deleteUrl.replace("123456", id);
                       var crf_token = $('[name="csrfmiddlewaretoken"]').attr("value");
-                       webix.ajax().headers({"X-CSRFToken": crf_token}).del(destroyUrl,{}).then(function(data){  
+                       webix.ajax().headers({"X-CSRFToken": crf_token}).del(deleteUrl,{}).then(function(data){  
                         $$("tableId").remove($$("tableId").getSelectedId());
                         type = "success"
                         webix.message({ text: "Deleted successfully ", type:type, expire:0});
