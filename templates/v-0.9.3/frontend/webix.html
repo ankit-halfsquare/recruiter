@@ -19,8 +19,8 @@ webix.ready(function () {
           onClick:{
             "wxi-trash":function(event, id, node){       
              $$("tableId").select(id)
-              var obj=$$("tableId").getSelectedItem()       
-           
+             var obj=$$("tableId").getSelectedItem()       
+           console.log("obj", obj)
               if(obj){    
               webix.modalbox({
                 title:"Warning",
@@ -30,15 +30,23 @@ webix.ready(function () {
               }).then(function(result){
                     var type = ""
                     if(result == 0){ 
+                      elem = document.getElementById("loader")
+                      elem.style.visibility = "visible"
                       console.log("SFKhj",id )
-                      deleteUrl = destroyUrl
-                      deleteUrl = deleteUrl.replace("123456", id);
+                      deleteUrl=destroyUrl
+                      deleteUrl = destroyUrl.replace("123456", id);
+                      
+
+                      console.log("destroyUrl",deleteUrl )
                       var crf_token = $('[name="csrfmiddlewaretoken"]').attr("value");
                        webix.ajax().headers({"X-CSRFToken": crf_token}).del(deleteUrl,{}).then(function(data){  
                         $$("tableId").remove($$("tableId").getSelectedId());
+                        elem.style.visibility = "hidden"
                         type = "success"
                         webix.message({ text: "Deleted successfully ", type:type, expire:0});
+                        $$("tableId").render();
                       }); 
+                      $$("tableId").render();
                     }
                     else if(result==1) 
                       return;
@@ -48,7 +56,6 @@ webix.ready(function () {
             }
           },
           minHeight: 800,
-
           on: {
             onBeforeLoad: function () {
               this.showOverlay(`<div class="webix_loader"></div><br><span class="load_text">Loading Data...</span>`);

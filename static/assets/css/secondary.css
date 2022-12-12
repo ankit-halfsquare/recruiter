@@ -60,7 +60,14 @@
    top: 50%;
    bottom: 50%;
    z-index: 1000;
+}
+
+.loader-wrapper{
+   position: absolute;
+   inset: 0;
+   z-index: 2;
    visibility: hidden;
+   background: rgba(355,355,255,0.7);
    }
 
   

@@ -18,8 +18,32 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary btn-sm" onclick="add()" >Add</button>
+        <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" onclick="add()" >Add</button>
       </div>
     </div>
   </div>
 </div>
+
+  {% comment %} webix.ui({
+          id: "window",
+          view: "window", modal:true,
+          position:"center",
+          head: "Add New Item",
+          close:"true",
+          body: {
+            
+            view: "form",
+            rows: [
+              { view: "text", label: 'Name', name: "name" ,id:"name"},
+              {cols:[
+                { view: "button", value: "Close" ,click:function(){$$("window").close()} },
+                { view: "button", value: "Add", click:function(){
+                  add()} }
+              ]}
+            ],
+            elementsConfig: {
+              labelPosition: "top",
+            }
+          }
+          }).hide();
+ {% endcomment %}
