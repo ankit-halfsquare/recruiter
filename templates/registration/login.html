@@ -58,14 +58,22 @@
       function showPassword() {
         var x = document.getElementById("password");
         var icon = document.getElementById("icon");
-        if(icon.className=="isax isax-eye")
-          icon.className = "isax isax-eye-slash "
-        else
-          icon.className = "isax isax-eye "
+        if(icon.className=="isax isax-eye"){
+          icon.className = "isax isax-eye-slash"
+          console.log("icon",icon.className)
+        }
+        else{
+          //icon.className = "isax isax-eye"
+          icon.className= "isax isax-eye"
+          console.log("icon2",icon.className)
+        }
 
         if (x.type === "password") {
+          console.log("X",x.type)
           x.type = "text";
-        } else {
+        } else { 
+          console.log("y",x.type)
+
           x.type = "password";
         }
       }
