@@ -34,8 +34,10 @@
                     <div class="form-group">
                         <label>Password</label>
                         <div class="icon-icon-input">
-                            <input class="form-control" name="password" type="password" required="" placeholder="Password">
-                            <i class="isax isax-eye"></i>
+                            <input id="password" class="form-control" name="password" type="password" required="" placeholder="Password">
+                            <i id="icon" class="isax isax-eye" onclick="showPassword()"></i>
+                            {% comment %} <i class="isax isax-eye-slash ml-2"></i> {% endcomment %}
+
                         </div>
                     </div>
                     <div class="form-group text-center mt-5">
@@ -52,8 +54,23 @@
             </div>
         </div>
     </section>
-{% endblock %}
+    <script>
+      function showPassword() {
+        var x = document.getElementById("password");
+        var icon = document.getElementById("icon");
+        if(icon.className=="isax isax-eye")
+          icon.className = "isax isax-eye-slash "
+        else
+          icon.className = "isax isax-eye "
 
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+    </script>
+{% endblock %}
 
 {% comment %} <html lang="en">
 
