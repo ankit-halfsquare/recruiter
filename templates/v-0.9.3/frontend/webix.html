@@ -36,7 +36,6 @@ webix.ready(function () {
                       deleteUrl=destroyUrl
                       deleteUrl = destroyUrl.replace("123456", id);
                       
-
                       console.log("destroyUrl",deleteUrl )
                       var crf_token = $('[name="csrfmiddlewaretoken"]').attr("value");
                        webix.ajax().headers({"X-CSRFToken": crf_token}).del(deleteUrl,{}).then(function(data){  

@@ -158,7 +158,7 @@ class CandidateTable(models.Model):
 
     #IntegerField
     year = models.IntegerField(blank=True,null=True)
-    ww = models.IntegerField(blank=True,null=True)
+    ww = models.IntegerField(blank=True,null=True) 
     adder = models.IntegerField(blank=True, null=True)
 
     #CharField
@@ -209,7 +209,6 @@ class CandidateTable(models.Model):
 
 
     def save(self,*args, **kwargs):
-
         super().save(*args, **kwargs)
 
         if self.candidateFileNameOriginal and not self.candidateFileContents:

@@ -19,9 +19,9 @@ from core.models import (
 )
 from .serializers import ( 
     CandidateTableSerializer,AssignmentSerializer,CompanySerializer,ProjectSerializer,PositionSerializer,
-    KeywordSerializer,StatusSerializer,SkillLevelSerializer,PrioritySerializer,PlatformOrReferralSerializer,CandidateTableSerializer2,CandidateTableSerializer3
-    
-)
+    KeywordSerializer,StatusSerializer,SkillLevelSerializer,PrioritySerializer,
+    PlatformOrReferralSerializer,CandidateTableSerializer2,CandidateTableSerializer3
+    )
 
 
 

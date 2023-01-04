@@ -36,8 +36,8 @@ class CandidateTableSerializer3(serializers.ModelSerializer):
     priority = serializers.ReadOnlyField(source='priority.name')
     plateformOrReferral = serializers.ReadOnlyField(source='plateformOrReferral.name')
     # skillLevel = serializers.PrimaryKeyRelatedField(queryset=CandidateSkillLevel.objects.all(), many=True)
-    
-    print('skillLevel==>',skillLevel)
+    # print('skillLevel==>',skillLevel)
+
     class Meta:
         model = CandidateTable
         depth = 1
@@ -78,8 +78,6 @@ class StatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = CandidateStatus
         fields = '__all__'
-
-
 
 
 
