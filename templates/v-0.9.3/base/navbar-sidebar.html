@@ -11,7 +11,7 @@
                         <!-- Logo text -->
                         <span><img src= {% static 'assets/images/logo-text.png' %} class="text-logo" alt="homepage" /></span> 
                     </a>
-                    <br><span class="version-name">Prime 4.0 Recruite</span>
+                    <br><span class="version-name">Prime 4.0 Recruiter</span>
                 </div>
                 <!-- End Logo -->
                 <div class="navbar-collapse">
@@ -75,7 +75,10 @@
                                 <li><a class="waves-effect waves-dark" href="{% url 'candidates' %}"><i class="isax isax-user"></i> <span class="hide-menu">Candidates</span></a></li>
                                 <li><a class="waves-effect waves-dark" href="{% url 'v-0.9.3/add-candidate' %}"   href="javascript:void(0)"><i class="isax isax-add-circle"></i> Add New Candidate</a></li>
                                 <li><a class="waves-effect waves-dark" href="{% url 'candidates' %}?archive=True"   href="javascript:void(0)"><i class="bi bi-archive"></i> Archive</a></li>
-                                <li><a class="waves-effect waves-dark"  href="{% url 'v-0.9.3/project' %}" href="javascript:void(0)"><i class="isax isax-task"></i>
+
+                                <li><a class="waves-effect waves-dark"  href="{% url 'admin-panel' %}"  target="_blank" href="javascript:void(0)"><i class="isax isax-task"></i><span class="hide-menu">Admin Panel</span></a></li>
+
+                                {% comment %} <li><a class="waves-effect waves-dark"  href="{% url 'v-0.9.3/project' %}" href="javascript:void(0)"><i class="isax isax-task"></i>
                                 <span class="hide-menu">Projects</span></a></li>
                                  <li><a class="waves-effect waves-dark"  href="{% url 'v-0.9.3/status' %}" href="javascript:void(0)"><i class="bi bi-bar-chart"></i>
                                 <span class="hide-menu">Status</span></a></li>
@@ -84,7 +87,7 @@
                                 <li><a class="waves-effect waves-dark" href="{% url 'v-0.9.3/skill-level' %}"  href="javascript:void(0)"><i class="bi bi-stack"></i>
                                 <span class="hide-menu">Skill Level</span></a></li>
                                 <li><a class="waves-effect waves-dark"  href="{% url 'v-0.9.3/priority' %}"  href="javascript:void(0)"><i class="bi bi-card-list"></i>
-                                <span class="hide-menu">Priority</span></a></li>  
+                                <span class="hide-menu">Priority</span></a></li>   {% endcomment %}
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

@@ -1,4 +1,5 @@
 from django.urls import path,include
+from django.contrib import admin
 from . import views
 
 
@@ -26,6 +27,8 @@ urlpatterns = [
     path('v-0.9.3/skill-level', views.skillLevel, name='v-0.9.3/skill-level'),
     path('v-0.9.3/priority', views.priority, name='v-0.9.3/priority'),
     path('v-0.9.3/platform-referral', views.platformOrReferral, name='v-0.9.3/platform-referral'),
+
+   
 
     
 ]
